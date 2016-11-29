@@ -13,5 +13,36 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Header Files\Loaders">
+      <UniqueIdentifier>{c29267f8-aa2c-4e34-a9e2-17d26bc54a8f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Loaders">
+      <UniqueIdentifier>{d5020d60-18ce-4332-9d19-69a75839e942}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\System">
+      <UniqueIdentifier>{16a74900-05b2-4b57-bc08-fad5575756ed}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\System">
+      <UniqueIdentifier>{978a15df-9626-4874-a3d5-fabaf010ff2d}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\cls_game.cpp">
+      <Filter>Source Files\System</Filter>
+    </ClCompile>
+    <ClCompile Include="includes\texture_loader.cpp">
+      <Filter>Source Files\Loaders</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\cls_game.h">
+      <Filter>Header Files\System</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\texture_loader.h">
+      <Filter>Header Files\Loaders</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
