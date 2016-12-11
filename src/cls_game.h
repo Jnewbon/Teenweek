@@ -5,7 +5,10 @@ class game
 public:
 	game(int argc, char** argv);
 
+	void set_screensize(int size_x, int size_y, bool fullscreen);
 	void set_screensize(glm::vec2 size, bool fullscreen);
+
+	void init(void);
 
 
 	//callbacks

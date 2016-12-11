@@ -13,8 +13,21 @@ game::game(int argc, char ** argv)
 	this->argv = argv;
 }
 
+void game::set_screensize(int size_x, int size_y, bool fullscreen)
+{
+	set_screensize(glm::vec2(size_x, size_y), fullscreen);
+}
+
 void game::set_screensize(glm::vec2 size, bool fullscreen)
 {
+	this->fullscreen = fullscreen;
+	this->screeSize = size;
+}
+
+void game::init(void)
+{
+	init_glut();
+	init_glew();
 }
 
 void game::display()

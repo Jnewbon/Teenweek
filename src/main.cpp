@@ -6,6 +6,10 @@ int main(int argc, char **argv)
 	game theGame(argc, argv);
 
 	//set the screen size and fullscreen status
-	theGame.set_screensize(glm::vec2(800,800),false);
+	theGame.set_screensize(800,800,false);
+
+	theGame.init();
+
+	system("PAUSE");
 
 }
