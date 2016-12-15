@@ -106,8 +106,8 @@ xcopy /y $(ProjectDir)dll\$(Configuration)\$(Platform)\freeglutd.dll $(OutDir) /
 xcopy /y $(ProjectDir)dll\$(Configuration)\$(Platform)\glew32d.dll $(OutDir) /c</Command>
     </PostBuildEvent>
     <PreBuildEvent>
-      <Command>del $(OutDir)*.lib
-del $(OutDir)*.dll</Command>
+      <Command>
+      </Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -132,8 +132,8 @@ xcopy /y $(ProjectDir)dll\$(Configuration)\$(Platform)\freeglutd.dll $(OutDir) /
 xcopy /y $(ProjectDir)dll\$(Configuration)\$(Platform)\glew32d.dll $(OutDir) /c</Command>
     </PostBuildEvent>
     <PreBuildEvent>
-      <Command>del $(OutDir)*.lib
-del $(OutDir)*.dll</Command>
+      <Command>
+      </Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -156,8 +156,8 @@ del $(OutDir)*.dll</Command>
       <AdditionalDependencies>$(ProjectDir)lib\$(Configuration)\$(Platform)\freeglut.lib;$(ProjectDir)lib\$(Configuration)\$(Platform)\glew32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PreBuildEvent>
-      <Command>del $(OutDir)*.lib
-del $(OutDir)*.dll</Command>
+      <Command>
+      </Command>
     </PreBuildEvent>
     <PostBuildEvent>
       <Command>xcopy /y $(ProjectDir)lib\$(Configuration)\$(Platform)\freeglut.lib $(OutDir)
@@ -192,8 +192,8 @@ xcopy /y $(ProjectDir)dll\$(Configuration)\$(Platform)\freeglut.dll $(OutDir)
 xcopy /y $(ProjectDir)dll\$(Configuration)\$(Platform)\glew32.dll $(OutDir)</Command>
     </PostBuildEvent>
     <PreBuildEvent>
-      <Command>del $(OutDir)*.lib
-del $(OutDir)*.dll</Command>
+      <Command>
+      </Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
