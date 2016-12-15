@@ -100,10 +100,10 @@
       <AdditionalDependencies>$(ProjectDir)lib\$(Configuration)\$(Platform)\freeglutd.lib;$(ProjectDir)lib\$(Configuration)\$(Platform)\glew32d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>xcopy /y $(ProjectDir)lib\$(Configuration)\$(Platform)\freeglutd.lib $(OutDir) /c
-xcopy /y $(ProjectDir)lib\$(Configuration)\$(Platform)\glew32d.lib $(OutDir) /c
-xcopy /y $(ProjectDir)dll\$(Configuration)\$(Platform)\freeglutd.dll $(OutDir) /c
-xcopy /y $(ProjectDir)dll\$(Configuration)\$(Platform)\glew32d.dll $(OutDir) /c</Command>
+      <Command>copy /y $(ProjectDir)lib\$(Configuration)\$(Platform)\freeglutd.lib $(OutDir) /c
+copy /y $(ProjectDir)lib\$(Configuration)\$(Platform)\glew32d.lib $(OutDir) /c
+copy /y $(ProjectDir)dll\$(Configuration)\$(Platform)\freeglutd.dll $(OutDir) /c
+copy /y $(ProjectDir)dll\$(Configuration)\$(Platform)\glew32d.dll $(OutDir) /c</Command>
     </PostBuildEvent>
     <PreBuildEvent>
       <Command>
@@ -126,10 +126,10 @@ xcopy /y $(ProjectDir)dll\$(Configuration)\$(Platform)\glew32d.dll $(OutDir) /c<
       <AdditionalDependencies>$(ProjectDir)lib\$(Configuration)\$(Platform)\freeglutd.lib;$(ProjectDir)lib\$(Configuration)\$(Platform)\glew32d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>xcopy /y $(ProjectDir)lib\$(Configuration)\$(Platform)\freeglutd.lib $(OutDir) /c
-xcopy /y $(ProjectDir)lib\$(Configuration)\$(Platform)\glew32d.lib $(OutDir) /c
-xcopy /y $(ProjectDir)dll\$(Configuration)\$(Platform)\freeglutd.dll $(OutDir) /c
-xcopy /y $(ProjectDir)dll\$(Configuration)\$(Platform)\glew32d.dll $(OutDir) /c</Command>
+      <Command>copy /y $(ProjectDir)lib\$(Configuration)\$(Platform)\freeglutd.lib $(OutDir) /c
+copy /y $(ProjectDir)lib\$(Configuration)\$(Platform)\glew32d.lib $(OutDir) /c
+copy /y $(ProjectDir)dll\$(Configuration)\$(Platform)\freeglutd.dll $(OutDir) /c
+copy /y $(ProjectDir)dll\$(Configuration)\$(Platform)\glew32d.dll $(OutDir) /c</Command>
     </PostBuildEvent>
     <PreBuildEvent>
       <Command>
@@ -160,10 +160,10 @@ xcopy /y $(ProjectDir)dll\$(Configuration)\$(Platform)\glew32d.dll $(OutDir) /c<
       </Command>
     </PreBuildEvent>
     <PostBuildEvent>
-      <Command>xcopy /y $(ProjectDir)lib\$(Configuration)\$(Platform)\freeglut.lib $(OutDir)
-xcopy /y $(ProjectDir)lib\$(Configuration)\$(Platform)\glew32.lib $(OutDir)
-xcopy /y $(ProjectDir)dll\$(Configuration)\$(Platform)\freeglut.dll $(OutDir)
-xcopy /y $(ProjectDir)dll\$(Configuration)\$(Platform)\glew32.dll $(OutDir)</Command>
+      <Command>copy /y $(ProjectDir)lib\$(Configuration)\$(Platform)\freeglut.lib $(OutDir)
+copy /y $(ProjectDir)lib\$(Configuration)\$(Platform)\glew32.lib $(OutDir)
+copy /y $(ProjectDir)dll\$(Configuration)\$(Platform)\freeglut.dll $(OutDir)
+copy /y $(ProjectDir)dll\$(Configuration)\$(Platform)\glew32.dll $(OutDir)</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -186,10 +186,10 @@ xcopy /y $(ProjectDir)dll\$(Configuration)\$(Platform)\glew32.dll $(OutDir)</Com
       <AdditionalDependencies>$(ProjectDir)lib\$(Configuration)\$(Platform)\freeglut.lib;$(ProjectDir)lib\$(Configuration)\$(Platform)\glew32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>xcopy /y $(ProjectDir)lib\$(Configuration)\$(Platform)\freeglut.lib $(OutDir)
-xcopy /y $(ProjectDir)lib\$(Configuration)\$(Platform)\glew32.lib $(OutDir)
-xcopy /y $(ProjectDir)dll\$(Configuration)\$(Platform)\freeglut.dll $(OutDir)
-xcopy /y $(ProjectDir)dll\$(Configuration)\$(Platform)\glew32.dll $(OutDir)</Command>
+      <Command>copy /y $(ProjectDir)lib\$(Configuration)\$(Platform)\freeglut.lib $(OutDir)
+copy /y $(ProjectDir)lib\$(Configuration)\$(Platform)\glew32.lib $(OutDir)
+copy /y $(ProjectDir)dll\$(Configuration)\$(Platform)\freeglut.dll $(OutDir)
+copy /y $(ProjectDir)dll\$(Configuration)\$(Platform)\glew32.dll $(OutDir)</Command>
     </PostBuildEvent>
     <PreBuildEvent>
       <Command>
