@@ -1,5 +1,6 @@
 
 #include "texture_loader.h"
+#include <iostream>
 
 
 // Windows Imaging Component factory class (singleton)
@@ -127,7 +128,10 @@ GLuint loadTexture(const std::wstring& filename) {
 
 		// validate wicFactory before proceeding
 		if (!SUCCEEDED(hr))
+		{
+			std::cout << "Unable to load texture: " << filename.c_str() << std::endl;
 			return 0;
+		}
 	}
 
 
@@ -174,6 +178,8 @@ GLuint loadTexture(const std::wstring& filename) {
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
 	}
+	if (newTexture == 0)
+		std::cout << "Unable to load texture: " << filename.c_str() << std::endl;
 
 	return newTexture;
 }

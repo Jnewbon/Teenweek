@@ -54,6 +54,12 @@
     <ClCompile Include="src\Shader_Setup.cpp">
       <Filter>Source Files\Loaders</Filter>
     </ClCompile>
+    <ClCompile Include="src\factory.cpp">
+      <Filter>Source Files\Loaders\Factory</Filter>
+    </ClCompile>
+    <ClCompile Include="src\dynamic_image_obj.cpp">
+      <Filter>Source Files\System</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\cls_game.h">
@@ -76,6 +82,12 @@
     </ClInclude>
     <ClInclude Include="src\Shader_Setup.h">
       <Filter>Header Files\Loaders</Filter>
+    </ClInclude>
+    <ClInclude Include="src\factory.h">
+      <Filter>Header Files\Loaders\Factory</Filter>
+    </ClInclude>
+    <ClInclude Include="src\dynamic_image_obj.h">
+      <Filter>Header Files\System</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

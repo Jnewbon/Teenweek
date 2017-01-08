@@ -200,6 +200,8 @@ copy "$(ProjectDir)dll\$(Configuration)\$(Platform)\glew32.dll" "$(OutDir)" /Y</
     <ClCompile Include="includes\texture_loader.cpp" />
     <ClCompile Include="src\cls_game.cpp" />
     <ClCompile Include="src\display_object.cpp" />
+    <ClCompile Include="src\dynamic_image_obj.cpp" />
+    <ClCompile Include="src\factory.cpp" />
     <ClCompile Include="src\image_object.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\Shader_Setup.cpp" />
@@ -210,6 +212,8 @@ copy "$(ProjectDir)dll\$(Configuration)\$(Platform)\glew32.dll" "$(OutDir)" /Y</
     <ClInclude Include="src\cls_game.h" />
     <ClInclude Include="src\defines.h" />
     <ClInclude Include="src\display_object.h" />
+    <ClInclude Include="src\dynamic_image_obj.h" />
+    <ClInclude Include="src\factory.h" />
     <ClInclude Include="src\image_object.h" />
     <ClInclude Include="src\Shader_Setup.h" />
     <ClInclude Include="src\text_object.h" />
