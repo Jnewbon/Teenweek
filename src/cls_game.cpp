@@ -53,8 +53,10 @@ void game::mainloop()
 	allDisplayObjects.push_back(Factory::create_object(Factory::BACKGROUND));
 	allDisplayObjects.push_back(Factory::create_object(Factory::GAME_UI));
 	//allDisplayObjects.push_back(Factory::create_object(Factory::PLAYER_SHIP));
-	allDisplayObjects.push_back(Factory::create_object(Factory::BULLET_ONE));
-	allDisplayObjects.push_back(Factory::create_object(Factory::Test_Text));
+	allDisplayObjects.push_back(Factory::create_object(Factory::MISSLE_TWO));
+	allDisplayObjects.push_back(Factory::create_object(Factory::INFO_TEXT));
+	allDisplayObjects.push_back(Factory::create_object(Factory::QUESTION_TEXT));
+	allDisplayObjects.push_back(Factory::create_object(Factory::ANSWER_TEXT));
 
 	while (true)
 	{

@@ -214,7 +214,7 @@ display_object * Factory::create_object(Types obj_type)
 		//Location, Just set it to 0
 		new_Dyn_obj->setLocation(0.0f, 0.0f);
 		//This is the scale of the object, minus numbers will flip the image on that axis 
-		new_Dyn_obj->setScale(0.0001f, 0.0001f);
+		new_Dyn_obj->setScale(0.025f, 0.025f);
 
 		//The texture that will be used by the object
 		new_Dyn_obj->set_Texture(loadTexture(L"resources\\textures\\misc\\bullet_one.png"));
@@ -233,7 +233,7 @@ display_object * Factory::create_object(Types obj_type)
 		//Location, Just set it to 0
 		new_Dyn_obj->setLocation(0.0f, 0.0f);
 		//This is the scale of the object, minus numbers will flip the image on that axis 
-		new_Dyn_obj->setScale(0.1f, 0.1f);
+		new_Dyn_obj->setScale(0.025f, 0.025f);
 
 		//The texture that will be used by the object
 		new_Dyn_obj->set_Texture(loadTexture(L"resources\\textures\\misc\\bullet_two.png"));
@@ -244,6 +244,7 @@ display_object * Factory::create_object(Types obj_type)
 		//The deafult Shader, This will be the same for most objects
 		new_Dyn_obj->setShader(game::default_shader);
 
+		break;
 	case Factory::BULLET_THREE:
 		//Create the specific type required
 		new_Dyn_obj = new Dynamic_image_obj();
@@ -251,7 +252,7 @@ display_object * Factory::create_object(Types obj_type)
 		//Location, Just set it to 0
 		new_Dyn_obj->setLocation(0.0f, 0.0f);
 		//This is the scale of the object, minus numbers will flip the image on that axis 
-		new_Dyn_obj->setScale(0.1f, 0.1f);
+		new_Dyn_obj->setScale(0.025f, 0.025f);
 
 		//The texture that will be used by the object
 		new_Dyn_obj->set_Texture(loadTexture(L"resources\\textures\\misc\\bullet_three.png"));
@@ -270,7 +271,7 @@ display_object * Factory::create_object(Types obj_type)
 		//Location, Just set it to 0
 		new_Dyn_obj->setLocation(0.0f, 0.0f);
 		//This is the scale of the object, minus numbers will flip the image on that axis 
-		new_Dyn_obj->setScale(0.1f, 0.1f);
+		new_Dyn_obj->setScale(0.05f, 0.1f);
 
 		//The texture that will be used by the object
 		new_Dyn_obj->set_Texture(loadTexture(L"resources\\textures\\misc\\answer_capsule.png"));
@@ -289,7 +290,7 @@ display_object * Factory::create_object(Types obj_type)
 		//Location, Just set it to 0
 		new_Dyn_obj->setLocation(0.0f, 0.0f);
 		//This is the scale of the object, minus numbers will flip the image on that axis 
-		new_Dyn_obj->setScale(0.1f, 0.1f);
+		new_Dyn_obj->setScale(0.05f, 0.1f);
 
 		//The texture that will be used by the object
 		new_Dyn_obj->set_Texture(loadTexture(L"resources\\textures\\misc\\missle_one.png"));
@@ -308,7 +309,7 @@ display_object * Factory::create_object(Types obj_type)
 		//Location, Just set it to 0
 		new_Dyn_obj->setLocation(0.0f, 0.0f);
 		//This is the scale of the object, minus numbers will flip the image on that axis 
-		new_Dyn_obj->setScale(0.1f, 0.1f);
+		new_Dyn_obj->setScale(0.03f, 0.1f);
 
 		//The texture that will be used by the object
 		new_Dyn_obj->set_Texture(loadTexture(L"resources\\textures\\misc\\missle_two.png"));
@@ -339,15 +340,40 @@ display_object * Factory::create_object(Types obj_type)
 		new_Img_obj->setShader(game::default_shader);
 		
 		break;
-
-	case Factory::Test_Text:
+	case Factory::INFO_TEXT:
 		new_Txt_obj = new text_object();
 
-		new_Txt_obj->setLocation(glm::vec2(-0.5f));
+		new_Txt_obj->setLocation(glm::vec2(-0.93f, 0.0f));
 
 		new_Txt_obj->setColour(glm::vec3(1.0f,0.0f,0.0f ));
 
-		text.push_back("This is some test text to test the text output to screen");
+		text.push_back("This is some INFO text to test the text output to screen");
+		text.push_back("This is the second line of the test text");
+
+		new_Txt_obj->setText(text);
+
+		break;
+	case Factory::ANSWER_TEXT:
+		new_Txt_obj = new text_object();
+
+		new_Txt_obj->setLocation(glm::vec2(0.72f, 0.8f));
+
+		new_Txt_obj->setColour(glm::vec3(1.0f, 0.0f, 0.0f));
+
+		text.push_back("This is some ANSWER text to test the text output to screen");
+		text.push_back("This is the second line of the test text");
+
+		new_Txt_obj->setText(text);
+
+		break;
+	case Factory::QUESTION_TEXT:
+		new_Txt_obj = new text_object();
+
+		new_Txt_obj->setLocation(glm::vec2(-0.93f, 0.8f));
+
+		new_Txt_obj->setColour(glm::vec3(1.0f, 0.0f, 0.0f));
+
+		text.push_back("This is some QUESTION text to test the text output to screen");
 		text.push_back("This is the second line of the test text");
 
 		new_Txt_obj->setText(text);

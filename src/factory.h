@@ -7,6 +7,7 @@ class Factory
 {
 public:
 	enum Types {
+		//Game Objects
 		PLAYER_SHIP,
 		ENEMY_ONE,
 		ENEMY_TWO,
@@ -25,10 +26,13 @@ public:
 		MISSLE_TWO,
 		EXPLOSION_ONE,
 		EXPLOSION_TWO,
+		//UI Objects
 		GAME_UI,
 		BACKGROUND,
 		//Text Objects
-		Test_Text
+		INFO_TEXT,
+		ANSWER_TEXT,
+		QUESTION_TEXT
 	};
 	static display_object*		create_object(Types obj_type);
 
