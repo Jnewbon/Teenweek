@@ -28,6 +28,7 @@ public:
 
 
 	static GLuint		default_shader;
+	static glm::vec2			screenSize;			//Contains the Size of the screen
 
 private:
 //#####	Functions ######
@@ -44,12 +45,11 @@ private:
 
 	//Game Variables
 
-	static clock_t					last;				// Contains the time of the last frames, used to calculate how log has passed sine last execute time
+	static clock_t							last;				// Contains the time of the last frames, used to calculate how log has passed sine last execute time
 	static std::list<display_object*>		allDisplayObjects;	//Contains all object to be displayed to the screen
 
 	//OpenGL Variables
 
-	glm::vec2			screeSize;			//Contains the Size of the screen
-	bool				fullscreen;			//is the game fullscreen (default false)
+	static bool					fullscreen;			//is the game fullscreen (default false)
 
 };

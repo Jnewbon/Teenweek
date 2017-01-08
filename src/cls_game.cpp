@@ -11,8 +11,11 @@ using namespace std;
 
 GLuint game::default_shader = 0;
 
-clock_t game::last = 0;
-std::list<display_object*> game::allDisplayObjects;	//Contains all object to be displayed to the screen
+clock_t						game::last = 0;
+std::list<display_object*>	game::allDisplayObjects;	//Contains all object to be displayed to the screen
+glm::vec2					game::screenSize;			//Contains the Size of the screen
+bool						game::fullscreen;			//is the game fullscreen (default false)
+
 game::game(int argc, char ** argv)
 {
 	//set the startup variables used by glut/glew init
@@ -28,7 +31,7 @@ void game::set_screensize(int size_x, int size_y, bool fullscreen)
 void game::set_screensize(glm::vec2 size, bool fullscreen)
 {
 	this->fullscreen = fullscreen;
-	this->screeSize = size;
+	this->screenSize = size;
 }
 
 void game::init(void)
@@ -36,7 +39,7 @@ void game::init(void)
 	init_glut();
 	init_glew();
 
-	this->default_shader =setupShaders(std::string("Resourses\\shaders\\vertex_shader_Matrix.vert"), std::string("Resourses\\shaders\\texture_fragment_shader.frag"));
+	this->default_shader =setupShaders(std::string("resources\\shaders\\vertex_shader_Matrix.vert"), std::string("resources\\shaders\\texture_fragment_shader.frag"));
 
 	image_object::init();
 
@@ -47,6 +50,7 @@ void game::mainloop()
 	//Example of creating a game object
 	allDisplayObjects.push_back(Factory::create_object(Factory::SUPER_AWSOME_PLAYER_SHIP));
 	allDisplayObjects.push_back(Factory::create_object(Factory::UI));
+	allDisplayObjects.push_back(Factory::create_object(Factory::Test_Text));
 	while (true)
 	{
 		//Enter glut events and display
@@ -83,7 +87,7 @@ void game::display()
 void game::event_mouseMove(int x, int y)
 {
 #ifdef DEBUG_MOUSE_LOC
-	cout << "Mouse Loc {" << x << ",\t" << y << "}" << endl;
+	printf("Mouse Loc {%4i,%4i}\t {%7.4f,%7.4f}\n", x, y, ((2.0f / screenSize.x) * x) - 1.0f, -(((2.0f / screenSize.y) * y) - 1.0f));
 #endif
 }
 
@@ -104,7 +108,7 @@ void game::init_glut()
 	glutInitContextProfile(GLUT_COMPATIBILITY_PROFILE);
 	glutInitDisplayMode(GLUT_RGBA | GLUT_DEPTH | GLUT_DOUBLE);
 
-	glutInitWindowSize((int)screeSize.x, (int)screeSize.y);
+	glutInitWindowSize((int)screenSize.x, (int)screenSize.y);
 	glutInitWindowPosition(1920, 0);
 	glutCreateWindow("Teen Week Interactive Demo by Jamie Newbon and Matthew Potter");
 

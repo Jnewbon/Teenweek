@@ -10,8 +10,10 @@ display_object * Factory::create_object(Types obj_type)
 	display_object* new_obj = nullptr;			//The parent node used for passing the object back to the caller
 	image_object* new_Img_obj = nullptr;		//Contains all static image objects, The GUI and similer
 	Dynamic_image_obj* new_Dyn_obj = nullptr;	//Contains all dynamic image objects, Ships and games specific onjects
+	text_object* new_Txt_obj = nullptr;			//Contains all the textual content on the screen
 	
-	
+	//Used for Text objects
+	vector<std::string> text;
 
 	switch (obj_type)
 	{
@@ -32,9 +34,7 @@ display_object * Factory::create_object(Types obj_type)
 
 		//The deafult Shader, This will be the same for most objects
 		new_Dyn_obj->setShader(game::default_shader);
-
-		//Set the created objet into the parent node for passing back
-		new_obj = new_Dyn_obj;
+		
 		break;
 	case Factory::UI:
 		//Create the specific type required
@@ -53,13 +53,33 @@ display_object * Factory::create_object(Types obj_type)
 
 		//The deafult Shader, This will be the same for most objects
 		new_Img_obj->setShader(game::default_shader);
+		
+		break;
 
-		//Set the created objet into the parent node for passing back
-		new_obj = new_Img_obj;
+	case Factory::Test_Text:
+		new_Txt_obj = new text_object();
+
+		new_Txt_obj->setLocation(glm::vec2(-0.5f));
+
+		new_Txt_obj->setColour(glm::vec3(1.0f,0.0f,0.0f ));
+
+		text.push_back("This is some test text to test the text output to screen");
+		text.push_back("This is the second line of the test text");
+
+		new_Txt_obj->setText(text);
+
 		break;
 	default:
 		break;
 	}
+
+	//Set the created object into the parent node
+	if (new_Img_obj)
+		new_obj = new_Img_obj;
+	else if (new_Dyn_obj)
+		new_obj = new_Dyn_obj;
+	else if (new_Txt_obj)
+		new_obj = new_Txt_obj;
 
 
 	return new_obj;
