@@ -4,6 +4,7 @@
 #include <texture_loader.h>
 #include "Shader_Setup.h"
 #include <iostream>
+#include "wtypes.h"
 #include "defines.h"
 #include "factory.h"
 
@@ -36,7 +37,7 @@ void game::init(void)
 	init_glut();
 	init_glew();
 
-	this->default_shader =setupShaders(std::string("Resourses\\shaders\\vertex_shader_Matrix.vert"), std::string("Resourses\\shaders\\texture_fragment_shader.frag"));
+	this->default_shader =setupShaders(std::string("resources\\shaders\\vertex_shader_Matrix.vert"), std::string("resources\\shaders\\texture_fragment_shader.frag"));
 
 	image_object::init();
 
@@ -45,8 +46,11 @@ void game::init(void)
 void game::mainloop()
 {
 	//Example of creating a game object
-	allDisplayObjects.push_back(Factory::create_object(Factory::SUPER_AWSOME_PLAYER_SHIP));
-	allDisplayObjects.push_back(Factory::create_object(Factory::UI));
+	allDisplayObjects.push_back(Factory::create_object(Factory::BACKGROUND));
+	allDisplayObjects.push_back(Factory::create_object(Factory::GAME_UI));
+	//allDisplayObjects.push_back(Factory::create_object(Factory::PLAYER_SHIP));
+	allDisplayObjects.push_back(Factory::create_object(Factory::BULLET_ONE));
+
 	while (true)
 	{
 		//Enter glut events and display
@@ -97,6 +101,11 @@ void game::event_keyPress(int key, int state)
 
 void game::init_glut()
 {
+	//gets the Desktop resolution size for the current hardware
+	RECT desktop;
+	const HWND hDesktop = GetDesktopWindow();
+	GetWindowRect(hDesktop, &desktop);
+
 	initCOM();
 	glutInit(&argc, argv);
 
@@ -105,8 +114,8 @@ void game::init_glut()
 	glutInitDisplayMode(GLUT_RGBA | GLUT_DEPTH | GLUT_DOUBLE);
 
 	glutInitWindowSize((int)screeSize.x, (int)screeSize.y);
-	glutInitWindowPosition(1920, 0);
-	glutCreateWindow("Teen Week Interactive Demo by Jamie Newbon and Matthew Potter");
+	glutInitWindowPosition(desktop.right, 0);
+	glutCreateWindow("Teen Week Interactive Game");
 
 	if (fullscreen)
 		glutFullScreenToggle();
