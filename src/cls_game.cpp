@@ -3,6 +3,7 @@
 #include <GL\freeglut.h>
 #include <texture_loader.h>
 #include <iostream>
+#include "defines.h"
 
 using namespace std;
 
@@ -30,12 +31,30 @@ void game::init(void)
 	init_glew();
 }
 
+void game::mainloop()
+{
+	while (true)
+	{
+		//Enter glut events and display
+		glutMainLoopEvent();
+		glutPostRedisplay();
+	}
+
+	shutdownCOM();
+
+}
+
 void game::display()
 {
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	glutSwapBuffers();
 }
 
 void game::event_mouseMove(int x, int y)
 {
+#ifdef DEBUG_MOUSE_LOC
+	cout << "Mouse Loc {" << x << ",\t" << y << "}" << endl;
+#endif
 }
 
 void game::event_mouseClick(int button, int state, int x, int y)
@@ -65,6 +84,7 @@ void game::init_glut()
 	// display callback
 	glutDisplayFunc(game::display);
 	glutMouseFunc(game::event_mouseClick);
+	glutPassiveMotionFunc(game::event_mouseMove);
 
 
 	glutSetOption(GLUT_ACTION_ON_WINDOW_CLOSE, GLUT_ACTION_GLUTMAINLOOP_RETURNS);

@@ -199,11 +199,26 @@ copy "$(ProjectDir)dll\$(Configuration)\$(Platform)\glew32.dll" "$(OutDir)" /Y</
   <ItemGroup>
     <ClCompile Include="includes\texture_loader.cpp" />
     <ClCompile Include="src\cls_game.cpp" />
+    <ClCompile Include="src\display_object.cpp" />
+    <ClCompile Include="src\image_object.cpp" />
     <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\Shader_Setup.cpp" />
+    <ClCompile Include="src\text_object.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="includes\texture_loader.h" />
     <ClInclude Include="src\cls_game.h" />
+    <ClInclude Include="src\defines.h" />
+    <ClInclude Include="src\display_object.h" />
+    <ClInclude Include="src\image_object.h" />
+    <ClInclude Include="src\Shader_Setup.h" />
+    <ClInclude Include="src\text_object.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resourses\shaders\basic_fragment_shader.frag" />
+    <None Include="Resourses\shaders\basic_vertex_shader.vert" />
+    <None Include="Resourses\shaders\texture_fragment_shader.frag" />
+    <None Include="Resourses\shaders\vertex_shader_Matrix.vert" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

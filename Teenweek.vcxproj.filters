@@ -25,6 +25,12 @@
     <Filter Include="Source Files\System">
       <UniqueIdentifier>{978a15df-9626-4874-a3d5-fabaf010ff2d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Loaders\Factory">
+      <UniqueIdentifier>{3b7fa9e4-21a2-4b94-845e-63c12d31a255}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Loaders\Factory">
+      <UniqueIdentifier>{b6fdf4d0-09fd-4c3f-bc93-803226dc0f60}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp">
@@ -36,6 +42,18 @@
     <ClCompile Include="includes\texture_loader.cpp">
       <Filter>Source Files\Loaders</Filter>
     </ClCompile>
+    <ClCompile Include="src\display_object.cpp">
+      <Filter>Source Files\System</Filter>
+    </ClCompile>
+    <ClCompile Include="src\image_object.cpp">
+      <Filter>Source Files\System</Filter>
+    </ClCompile>
+    <ClCompile Include="src\text_object.cpp">
+      <Filter>Source Files\System</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Shader_Setup.cpp">
+      <Filter>Source Files\Loaders</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\cls_game.h">
@@ -44,5 +62,34 @@
     <ClInclude Include="includes\texture_loader.h">
       <Filter>Header Files\Loaders</Filter>
     </ClInclude>
+    <ClInclude Include="src\defines.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\display_object.h">
+      <Filter>Header Files\System</Filter>
+    </ClInclude>
+    <ClInclude Include="src\image_object.h">
+      <Filter>Header Files\System</Filter>
+    </ClInclude>
+    <ClInclude Include="src\text_object.h">
+      <Filter>Header Files\System</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Shader_Setup.h">
+      <Filter>Header Files\Loaders</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resourses\shaders\basic_fragment_shader.frag">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Resourses\shaders\basic_vertex_shader.vert">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Resourses\shaders\texture_fragment_shader.frag">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Resourses\shaders\vertex_shader_Matrix.vert">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
 </Project>

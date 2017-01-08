@@ -10,6 +10,8 @@ public:
 
 	void init(void);
 
+	void mainloop();
+
 
 	//callbacks
 
