@@ -7,7 +7,8 @@ class display_object
 public:
 	enum display_obj_type { GUI_OBJECT,
 							GAME_OBJECT,
-							TEXT_OBJECT };
+							TEXT_OBJECT,
+							PLAYER_OBJECT};
 	display_object();
 	//####################
 	//		Setters
@@ -24,7 +25,7 @@ public:
 	
 	virtual glm::vec2	getLocation();
 	virtual glm::vec2	getScale();
-
+	display_obj_type	getType();
 
 
 	virtual void	draw(glm::mat4 ) = 0;

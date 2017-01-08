@@ -5,6 +5,11 @@ using namespace glm;
 
 unsigned int image_object::SquareVAO = 0;
 
+image_object::image_object()
+{
+	this->type = GUI_OBJECT;
+}
+
 void image_object::init()
 {
 	GLuint framePosVBO, frameColourVBO, frameTexCoordVBO, frameIndicesVBO;

@@ -5,7 +5,7 @@
 class text_object : public display_object
 {
 public:
-	
+	text_object();
 	//####################
 	//		Setters
 	//####################	
