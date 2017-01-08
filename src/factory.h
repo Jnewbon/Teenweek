@@ -1,6 +1,7 @@
 #pragma once
 #include "texture_loader.h"
 #include "dynamic_image_obj.h"
+#include "text_object.h"
 
 class Factory
 {
@@ -25,7 +26,9 @@ public:
 		EXPLOSION_ONE,
 		EXPLOSION_TWO,
 		GAME_UI,
-		BACKGROUND
+		BACKGROUND,
+		//Text Objects
+		Test_Text
 	};
 	static display_object*		create_object(Types obj_type);
 
