@@ -13,11 +13,11 @@ public:
 	//		Setters
 	//####################	
 	virtual void	setLocation(	glm::vec2 loc);
-	virtual void	setLocation(	int x,
-									int y);
+	virtual void	setLocation(	float x,
+									float y);
 	virtual void	setScale(		glm::vec2 scale);
-	virtual void	setScale(		int x,
-									int y);
+	virtual void	setScale(		float x,
+									float y);
 	//####################
 	//		Getters
 	//####################

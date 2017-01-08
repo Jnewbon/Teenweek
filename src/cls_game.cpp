@@ -46,7 +46,7 @@ void game::mainloop()
 {
 	//Example of creating a game object
 	allDisplayObjects.push_back(Factory::create_object(Factory::SUPER_AWSOME_PLAYER_SHIP));
-
+	allDisplayObjects.push_back(Factory::create_object(Factory::UI));
 	while (true)
 	{
 		//Enter glut events and display

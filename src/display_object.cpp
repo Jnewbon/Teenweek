@@ -18,7 +18,7 @@ void display_object::setLocation(vec2 loc)
 	this->location = loc;
 }
 
-void display_object::setLocation(int x, int y)
+void display_object::setLocation(float x, float y)
 {
 	this->setLocation(vec2(x, y));
 }
@@ -28,7 +28,7 @@ void display_object::setScale(glm::vec2 scale)
 	this->scale = scale;
 }
 
-void display_object::setScale(int x, int y)
+void display_object::setScale(float x, float y)
 {
 	this->setScale(vec2(x, y));
 }

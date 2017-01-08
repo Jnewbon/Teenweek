@@ -20,12 +20,12 @@ display_object * Factory::create_object(Types obj_type)
 		new_Dyn_obj = new Dynamic_image_obj();
 
 		//Location, Just set it to 0
-		new_Dyn_obj->setLocation(0, 0);
+		new_Dyn_obj->setLocation(0.0f, 0.0f);
 		//This is the scale of the object, minus numbers will flip the image on that axis 
-		new_Dyn_obj->setScale(1, 1);
+		new_Dyn_obj->setScale(1.1f, 1.1f);
 
 		//The texture that will be used by the object
-		new_Dyn_obj->set_Texture(loadTexture(L"Resourses\\Textures\\1.png"));
+		new_Dyn_obj->set_Texture(loadTexture(L"resources\\textures\\player\\player.png"));
 
 		//Texture is a square so tell the object that.
 		new_Dyn_obj->set_VAO(image_object::SquareVAO);
@@ -35,6 +35,27 @@ display_object * Factory::create_object(Types obj_type)
 
 		//Set the created objet into the parent node for passing back
 		new_obj = new_Dyn_obj;
+		break;
+	case Factory::UI:
+		//Create the specific type required
+		new_Img_obj = new image_object();
+
+		//Location, Just set it to 0
+		new_Img_obj->setLocation(-1.0f, -1.0f);
+		//This is the scale of the object, minus numbers will flip the image on that axis 
+		new_Img_obj->setScale(2.0f, 2.0f);
+
+		//The texture that will be used by the object
+		new_Img_obj->set_Texture(loadTexture(L"resources\\textures\\ui\\ui.png"));
+
+		//Texture is a square so tell the object that.
+		new_Img_obj->set_VAO(image_object::SquareVAO);
+
+		//The deafult Shader, This will be the same for most objects
+		new_Img_obj->setShader(game::default_shader);
+
+		//Set the created objet into the parent node for passing back
+		new_obj = new_Img_obj;
 		break;
 	default:
 		break;

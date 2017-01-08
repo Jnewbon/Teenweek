@@ -7,6 +7,7 @@ class Factory
 public:
 	enum Types {
 		SUPER_AWSOME_PLAYER_SHIP,
+		UI
 	};
 	static display_object*		create_object(Types obj_type);
 
