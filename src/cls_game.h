@@ -1,4 +1,10 @@
+#pragma once
 #include <glm/glm.hpp>
+#include <GL\glew.h>
+#include <time.h>
+#include <list>
+
+#include "display_object.h"
 
 class game
 {
@@ -21,6 +27,8 @@ public:
 	static void event_keyPress(int key, int state);
 
 
+	static GLuint		default_shader;
+
 private:
 //#####	Functions ######
 
@@ -32,6 +40,12 @@ private:
 	//Startup 
 	int					argc;
 	char**				argv;
+
+
+	//Game Variables
+
+	static clock_t					last;				// Contains the time of the last frames, used to calculate how log has passed sine last execute time
+	static std::list<display_object*>		allDisplayObjects;	//Contains all object to be displayed to the screen
 
 	//OpenGL Variables
 

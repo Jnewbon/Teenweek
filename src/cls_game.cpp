@@ -2,11 +2,17 @@
 #include <GL\glew.h>
 #include <GL\freeglut.h>
 #include <texture_loader.h>
+#include "Shader_Setup.h"
 #include <iostream>
 #include "defines.h"
+#include "factory.h"
 
 using namespace std;
 
+GLuint game::default_shader = 0;
+
+clock_t game::last = 0;
+std::list<display_object*> game::allDisplayObjects;	//Contains all object to be displayed to the screen
 game::game(int argc, char ** argv)
 {
 	//set the startup variables used by glut/glew init
@@ -29,10 +35,18 @@ void game::init(void)
 {
 	init_glut();
 	init_glew();
+
+	this->default_shader =setupShaders(std::string("Resourses\\shaders\\vertex_shader_Matrix.vert"), std::string("Resourses\\shaders\\texture_fragment_shader.frag"));
+
+	image_object::init();
+
 }
 
 void game::mainloop()
 {
+	//Example of creating a game object
+	allDisplayObjects.push_back(Factory::create_object(Factory::SUPER_AWSOME_PLAYER_SHIP));
+
 	while (true)
 	{
 		//Enter glut events and display
@@ -47,6 +61,22 @@ void game::mainloop()
 void game::display()
 {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+	int elapsedTime = clock() - last;
+	last = clock();
+
+	//If the time taken to do everything would put the frame rate above MAX_FRAME_RATE then hold here till the specific time has passed
+	while (elapsedTime < ((1.0f / CLOCKS_PER_SEC) * MAX_FRAME_RATE)){	
+		elapsedTime = clock() - last;
+	}
+	
+	for (list<display_object*>::iterator i = allDisplayObjects.begin();
+					i != allDisplayObjects.end();
+					i++)
+	{
+		(*i)->draw(glm::mat4(1.0f));
+	}
+
 	glutSwapBuffers();
 }
 
@@ -75,7 +105,7 @@ void game::init_glut()
 	glutInitDisplayMode(GLUT_RGBA | GLUT_DEPTH | GLUT_DOUBLE);
 
 	glutInitWindowSize((int)screeSize.x, (int)screeSize.y);
-	glutInitWindowPosition(0, 0);
+	glutInitWindowPosition(1920, 0);
 	glutCreateWindow("Teen Week Interactive Demo by Jamie Newbon and Matthew Potter");
 
 	if (fullscreen)
