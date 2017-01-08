@@ -1,9 +1,11 @@
 #include "factory.h"
 #include "texture_loader.h"
 #include "cls_game.h"
+#include "player_object.h"
 #include <memory>
 
 using namespace std;
+using namespace glm;
 
 display_object * Factory::create_object(Types obj_type)
 {
@@ -11,7 +13,8 @@ display_object * Factory::create_object(Types obj_type)
 	image_object* new_Img_obj = nullptr;		//Contains all static image objects, The GUI and similer
 	Dynamic_image_obj* new_Dyn_obj = nullptr;	//Contains all dynamic image objects, Ships and games specific onjects
 	text_object* new_Txt_obj = nullptr;			//Contains all the textual content on the screen
-	
+	player_object* new_Ply_obj = nullptr;		
+
 	//Used for Text objects
 	vector<std::string> text;
 
@@ -19,21 +22,24 @@ display_object * Factory::create_object(Types obj_type)
 	{
 	case Factory::PLAYER_SHIP:
 		//Create the specific type required
-		new_Dyn_obj = new Dynamic_image_obj();
+		new_Ply_obj = new player_object();
 
 		//Location, Just set it to 0
-		new_Dyn_obj->setLocation(0.0f, 0.0f);
+		new_Ply_obj->setLocation(0.1638f, -0.6467f);
 		//This is the scale of the object, minus numbers will flip the image on that axis 
-		new_Dyn_obj->setScale(0.1f, 0.1f);
+		new_Ply_obj->setScale(0.1f, 0.1f);
+		new_Ply_obj->setinertia(vec2(0.5f));
+		new_Ply_obj->setMaxSpeed(vec2(0.5f));
+
 
 		//The texture that will be used by the object
-		new_Dyn_obj->set_Texture(loadTexture(L"resources\\textures\\player\\player.png"));
+		new_Ply_obj->set_Texture(loadTexture(L"resources\\textures\\player\\player.png"));
 
 		//Texture is a square so tell the object that.
-		new_Dyn_obj->set_VAO(image_object::SquareVAO);
+		new_Ply_obj->set_VAO(image_object::SquareVAO);
 
 		//The deafult Shader, This will be the same for most objects
-		new_Dyn_obj->setShader(game::default_shader);
+		new_Ply_obj->setShader(game::default_shader);
 		
 		break;
 	case Factory::ENEMY_ONE:
@@ -356,9 +362,9 @@ display_object * Factory::create_object(Types obj_type)
 	case Factory::ANSWER_TEXT:
 		new_Txt_obj = new text_object();
 
-		new_Txt_obj->setLocation(glm::vec2(0.72f, 0.8f));
+		new_Txt_obj->setLocation(vec2(0.72f, 0.8f));
 
-		new_Txt_obj->setColour(glm::vec3(1.0f, 0.0f, 0.0f));
+		new_Txt_obj->setColour(vec3(1.0f, 0.0f, 0.0f));
 
 		text.push_back("This is some ANSWER text to test the text output to screen");
 		text.push_back("This is the second line of the test text");
@@ -369,9 +375,9 @@ display_object * Factory::create_object(Types obj_type)
 	case Factory::QUESTION_TEXT:
 		new_Txt_obj = new text_object();
 
-		new_Txt_obj->setLocation(glm::vec2(-0.93f, 0.8f));
+		new_Txt_obj->setLocation(vec2(-0.93f, 0.8f));
 
-		new_Txt_obj->setColour(glm::vec3(1.0f, 0.0f, 0.0f));
+		new_Txt_obj->setColour(vec3(1.0f, 0.0f, 0.0f));
 
 		text.push_back("This is some QUESTION text to test the text output to screen");
 		text.push_back("This is the second line of the test text");
@@ -409,6 +415,8 @@ display_object * Factory::create_object(Types obj_type)
 		new_obj = new_Dyn_obj;
 	else if (new_Txt_obj)
 		new_obj = new_Txt_obj;
+	else if (new_Ply_obj)
+		new_obj = new_Ply_obj;
 
 
 	return new_obj;

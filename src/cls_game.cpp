@@ -7,6 +7,7 @@
 #include "wtypes.h"
 #include "defines.h"
 #include "factory.h"
+#include "player_object.h"
 
 using namespace std;
 
@@ -16,6 +17,7 @@ clock_t						game::last = 0;
 std::list<display_object*>	game::allDisplayObjects;	//Contains all object to be displayed to the screen
 glm::vec2					game::screenSize;			//Contains the Size of the screen
 bool						game::fullscreen;			//is the game fullscreen (default false)
+display_object*				game::player = nullptr;
 
 game::game(int argc, char ** argv)
 {
@@ -51,8 +53,10 @@ void game::mainloop()
 	//Example of creating a game object
 
 	allDisplayObjects.push_back(Factory::create_object(Factory::BACKGROUND));
+	player = Factory::create_object(Factory::PLAYER_SHIP);
+
+	allDisplayObjects.push_back(player);
 	allDisplayObjects.push_back(Factory::create_object(Factory::GAME_UI));
-	//allDisplayObjects.push_back(Factory::create_object(Factory::PLAYER_SHIP));
 	allDisplayObjects.push_back(Factory::create_object(Factory::MISSLE_TWO));
 	allDisplayObjects.push_back(Factory::create_object(Factory::INFO_TEXT));
 	allDisplayObjects.push_back(Factory::create_object(Factory::QUESTION_TEXT));
@@ -60,9 +64,32 @@ void game::mainloop()
 
 	while (true)
 	{
+		int elapsedTime = clock() - last;
+		last = clock();
+
+		//If the time taken to do everything would put the frame rate above MAX_FRAME_RATE then hold here till the specific time has passed
+		while (elapsedTime < ((1.0f / CLOCKS_PER_SEC) * MAX_FRAME_RATE)) {
+			elapsedTime = clock() - last;
+		}
+
 		//Enter glut events and display
-		glutMainLoopEvent();
 		glutPostRedisplay();
+		glutMainLoopEvent();
+
+
+		for (list<display_object*>::iterator i = allDisplayObjects.begin();
+			i != allDisplayObjects.end();
+			i++)
+		{
+			if ((*i)->getType() == display_object::GAME_OBJECT ||
+				(*i)->getType() == display_object::PLAYER_OBJECT)
+			{
+				((Dynamic_image_obj*)(*i))->move((1.0f / (float)CLOCKS_PER_SEC)*(float)elapsedTime);
+			}
+		}
+
+
+
 	}
 
 	shutdownCOM();
@@ -72,14 +99,6 @@ void game::mainloop()
 void game::display()
 {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
-	int elapsedTime = clock() - last;
-	last = clock();
-
-	//If the time taken to do everything would put the frame rate above MAX_FRAME_RATE then hold here till the specific time has passed
-	while (elapsedTime < ((1.0f / CLOCKS_PER_SEC) * MAX_FRAME_RATE)){	
-		elapsedTime = clock() - last;
-	}
 	
 	for (list<display_object*>::iterator i = allDisplayObjects.begin();
 					i != allDisplayObjects.end();
@@ -102,8 +121,27 @@ void game::event_mouseClick(int button, int state, int x, int y)
 {
 }
 
-void game::event_keyPress(int key, int state)
+void game::event_keyPress(unsigned char key, int x, int y)
 {
+#ifdef DEBUG_KEY_PRESS
+	printf("KeyPress: '%c' Loc {%4i,%4i}\t {%7.4f,%7.4f}\n", key, x, y, ((2.0f / screenSize.x) * x) - 1.0f, -(((2.0f / screenSize.y) * y) - 1.0f));
+#endif
+}
+
+void game::event_specialkey(int key, int x, int y)
+{
+	((player_object*)player)->event_keyPress(key, true);
+#ifdef DEBUG_KEY_PRESS
+	printf("SpecKeyDN: '%i' Loc {%4i,%4i}\t {%7.4f,%7.4f}\n", key, x, y, ((2.0f / screenSize.x) * x) - 1.0f, -(((2.0f / screenSize.y) * y) - 1.0f));
+#endif
+}
+
+void game::event_specialkeyUP(int key, int x, int y)
+{
+	((player_object*)player)->event_keyPress(key, false);
+#ifdef DEBUG_KEY_PRESS
+	printf("SpecKeyUP: '%i' Loc {%4i,%4i}\t {%7.4f,%7.4f}\n", key, x, y, ((2.0f / screenSize.x) * x) - 1.0f, -(((2.0f / screenSize.y) * y) - 1.0f));
+#endif
 }
 
 void game::init_glut()
@@ -132,6 +170,9 @@ void game::init_glut()
 	glutDisplayFunc(game::display);
 	glutMouseFunc(game::event_mouseClick);
 	glutPassiveMotionFunc(game::event_mouseMove);
+	glutKeyboardFunc(game::event_keyPress);
+	glutSpecialFunc(game::event_specialkey);
+	glutSpecialUpFunc(game::event_specialkeyUP);
 
 
 	glutSetOption(GLUT_ACTION_ON_WINDOW_CLOSE, GLUT_ACTION_GLUTMAINLOOP_RETURNS);

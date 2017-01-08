@@ -3,6 +3,7 @@
 class Dynamic_image_obj : public image_object
 {
 public:
+	Dynamic_image_obj();
 	//####################
 	//		Setters
 	//####################	
@@ -14,25 +15,27 @@ public:
 	//####################
 	//		Modifiers
 	//####################
+
+	//####################
+	//		Actions
+	//####################
 	//These function will move the object by the amount parsed
-	virtual void	transpose(glm::vec2 loc);
-	virtual void	transpose(int x,
-		int y);
+	virtual void	move(float elapsedtime);
 
 
 
 protected:
-
+	//####################
+	//		Variables
+	//####################
+	glm::vec2			speed;		//The object current Speed
 private:
 	//TODO: Health
 
 	//TODO: movment behaviour
 
-	//TODO: Attact Strategy Pattern
+	//TODO: Attack Strategy Pattern
 
-	//####################
-	//		Variables
-	//####################
 
 
 };

@@ -3,12 +3,12 @@
 
 using namespace glm;
 
-void Dynamic_image_obj::transpose(glm::vec2 loc)
+Dynamic_image_obj::Dynamic_image_obj()
 {
-	this->location += loc;
+	this->type = GAME_OBJECT;
 }
 
-void Dynamic_image_obj::transpose(int x, int y)
+void Dynamic_image_obj::move(float elapsedtime)
 {
-	this->transpose(vec2(x, y));
+	this->location += this->speed * elapsedtime;
 }

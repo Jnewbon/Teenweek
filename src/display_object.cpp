@@ -42,3 +42,8 @@ vec2 display_object::getScale()
 {
 	return this->scale;
 }
+
+display_object::display_obj_type display_object::getType()
+{
+	return this->type;
+}

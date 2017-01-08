@@ -3,7 +3,7 @@
 class image_object : public display_object
 {
 public:
-
+	image_object();
 	//####################
 	//		Variables
 	//####################	

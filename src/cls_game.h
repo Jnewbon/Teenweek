@@ -24,10 +24,12 @@ public:
 	static void display();
 	static void event_mouseMove(int x,int y);
 	static void event_mouseClick(int button, int state, int x, int y);
-	static void event_keyPress(int key, int state);
+	static void event_keyPress(unsigned char key, int x, int y);
+	static void event_specialkey(int key, int x, int y);
+	static void event_specialkeyUP(int key, int x, int y);
 
 
-	static GLuint		default_shader;
+	static GLuint				default_shader;
 	static glm::vec2			screenSize;			//Contains the Size of the screen
 
 private:
@@ -47,6 +49,8 @@ private:
 
 	static clock_t							last;				// Contains the time of the last frames, used to calculate how log has passed sine last execute time
 	static std::list<display_object*>		allDisplayObjects;	//Contains all object to be displayed to the screen
+
+	static display_object*				player;
 
 	//OpenGL Variables
 
