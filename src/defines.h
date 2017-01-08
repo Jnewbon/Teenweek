@@ -5,7 +5,7 @@
 
 
 //will output the mouse location to console
-#define DEBUG_MOUSE_LOC
+//#define DEBUG_MOUSE_LOC
 
 //will output the key pressed to console
 #define DEBUG_KEY_PRESS
