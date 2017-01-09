@@ -22,6 +22,11 @@ void Dynamic_image_obj::setAction(dynamic_obj_action * newAction)
 	this->action = newAction;
 }
 
+void Dynamic_image_obj::setObjectType(objectType gameObjectType)
+{
+	this->gameObjectType = gameObjectType;
+}
+
 void Dynamic_image_obj::move(float elapsedtime)
 {
 	this->location += this->speed * elapsedtime;

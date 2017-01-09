@@ -47,6 +47,8 @@ display_object * Factory::create_object(Types obj_type)
 
 		new_Ply_obj->setAction(Factory::create_object(WPN_PLAYER_BASIC, new_Ply_obj));
 		
+		new_Ply_obj->setObjectType(Dynamic_image_obj::SHIP);
+
 		break;
 	case Factory::ENEMY_ONE:
 		//Create the specific type required
@@ -68,6 +70,8 @@ display_object * Factory::create_object(Types obj_type)
 
 		new_Dyn_obj->setSpeed(vec2(0.0f, -0.5f));
 
+		new_Dyn_obj->setObjectType(Dynamic_image_obj::SHIP);
+
 		break;
 	case Factory::ENEMY_TWO:
 		//Create the specific type required
@@ -86,6 +90,8 @@ display_object * Factory::create_object(Types obj_type)
 
 		//The deafult Shader, This will be the same for most objects
 		new_Dyn_obj->setShader(game::default_shader);
+
+		new_Dyn_obj->setObjectType(Dynamic_image_obj::SHIP);
 
 		break;
 	case Factory::ENEMY_THREE:
@@ -106,6 +112,8 @@ display_object * Factory::create_object(Types obj_type)
 		//The deafult Shader, This will be the same for most objects
 		new_Dyn_obj->setShader(game::default_shader);
 
+		new_Dyn_obj->setObjectType(Dynamic_image_obj::SHIP);
+
 		break;
 	case Factory::ENEMY_FOUR:
 		//Create the specific type required
@@ -124,6 +132,8 @@ display_object * Factory::create_object(Types obj_type)
 
 		//The deafult Shader, This will be the same for most objects
 		new_Dyn_obj->setShader(game::default_shader);
+
+		new_Dyn_obj->setObjectType(Dynamic_image_obj::SHIP);
 
 		break;
 	case Factory::ENEMY_FIVE:
@@ -144,6 +154,8 @@ display_object * Factory::create_object(Types obj_type)
 		//The deafult Shader, This will be the same for most objects
 		new_Dyn_obj->setShader(game::default_shader);
 
+		new_Dyn_obj->setObjectType(Dynamic_image_obj::SHIP);
+
 		break;
 	case Factory::BOSS_ONE:
 		//Create the specific type required
@@ -162,6 +174,8 @@ display_object * Factory::create_object(Types obj_type)
 
 		//The deafult Shader, This will be the same for most objects
 		new_Dyn_obj->setShader(game::default_shader);
+
+		new_Dyn_obj->setObjectType(Dynamic_image_obj::SHIP);
 
 		break;
 	case Factory::BOSS_TWO:
@@ -182,6 +196,8 @@ display_object * Factory::create_object(Types obj_type)
 		//The deafult Shader, This will be the same for most objects
 		new_Dyn_obj->setShader(game::default_shader);
 
+		new_Dyn_obj->setObjectType(Dynamic_image_obj::SHIP);
+
 		break;
 	case Factory::BOSS_THREE:
 		//Create the specific type required
@@ -200,6 +216,8 @@ display_object * Factory::create_object(Types obj_type)
 
 		//The deafult Shader, This will be the same for most objects
 		new_Dyn_obj->setShader(game::default_shader);
+
+		new_Dyn_obj->setObjectType(Dynamic_image_obj::SHIP);
 
 		break;
 	case Factory::BOSS_FOUR:
@@ -220,6 +238,8 @@ display_object * Factory::create_object(Types obj_type)
 		//The deafult Shader, This will be the same for most objects
 		new_Dyn_obj->setShader(game::default_shader);
 
+		new_Dyn_obj->setObjectType(Dynamic_image_obj::SHIP);
+
 		break;
 	case Factory::BULLET_ONE:
 		//Create the specific type required
@@ -238,6 +258,8 @@ display_object * Factory::create_object(Types obj_type)
 
 		//The deafult Shader, This will be the same for most objects
 		new_Dyn_obj->setShader(game::default_shader);
+
+		new_Dyn_obj->setObjectType(Dynamic_image_obj::PLAYER_WPN);
 
 		break;
 	case Factory::BULLET_TWO:
@@ -258,6 +280,8 @@ display_object * Factory::create_object(Types obj_type)
 		//The deafult Shader, This will be the same for most objects
 		new_Dyn_obj->setShader(game::default_shader);
 
+		new_Dyn_obj->setObjectType(Dynamic_image_obj::PLAYER_WPN);
+
 		break;
 	case Factory::BULLET_THREE:
 		//Create the specific type required
@@ -276,6 +300,8 @@ display_object * Factory::create_object(Types obj_type)
 
 		//The deafult Shader, This will be the same for most objects
 		new_Dyn_obj->setShader(game::default_shader);
+
+		new_Dyn_obj->setObjectType(Dynamic_image_obj::PLAYER_WPN);
 
 		break;
 	case Factory::ANSWER_CAPSULE:
@@ -315,6 +341,8 @@ display_object * Factory::create_object(Types obj_type)
 		//The deafult Shader, This will be the same for most objects
 		new_Dyn_obj->setShader(game::default_shader);
 
+		new_Dyn_obj->setObjectType(Dynamic_image_obj::ENEMY_WPN);
+
 		break;
 	case Factory::MISSLE_TWO:
 		//Create the specific type required
@@ -333,6 +361,8 @@ display_object * Factory::create_object(Types obj_type)
 
 		//The deafult Shader, This will be the same for most objects
 		new_Dyn_obj->setShader(game::default_shader);
+
+		new_Dyn_obj->setObjectType(Dynamic_image_obj::ENEMY_WPN);
 
 		break;
 	case Factory::GAME_UI:
@@ -415,7 +445,6 @@ display_object * Factory::create_object(Types obj_type)
 
 		//Set the render layer of the object if diffrent from default
 		new_Dyn_obj->setRenderLayer(display_object::BACKGROUND);
-
 
 		break;
 	case Factory::BACKGROUND2:

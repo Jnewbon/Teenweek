@@ -4,13 +4,20 @@ class dynamic_obj_action;
 class Dynamic_image_obj : public image_object
 {
 public:
+
+	enum objectType {
+		SHIP,
+		PLAYER_WPN,
+		ENEMY_WPN
+	};
+
 	Dynamic_image_obj();
 	//####################
 	//		Setters
 	//####################	
 	void	setSpeed(glm::vec2 newSpeed);
 	void	setAction(dynamic_obj_action* newAction);
-
+	void	setObjectType(objectType gameObjectType);
 	//####################
 	//		Getters
 	//####################
@@ -35,6 +42,8 @@ protected:
 	glm::vec2			speed;		//The object current Speed
 
 	dynamic_obj_action*	action;
+
+	objectType			gameObjectType;
 private:
 	//TODO: Health
 
