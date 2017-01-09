@@ -8,12 +8,13 @@
 #include "defines.h"
 #include "factory.h"
 #include "player_object.h"
+#include <chrono>
 
 using namespace std;
 
 GLuint game::default_shader = 0;
 
-clock_t						game::last = 0;
+//clock_t						game::last = 0;
 std::list<display_object*>	game::allDisplayObjects;	//Contains all object to be displayed to the screen
 glm::vec2					game::screenSize;			//Contains the Size of the screen
 bool						game::fullscreen;			//is the game fullscreen (default false)
@@ -64,13 +65,19 @@ void game::mainloop()
 
 	while (true)
 	{
-		int elapsedTime = clock() - last;
-		last = clock();
+	
+		static std::chrono::steady_clock::time_point lasttime = std::chrono::steady_clock::now();
+		std::chrono::steady_clock::time_point thistime = std::chrono::steady_clock::now();
 
-		//If the time taken to do everything would put the frame rate above MAX_FRAME_RATE then hold here till the specific time has passed
-		while (elapsedTime < ((1.0f / CLOCKS_PER_SEC) * MAX_FRAME_RATE)) {
-			elapsedTime = clock() - last;
+		long long elapsedTime = std::chrono::duration_cast<std::chrono::microseconds>(thistime - lasttime).count();
+
+		while (elapsedTime < (1000000 / MAX_FRAME_RATE))
+		{
+			std::chrono::steady_clock::time_point thistime = std::chrono::steady_clock::now();
+
+			elapsedTime = std::chrono::duration_cast<std::chrono::microseconds>(thistime - lasttime).count();
 		}
+		lasttime = thistime;
 
 		//Enter glut events and display
 		glutPostRedisplay();
@@ -84,7 +91,7 @@ void game::mainloop()
 			if ((*i)->getType() == display_object::GAME_OBJECT ||
 				(*i)->getType() == display_object::PLAYER_OBJECT)
 			{
-				((Dynamic_image_obj*)(*i))->move((1.0f / (float)CLOCKS_PER_SEC)*(float)elapsedTime);
+				((Dynamic_image_obj*)(*i))->move((float)elapsedTime/1000000);
 			}
 		}
 
