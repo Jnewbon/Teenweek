@@ -8,6 +8,7 @@ unsigned int image_object::SquareVAO = 0;
 image_object::image_object()
 {
 	this->type = GUI_OBJECT;
+	this->renderLayer = UI_FOREGROUND;
 }
 
 void image_object::init()

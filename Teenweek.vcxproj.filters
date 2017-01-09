@@ -31,6 +31,12 @@
     <Filter Include="Source Files\Loaders\Factory">
       <UniqueIdentifier>{b6fdf4d0-09fd-4c3f-bc93-803226dc0f60}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\System\dynamic_obj_actions">
+      <UniqueIdentifier>{c0f3bf00-a60e-4783-8ccb-8ceb92707f59}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\System\dynamic_obj_actions">
+      <UniqueIdentifier>{47754831-df5d-49df-9e26-997ea6dee9ce}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp">
@@ -63,6 +69,12 @@
     <ClCompile Include="src\player_object.cpp">
       <Filter>Source Files\System</Filter>
     </ClCompile>
+    <ClCompile Include="src\dynamic_obj_action.cpp">
+      <Filter>Source Files\System\dynamic_obj_actions</Filter>
+    </ClCompile>
+    <ClCompile Include="src\action_shoot.cpp">
+      <Filter>Header Files\System\dynamic_obj_actions</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\cls_game.h">
@@ -94,6 +106,15 @@
     </ClInclude>
     <ClInclude Include="src\player_object.h">
       <Filter>Header Files\System</Filter>
+    </ClInclude>
+    <ClInclude Include="src\game_messages.h">
+      <Filter>Header Files\System</Filter>
+    </ClInclude>
+    <ClInclude Include="src\dynamic_obj_action.h">
+      <Filter>Header Files\System\dynamic_obj_actions</Filter>
+    </ClInclude>
+    <ClInclude Include="src\action_shoot.h">
+      <Filter>Source Files\System\dynamic_obj_actions</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

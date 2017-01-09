@@ -6,6 +6,7 @@ public:
 	enum keys{
 		LEFT_KEY,
 		RIGHT_KEY,
+		SPACE_KEY,
 		NUM_OF_KEYS
 	};
 
@@ -33,7 +34,8 @@ public:
 
 	void move(float elapsedtime);
 
-	void event_keyPress(int key, bool State);
+	void event_SpeckeyPress(int key, bool State);
+	void event_keyPress(char key, bool State);
 
 
 protected:

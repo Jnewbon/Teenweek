@@ -29,12 +29,19 @@ public:
 		//UI Objects
 		GAME_UI,
 		BACKGROUND,
+		BACKGROUND2,
 		//Text Objects
 		INFO_TEXT,
 		ANSWER_TEXT,
 		QUESTION_TEXT
 	};
+
+	enum action_type {
+		WPN_PLAYER_BASIC
+	};
+
 	static display_object*		create_object(Types obj_type);
+	static dynamic_obj_action*	create_object(action_type obj_type, Dynamic_image_obj* parent);
 
 
 protected:

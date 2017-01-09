@@ -9,6 +9,13 @@ public:
 							GAME_OBJECT,
 							TEXT_OBJECT,
 							PLAYER_OBJECT};
+	enum renderLayers { BACKGROUND,
+						GAME_SPACE,
+						UI_BACKGROUND,
+						UI_FOREGROUND,
+						Num_of_Layers
+						
+	};
 	display_object();
 	//####################
 	//		Setters
@@ -19,6 +26,8 @@ public:
 	virtual void	setScale(		glm::vec2 scale);
 	virtual void	setScale(		float x,
 									float y);
+
+	void			setRenderLayer(renderLayers newLayer);
 	//####################
 	//		Getters
 	//####################
@@ -26,9 +35,12 @@ public:
 	virtual glm::vec2	getLocation();
 	virtual glm::vec2	getScale();
 	display_obj_type	getType();
+	renderLayers		getRenderLayer();
 
 
 	virtual void	draw(glm::mat4 ) = 0;
+
+
 
 
 protected:
@@ -43,7 +55,7 @@ protected:
 	glm::vec2				scale;				// Object Scale/Size
 	display_obj_type		type;				// Type of the object
 
-
+	renderLayers			renderLayer;		//Controls the lay that this object is rendered on
 	
 
 };

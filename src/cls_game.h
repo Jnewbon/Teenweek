@@ -5,6 +5,7 @@
 #include <list>
 
 #include "display_object.h"
+#include "game_messages.h"
 
 class game
 {
@@ -25,12 +26,15 @@ public:
 	static void event_mouseMove(int x,int y);
 	static void event_mouseClick(int button, int state, int x, int y);
 	static void event_keyPress(unsigned char key, int x, int y);
+	static void event_keyPressUP(unsigned char key, int x, int y);
 	static void event_specialkey(int key, int x, int y);
 	static void event_specialkeyUP(int key, int x, int y);
 
 
 	static GLuint				default_shader;
 	static glm::vec2			screenSize;			//Contains the Size of the screen
+
+	static bool	recive_message(game_msg newMsg);
 
 private:
 //#####	Functions ######

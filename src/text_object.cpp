@@ -7,6 +7,7 @@
 text_object::text_object()
 {
 	this->type = TEXT_OBJECT;
+	this->renderLayer = UI_FOREGROUND;
 }
 
 void text_object::setText(std::vector<std::string> text)

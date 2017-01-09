@@ -1,3 +1,4 @@
+#pragma once
 #include "display_object.h"
 #include <GL\glut.h>
 #include <string.h>

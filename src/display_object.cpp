@@ -33,6 +33,11 @@ void display_object::setScale(float x, float y)
 	this->setScale(vec2(x, y));
 }
 
+void display_object::setRenderLayer(renderLayers newLayer)
+{
+	this->renderLayer = newLayer;
+}
+
 vec2 display_object::getLocation()
 {
 	return this->location;
@@ -46,4 +51,9 @@ vec2 display_object::getScale()
 display_object::display_obj_type display_object::getType()
 {
 	return this->type;
+}
+
+display_object::renderLayers display_object::getRenderLayer()
+{
+	return this->renderLayer;
 }

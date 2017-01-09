@@ -1,5 +1,6 @@
 #pragma once
 #include "image_object.h"
+class dynamic_obj_action;
 class Dynamic_image_obj : public image_object
 {
 public:
@@ -7,6 +8,8 @@ public:
 	//####################
 	//		Setters
 	//####################	
+	void	setSpeed(glm::vec2 newSpeed);
+	void	setAction(dynamic_obj_action* newAction);
 
 	//####################
 	//		Getters
@@ -24,11 +27,14 @@ public:
 
 
 
+
 protected:
 	//####################
 	//		Variables
 	//####################
 	glm::vec2			speed;		//The object current Speed
+
+	dynamic_obj_action*	action;
 private:
 	//TODO: Health
 

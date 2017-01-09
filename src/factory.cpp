@@ -3,6 +3,8 @@
 #include "cls_game.h"
 #include "player_object.h"
 #include <memory>
+#include "dynamic_obj_action.h"
+#include "action_shoot.h"
 
 using namespace std;
 using namespace glm;
@@ -14,6 +16,8 @@ display_object * Factory::create_object(Types obj_type)
 	Dynamic_image_obj* new_Dyn_obj = nullptr;	//Contains all dynamic image objects, Ships and games specific onjects
 	text_object* new_Txt_obj = nullptr;			//Contains all the textual content on the screen
 	player_object* new_Ply_obj = nullptr;		
+
+
 
 	//Used for Text objects
 	vector<std::string> text;
@@ -40,6 +44,8 @@ display_object * Factory::create_object(Types obj_type)
 
 		//The deafult Shader, This will be the same for most objects
 		new_Ply_obj->setShader(game::default_shader);
+
+		new_Ply_obj->setAction(Factory::create_object(WPN_PLAYER_BASIC, new_Ply_obj));
 		
 		break;
 	case Factory::ENEMY_ONE:
@@ -47,7 +53,7 @@ display_object * Factory::create_object(Types obj_type)
 		new_Dyn_obj = new Dynamic_image_obj();
 
 		//Location, Just set it to 0
-		new_Dyn_obj->setLocation(0.0f, 0.0f);
+		new_Dyn_obj->setLocation(0.1638f, 1.2f);
 		//This is the scale of the object, minus numbers will flip the image on that axis 
 		new_Dyn_obj->setScale(0.1f, 0.2f);
 
@@ -59,6 +65,8 @@ display_object * Factory::create_object(Types obj_type)
 
 		//The deafult Shader, This will be the same for most objects
 		new_Dyn_obj->setShader(game::default_shader);
+
+		new_Dyn_obj->setSpeed(vec2(0.0f, -0.5f));
 
 		break;
 	case Factory::ENEMY_TWO:
@@ -220,7 +228,7 @@ display_object * Factory::create_object(Types obj_type)
 		//Location, Just set it to 0
 		new_Dyn_obj->setLocation(0.0f, 0.0f);
 		//This is the scale of the object, minus numbers will flip the image on that axis 
-		new_Dyn_obj->setScale(0.025f, 0.025f);
+		new_Dyn_obj->setScale(0.01f, 0.06f);
 
 		//The texture that will be used by the object
 		new_Dyn_obj->set_Texture(loadTexture(L"resources\\textures\\misc\\bullet_one.png"));
@@ -387,26 +395,58 @@ display_object * Factory::create_object(Types obj_type)
 		break;
 	case Factory::BACKGROUND:
 		//Create the specific type required
-		new_Img_obj = new image_object();
+		new_Dyn_obj = new Dynamic_image_obj();
 
 		//Location, Just set it to 0
-		new_Img_obj->setLocation(-1.0f, -1.0f);
+		new_Dyn_obj->setLocation(-1.0f, -1.0f);
 		//This is the scale of the object, minus numbers will flip the image on that axis 
-		new_Img_obj->setScale(2.0f, 2.0f);
+		new_Dyn_obj->setScale(2.0f, 2.0f);
+
+		new_Dyn_obj->setSpeed(vec2(0.0f, -0.1f));
 
 		//The texture that will be used by the object
-		new_Img_obj->set_Texture(loadTexture(L"resources\\textures\\background\\bg_one.png"));
+		new_Dyn_obj->set_Texture(loadTexture(L"resources\\textures\\background\\bg_one.png"));
 
 		//Texture is a square so tell the object that.
-		new_Img_obj->set_VAO(image_object::SquareVAO);
+		new_Dyn_obj->set_VAO(image_object::SquareVAO);
 
 		//The deafult Shader, This will be the same for most objects
-		new_Img_obj->setShader(game::default_shader);
+		new_Dyn_obj->setShader(game::default_shader);
+
+		//Set the render layer of the object if diffrent from default
+		new_Dyn_obj->setRenderLayer(display_object::BACKGROUND);
+
 
 		break;
+	case Factory::BACKGROUND2:
+		//Create the specific type required
+		new_Dyn_obj = new Dynamic_image_obj();
+
+		//Location, Just set it to 0
+		new_Dyn_obj->setLocation(-1.0f, 1.0f);
+		//This is the scale of the object, minus numbers will flip the image on that axis 
+		new_Dyn_obj->setScale(2.0f, 2.0f);
+
+		new_Dyn_obj->setSpeed(vec2(0.0f, -0.1f));
+
+		//The texture that will be used by the object
+		new_Dyn_obj->set_Texture(loadTexture(L"resources\\textures\\background\\bg_one.png"));
+
+		//Texture is a square so tell the object that.
+		new_Dyn_obj->set_VAO(image_object::SquareVAO);
+
+		//The deafult Shader, This will be the same for most objects
+		new_Dyn_obj->setShader(game::default_shader);
+
+		//Set the render layer of the object if diffrent from default
+		new_Dyn_obj->setRenderLayer(display_object::BACKGROUND);
+
+		break;
+
 	default:
 		break;
 	}
+
 
 	//Set the created object into the parent node
 	if (new_Img_obj)
@@ -420,6 +460,28 @@ display_object * Factory::create_object(Types obj_type)
 
 
 	return new_obj;
+}
+
+dynamic_obj_action * Factory::create_object(action_type obj_type, Dynamic_image_obj* parent)
+{
+
+	dynamic_obj_action* new_action = nullptr;
+	action_shoot* newActShoot = nullptr;
+
+	switch (obj_type)
+	{
+	case WPN_PLAYER_BASIC:
+		newActShoot = new action_shoot(parent);
+
+	default:
+		break;
+	}
+	if (newActShoot)
+		new_action = newActShoot;
+
+	return new_action;
+
+
 }
 
 Factory::Factory()
