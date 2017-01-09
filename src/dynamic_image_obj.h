@@ -6,6 +6,8 @@ class Dynamic_image_obj : public image_object
 public:
 
 	enum objectType {
+		NOCOLLIDE,
+		PLAYER,
 		SHIP,
 		PLAYER_WPN,
 		ENEMY_WPN
@@ -18,9 +20,12 @@ public:
 	void	setSpeed(glm::vec2 newSpeed);
 	void	setAction(dynamic_obj_action* newAction);
 	void	setObjectType(objectType gameObjectType);
+	void	setDestroyed();
 	//####################
 	//		Getters
 	//####################
+	objectType			getObjectType();
+	bool				getDestroyed();
 
 	//####################
 	//		Modifiers
@@ -44,13 +49,13 @@ protected:
 	dynamic_obj_action*	action;
 
 	objectType			gameObjectType;
+
+	bool				isDestroyed;
+
 private:
 	//TODO: Health
 
 	//TODO: movment behaviour
 
 	//TODO: Attack Strategy Pattern
-
-
-
 };

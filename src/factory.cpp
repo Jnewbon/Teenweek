@@ -30,6 +30,7 @@ display_object * Factory::create_object(Types obj_type)
 
 		//Location, Just set it to 0
 		new_Ply_obj->setLocation(0.1638f, -0.6467f);
+		
 		//This is the scale of the object, minus numbers will flip the image on that axis 
 		new_Ply_obj->setScale(0.1f, 0.1f);
 		new_Ply_obj->setinertia(vec2(0.25f));
@@ -47,7 +48,7 @@ display_object * Factory::create_object(Types obj_type)
 
 		new_Ply_obj->setAction(Factory::create_object(WPN_PLAYER_BASIC, new_Ply_obj));
 		
-		new_Ply_obj->setObjectType(Dynamic_image_obj::SHIP);
+		new_Ply_obj->setObjectType(Dynamic_image_obj::PLAYER);
 
 		break;
 	case Factory::ENEMY_ONE:
@@ -56,6 +57,7 @@ display_object * Factory::create_object(Types obj_type)
 
 		//Location, Just set it to 0
 		new_Dyn_obj->setLocation(0.1638f, 1.2f);
+		
 		//This is the scale of the object, minus numbers will flip the image on that axis 
 		new_Dyn_obj->setScale(0.1f, 0.2f);
 
@@ -68,7 +70,7 @@ display_object * Factory::create_object(Types obj_type)
 		//The deafult Shader, This will be the same for most objects
 		new_Dyn_obj->setShader(game::default_shader);
 
-		new_Dyn_obj->setSpeed(vec2(0.0f, -0.5f));
+		new_Dyn_obj->setSpeed(vec2(0.0f, -0.4f));
 
 		new_Dyn_obj->setObjectType(Dynamic_image_obj::SHIP);
 
@@ -445,6 +447,7 @@ display_object * Factory::create_object(Types obj_type)
 
 		//Set the render layer of the object if diffrent from default
 		new_Dyn_obj->setRenderLayer(display_object::BACKGROUND);
+		new_Dyn_obj->setType(display_object::GUI_OBJECT);
 
 		break;
 	case Factory::BACKGROUND2:
@@ -469,6 +472,7 @@ display_object * Factory::create_object(Types obj_type)
 
 		//Set the render layer of the object if diffrent from default
 		new_Dyn_obj->setRenderLayer(display_object::BACKGROUND);
+		new_Dyn_obj->setType(display_object::GUI_OBJECT);
 
 		break;
 

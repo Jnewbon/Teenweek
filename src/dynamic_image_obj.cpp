@@ -8,6 +8,7 @@ Dynamic_image_obj::Dynamic_image_obj()
 {
 	this->type = GAME_OBJECT;
 	this->renderLayer = GAME_SPACE;
+	this->isDestroyed = false;
 }
 
 void Dynamic_image_obj::setSpeed(glm::vec2 newSpeed)
@@ -25,6 +26,21 @@ void Dynamic_image_obj::setAction(dynamic_obj_action * newAction)
 void Dynamic_image_obj::setObjectType(objectType gameObjectType)
 {
 	this->gameObjectType = gameObjectType;
+}
+
+void Dynamic_image_obj::setDestroyed()
+{
+	this->isDestroyed = true;
+}
+
+Dynamic_image_obj::objectType Dynamic_image_obj::getObjectType()
+{
+	return this->gameObjectType;
+}
+
+bool Dynamic_image_obj::getDestroyed()
+{
+	return this->isDestroyed;
 }
 
 void Dynamic_image_obj::move(float elapsedtime)

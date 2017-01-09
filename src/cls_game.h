@@ -18,6 +18,8 @@ public:
 	void init(void);
 
 	void mainloop();
+	static void collision();
+	static bool isColliding(Dynamic_image_obj* first, Dynamic_image_obj* second);
 
 
 	//callbacks
@@ -41,6 +43,8 @@ private:
 
 	void init_glut();
 	void init_glew();
+
+	static void	addScore(int score);
 	
 //#####	Variables ######
 
@@ -55,6 +59,8 @@ private:
 	static std::list<display_object*>		allDisplayObjects;	//Contains all object to be displayed to the screen
 
 	static display_object*				player;
+
+	static unsigned	int					score;
 
 	//OpenGL Variables
 

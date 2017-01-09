@@ -28,35 +28,42 @@ void player_object::setinertia(glm::vec2 inertia)
 
 void player_object::move(float elapsedtime)
 {
-	if (keysdown[LEFT_KEY])
-	{
-		if (this->speed.x > -this->maxSpeed.x)
+
+		if (keysdown[LEFT_KEY])
 		{
-			if (this->speed.x > 0.0f)
-				this->speed.x -= (this->inertia.x * elapsedtime)*2.0f;
-			else
-				this->speed.x -= this->inertia.x * elapsedtime;
+			if (this->speed.x > -this->maxSpeed.x)
+			{
+				if (this->speed.x > 0.0f)
+					this->speed.x -= (this->inertia.x * elapsedtime)*2.0f;
+				else
+					this->speed.x -= this->inertia.x * elapsedtime;
+			}
 		}
-	}
-	else if (keysdown[RIGHT_KEY])
-	{
-		if (this->speed.x < this->maxSpeed.x)
+		else if (keysdown[RIGHT_KEY])
 		{
-			if (this->speed.x < 0.0f)
-				this->speed.x += (this->inertia.x * elapsedtime)*2.0f;
-			else
-				this->speed.x += (this->inertia.x) * elapsedtime;
+			if (this->speed.x < this->maxSpeed.x)
+			{
+				if (this->speed.x < 0.0f)
+					this->speed.x += (this->inertia.x * elapsedtime)*2.0f;
+				else
+					this->speed.x += (this->inertia.x) * elapsedtime;
+			}
 		}
-	}
-	else
-	{
-		if (this->speed.x > (this->inertia.x) * elapsedtime)
-			this->speed.x -= (this->inertia.x) * elapsedtime;
-		else if (this->speed.x < -(this->inertia.x) * elapsedtime)
-			this->speed.x += (this->inertia.x) * elapsedtime;
 		else
-			this->speed.x = 0.0f;
+		{
+
+			if (this->speed.x > (this->inertia.x) * elapsedtime)
+				this->speed.x -= (this->inertia.x) * elapsedtime;
+			else if (this->speed.x < -(this->inertia.x) * elapsedtime)
+				this->speed.x += (this->inertia.x) * elapsedtime;
+			else
+				this->speed.x = 0.0f;
+
+			
 	}
+
+	if ((this->location.x < -0.25f && this->speed.x < 0.0f) || (this->location.x + this->scale.x > 0.653f && this->speed.x > 0.0f))
+		this->speed.x = 0.0f;
 
 	this->location += this->speed * elapsedtime;
 

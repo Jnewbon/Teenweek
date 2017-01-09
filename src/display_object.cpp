@@ -38,6 +38,11 @@ void display_object::setRenderLayer(renderLayers newLayer)
 	this->renderLayer = newLayer;
 }
 
+void display_object::setType(display_obj_type newType)
+{
+	this->type = newType;
+}
+
 vec2 display_object::getLocation()
 {
 	return this->location;

@@ -28,6 +28,7 @@ public:
 									float y);
 
 	void			setRenderLayer(renderLayers newLayer);
+	void			setType(display_obj_type newType);
 	//####################
 	//		Getters
 	//####################

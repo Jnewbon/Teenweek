@@ -19,13 +19,4 @@ void action_shoot::do_action()
 
 	game::recive_message(newMsg);
 
-
-	newMsg.msg_type = CREATE_OBJECT;
-	newMsg.msg_contents.create_obj.newType = Factory::BULLET_ONE;
-	newMsg.msg_contents.create_obj.action = TARGET_PLAYER;
-	newMsg.msg_contents.create_obj.spawnLocation = glm::vec2(0.0f);
-	newMsg.msg_contents.create_obj.speed = glm::vec2(0.0f, -0.9f);
-
-	game::recive_message(newMsg);
-
 }

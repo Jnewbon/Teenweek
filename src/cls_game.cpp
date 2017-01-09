@@ -19,6 +19,7 @@ std::list<display_object*>	game::allDisplayObjects;	//Contains all object to be 
 glm::vec2					game::screenSize;			//Contains the Size of the screen
 bool						game::fullscreen;			//is the game fullscreen (default false)
 display_object*				game::player = nullptr;
+unsigned int				game::score = 0;
 
 game::game(int argc, char ** argv)
 {
@@ -58,8 +59,8 @@ void game::mainloop()
 	player = Factory::create_object(Factory::PLAYER_SHIP);
 
 	allDisplayObjects.push_back(player);
+	allDisplayObjects.push_back(Factory::create_object(Factory::ENEMY_ONE));
 	allDisplayObjects.push_back(Factory::create_object(Factory::GAME_UI));
-	allDisplayObjects.push_back(Factory::create_object(Factory::MISSLE_TWO));
 	allDisplayObjects.push_back(Factory::create_object(Factory::INFO_TEXT));
 	allDisplayObjects.push_back(Factory::create_object(Factory::QUESTION_TEXT));
 	allDisplayObjects.push_back(Factory::create_object(Factory::ANSWER_TEXT));
@@ -77,6 +78,14 @@ void game::mainloop()
 			spawnrate = 0;
 		}
 
+
+
+
+		static text_object* Score = (text_object*)Factory::create_object(Factory::ANSWER_TEXT);
+
+
+
+
 		static std::chrono::steady_clock::time_point lasttime = std::chrono::steady_clock::now();
 		std::chrono::steady_clock::time_point thistime = std::chrono::steady_clock::now();
 
@@ -84,7 +93,7 @@ void game::mainloop()
 
 		while (elapsedTime < (1000000 / MAX_FRAME_RATE))
 		{
-			cout << "Waiting " << (1000000 / MAX_FRAME_RATE) - elapsedTime << "ms" << endl;
+			//cout << "Waiting " << (1000000 / MAX_FRAME_RATE) - elapsedTime << "ms" << endl;
 
 			std::chrono::steady_clock::time_point thistime = std::chrono::steady_clock::now();
 
@@ -102,17 +111,155 @@ void game::mainloop()
 			i++)
 		{
 			if ((*i)->getType() == display_object::GAME_OBJECT ||
-				(*i)->getType() == display_object::PLAYER_OBJECT)
+				(*i)->getType() == display_object::PLAYER_OBJECT || 
+				(*i)->getRenderLayer() == display_object::BACKGROUND)
 			{
 				((Dynamic_image_obj*)(*i))->move((float)elapsedTime/1000000);
 			}
 		}
 
-
+		collision();
 
 	}
 
 	shutdownCOM();
+
+}
+
+void game::collision()
+{
+
+	for (list<display_object*>::iterator i = allDisplayObjects.begin();
+		i != allDisplayObjects.end();
+		i++)
+	{
+		for (list<display_object*>::iterator j = std::next(i);
+			j != allDisplayObjects.end();
+			j++)
+		{
+			if (((*i)->getType() == display_object::PLAYER_OBJECT && 
+				(*j)->getType() == display_object::GAME_OBJECT) ||
+				((*j)->getType() == display_object::PLAYER_OBJECT &&
+				(*i)->getType() == display_object::GAME_OBJECT) ||
+				((*j)->getType() == display_object::GAME_OBJECT &&
+				(*i)->getType() == display_object::GAME_OBJECT))
+			{
+				
+				Dynamic_image_obj* bullet = nullptr;
+				Dynamic_image_obj* ship = nullptr;
+				player_object*	player = nullptr;
+
+				switch (((Dynamic_image_obj*)(*i))->getObjectType())
+				{
+				case Dynamic_image_obj::PLAYER:
+					player = (player_object*)(*i);
+					break;
+				case Dynamic_image_obj::PLAYER_WPN:
+					bullet = (Dynamic_image_obj*)(*i);
+					break;
+				case Dynamic_image_obj::ENEMY_WPN:
+					bullet = (Dynamic_image_obj*)(*i);
+					break;
+				case Dynamic_image_obj::SHIP:
+					ship = (Dynamic_image_obj*)(*i);
+					break;
+				}
+				switch (((Dynamic_image_obj*)(*j))->getObjectType())
+				{
+				case Dynamic_image_obj::PLAYER:
+					player = (player_object*)(*j);
+					break;
+				case Dynamic_image_obj::PLAYER_WPN:
+					bullet = (Dynamic_image_obj*)(*j);
+					break;
+				case Dynamic_image_obj::ENEMY_WPN:
+					bullet = (Dynamic_image_obj*)(*j);
+					break;
+				case Dynamic_image_obj::SHIP:
+					ship = (Dynamic_image_obj*)(*j);
+					break;
+				}
+				if (player && bullet)
+				{
+					if (isColliding(player, bullet))
+					{
+						//just make sure its not the players bullet
+						if (bullet->getObjectType() != Dynamic_image_obj::PLAYER_WPN)
+						{
+							printf("oooo player done bad\n");
+							bullet->setDestroyed();
+							addScore(-100);
+
+						}
+					}
+				}
+				if (player && ship)
+				{
+ 					if (isColliding(player, ship))
+					{
+						printf("oooo player done bad\n");
+						ship->setDestroyed();
+						addScore(-100);
+					}
+				}
+				else if ((ship && bullet))
+				{
+					if (isColliding(ship, bullet))
+					{
+						//just make sure its not the ships bullet
+						if (bullet->getObjectType() != Dynamic_image_obj::ENEMY_WPN)
+						{
+							printf("Player gets points yey\n");
+							bullet->setDestroyed();
+							ship->setDestroyed();
+							addScore(100);
+						}
+					}	
+				}
+			}
+		}
+	}
+
+	for (list<display_object*>::iterator i = allDisplayObjects.begin();
+		i != allDisplayObjects.end();
+		i++)
+	{
+		if (((Dynamic_image_obj*)(*i))->getType() == display_object::GAME_OBJECT &&
+			((*i)->getLocation().x < -1.5f ||
+			(*i)->getLocation().x >  1.5f ||
+			(*i)->getLocation().y < -1.5f ||
+			(*i)->getLocation().y >  1.5f || 
+			((Dynamic_image_obj*)(*i))->getDestroyed()))
+		{
+			allDisplayObjects.erase(i);
+			i = allDisplayObjects.begin();
+		}
+	}
+	//printf("Array Size: %i\n", allDisplayObjects.size());
+
+}
+
+bool game::isColliding(Dynamic_image_obj * first, Dynamic_image_obj * second)
+{
+	glm::vec2 frLoc = first->getLocation();
+	glm::vec2 scLoc = second->getLocation();
+	glm::vec2 frSca = first->getScale();
+	glm::vec2 scSca = second->getScale();
+	//printf("{%i%i%i%i}\t{%f,%f}\n", frLoc.y + frSca.y < scLoc.y, frLoc.x < scLoc.x + scSca.x, frLoc.x + frSca.x > scLoc.x, frLoc.y > scLoc.y + scSca.y, frLoc.y + frSca.y,scLoc.y);
+
+	if (frLoc.y + frSca.y < scLoc.y)//is first to far below second to collid?
+		return false;
+	if (frLoc.x > scLoc.x + scSca.x)//is first too far to the right to collide?
+		return false;
+	if (frLoc.x + frSca.x < scLoc.x)//is first too far to the left to collide?
+		return false;
+	if (frLoc.y > scLoc.y + scSca.y)//is first too far to the above to collide?
+		return false;
+
+	//If we get here then the two objects have collided
+
+	return true;
+
 
 }
 
@@ -279,4 +426,12 @@ void game::init_glew()
 	GLint numAttributeSlots;
 	glGetIntegerv(GL_MAX_VERTEX_ATTRIBS, &numAttributeSlots);
 	cout << "GL_MAX_VERTEX_ATTRIBS = " << numAttributeSlots << endl;
+}
+
+void game::addScore(int score)
+{
+	if (game::score + score < 0)
+		game::score = 0;
+	else
+		game::score += score;
 }
