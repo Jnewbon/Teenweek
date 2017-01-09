@@ -28,8 +28,8 @@ display_object * Factory::create_object(Types obj_type)
 		new_Ply_obj->setLocation(0.1638f, -0.6467f);
 		//This is the scale of the object, minus numbers will flip the image on that axis 
 		new_Ply_obj->setScale(0.1f, 0.1f);
-		new_Ply_obj->setinertia(vec2(0.5f));
-		new_Ply_obj->setMaxSpeed(vec2(0.5f));
+		new_Ply_obj->setinertia(vec2(0.25f));
+		new_Ply_obj->setMaxSpeed(vec2(0.25f));
 
 
 		//The texture that will be used by the object

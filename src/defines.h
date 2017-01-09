@@ -8,5 +8,5 @@
 //#define DEBUG_MOUSE_LOC
 
 //will output the key pressed to console
-#define DEBUG_KEY_PRESS
+//#define DEBUG_KEY_PRESS
 
