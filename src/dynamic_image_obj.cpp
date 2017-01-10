@@ -1,6 +1,7 @@
 #include "dynamic_image_obj.h"
 #include <glm\gtc\matrix_transform.hpp>
 #include "dynamic_obj_action.h"
+#include "cls_game.h"
 
 using namespace glm;
 
@@ -31,6 +32,19 @@ void Dynamic_image_obj::setObjectType(objectType gameObjectType)
 void Dynamic_image_obj::setDestroyed()
 {
 	this->isDestroyed = true;
+	if (this->gameObjectType == SHIP)
+	{
+		game_msg newMsg;
+		newMsg.msg_type = CREATE_OBJECT;
+		newMsg.msg_contents.create_obj.newType = Factory::EXPLOSION;
+		newMsg.msg_contents.create_obj.action = NO_ACTION;
+		newMsg.msg_contents.create_obj.spawnLocation = this->getLocation();
+		newMsg.msg_contents.create_obj.speed = glm::vec2(0.0f, 0.0f);
+		newMsg.msg_contents.create_obj.spawnScale = this->getScale();
+
+		game::recive_message(newMsg);
+
+	}
 }
 
 Dynamic_image_obj::objectType Dynamic_image_obj::getObjectType()

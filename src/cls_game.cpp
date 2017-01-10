@@ -64,6 +64,7 @@ void game::mainloop()
 	allDisplayObjects.push_back(Factory::create_object(Factory::INFO_TEXT));
 	allDisplayObjects.push_back(Factory::create_object(Factory::QUESTION_TEXT));
 	allDisplayObjects.push_back(Factory::create_object(Factory::ANSWER_TEXT));
+	allDisplayObjects.push_back(Factory::create_object(Factory::EXPLOSION));
 
 	showText(TEXT_QUESTION, REPLACE, "This is some Test Question Text. I can be this long before running off the end of the pane.");
 	showText(TEXT_QUESTION, APPEND, "This is a second line of text for the pane to handle");

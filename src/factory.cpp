@@ -5,6 +5,7 @@
 #include <memory>
 #include "dynamic_obj_action.h"
 #include "action_shoot.h"
+#include "explosion_object.h"
 
 using namespace std;
 using namespace glm;
@@ -15,7 +16,8 @@ display_object * Factory::create_object(Types obj_type)
 	image_object* new_Img_obj = nullptr;		//Contains all static image objects, The GUI and similer
 	Dynamic_image_obj* new_Dyn_obj = nullptr;	//Contains all dynamic image objects, Ships and games specific onjects
 	text_object* new_Txt_obj = nullptr;			//Contains all the textual content on the screen
-	player_object* new_Ply_obj = nullptr;		
+	player_object* new_Ply_obj = nullptr;		//Contains all the textual content on the screen
+	explosion_object* new_exp_obj = nullptr;
 
 
 
@@ -306,6 +308,25 @@ display_object * Factory::create_object(Types obj_type)
 		new_Dyn_obj->setObjectType(Dynamic_image_obj::PLAYER_WPN);
 
 		break;
+	case Factory::EXPLOSION:
+		//Create the specific type required
+		new_exp_obj = new explosion_object();
+
+		//Location, Just set it to 0
+		new_exp_obj->setLocation(0.0f, 0.0f);
+		//This is the scale of the object, minus numbers will flip the image on that axis 
+		new_exp_obj->setScale(0.1f, 0.1f);
+
+		//The texture that will be used by the object
+		new_exp_obj->setExplosionsVAOs(loadTexture(L"resources\\textures\\misc\\explosion_one.png"), loadTexture(L"resources\\textures\\misc\\explosion_two.png"));
+
+		//Texture is a square so tell the object that.
+		new_exp_obj->set_VAO(image_object::SquareVAO);
+
+		//The deafult Shader, This will be the same for most objects
+		new_exp_obj->setShader(game::default_shader);
+
+		break;
 	case Factory::ANSWER_CAPSULE:
 		//Create the specific type required
 		new_Dyn_obj = new Dynamic_image_obj();
@@ -476,6 +497,8 @@ display_object * Factory::create_object(Types obj_type)
 		new_obj = new_Txt_obj;
 	else if (new_Ply_obj)
 		new_obj = new_Ply_obj;
+	else if (new_exp_obj)
+		new_obj = new_exp_obj;
 
 
 	return new_obj;
