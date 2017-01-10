@@ -8,7 +8,7 @@ int main(int argc, char **argv)
 	game theGame(argc, argv);
 
 	//set the screen size and fullscreen status
-	theGame.set_screensize(1600, 900, false);
+	theGame.set_screensize(1366, 768, false);
 
 	theGame.init();
 

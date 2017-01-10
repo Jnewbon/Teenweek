@@ -391,10 +391,27 @@ display_object * Factory::create_object(Types obj_type)
 
 		new_Txt_obj->setLocation(glm::vec2(-0.93f, 0.0f));
 
-		new_Txt_obj->setColour(glm::vec3(1.0f,0.0f,0.0f ));
+		new_Txt_obj->setColour(glm::vec3(1.0f, 1.0f, 1.0f));
 
-		text.push_back("This is some INFO text to test the text output to screen");
-		text.push_back("This is the second line of the test text");
+		text.push_back("               //INFORMATION SCREEN");
+		text.push_back("");
+
+		//game start
+		text.push_back("Welcome programming cadet!");
+		text.push_back("You have been tasked with defending the Galaxy.");
+		text.push_back("");
+		text.push_back("Move the Ship using the LEFT and RIGHT arrow keys.");
+		text.push_back("Fire by pressing or holding the SPACE key.");
+		text.push_back("");
+		text.push_back("Give this a try!");
+
+		//wait 10-20 seconds
+
+		text.push_back("");
+		text.push_back("");
+		text.push_back("");
+		text.push_back("");
+		text.push_back("");
 
 		new_Txt_obj->setText(text);
 
@@ -404,10 +421,9 @@ display_object * Factory::create_object(Types obj_type)
 
 		new_Txt_obj->setLocation(vec2(0.72f, 0.8f));
 
-		new_Txt_obj->setColour(vec3(1.0f, 0.0f, 0.0f));
+		new_Txt_obj->setColour(vec3(1.0f, 1.0f, 1.0f));
 
-		text.push_back("This is some ANSWER text to test the text output to screen");
-		text.push_back("This is the second line of the test text");
+		text.push_back(" //COLLECTED ANSWERS");
 
 		new_Txt_obj->setText(text);
 
@@ -417,10 +433,9 @@ display_object * Factory::create_object(Types obj_type)
 
 		new_Txt_obj->setLocation(vec2(-0.93f, 0.8f));
 
-		new_Txt_obj->setColour(vec3(1.0f, 0.0f, 0.0f));
+		new_Txt_obj->setColour(vec3(1.0f, 1.0f, 1.0f));
 
-		text.push_back("This is some QUESTION text to test the text output to screen");
-		text.push_back("This is the second line of the test text");
+		text.push_back("               //QUESTION SCREEN");
 
 		new_Txt_obj->setText(text);
 

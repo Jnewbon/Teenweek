@@ -33,21 +33,21 @@ void text_object::draw(glm::mat4 display_matrix)
 
 	for (std::vector<std::string>::iterator textItor = text.begin(); textItor != text.end(); textItor++)
 	{
-		glRasterPos2f(this->location.x, this->location.y - ((linenum++)*0.025));
+		glRasterPos2f(this->location.x, this->location.y - ((linenum++)*0.035));
 		std::string  textstr = (*textItor);
 
 		len = (int)textstr.length();
 		if (NoCharToDisp == -1)
 		{
 			for (i = 0; i < len; i++) {
-				glutBitmapCharacter(GLUT_BITMAP_9_BY_15, (int)textstr[i]);
+				glutBitmapCharacter(GLUT_BITMAP_8_BY_13, (int)textstr[i]);
 			}
 		}
 		else
 		{
 			for (i = 0; i < len; i++) {
 				if (i + total_len < NoCharToDisp / TYPEWRITER_SPEED)
-					glutBitmapCharacter(GLUT_BITMAP_9_BY_15, (int)textstr[i]);
+					glutBitmapCharacter(GLUT_BITMAP_8_BY_13, (int)textstr[i]);
 			}
 			total_len += len;
 		}
