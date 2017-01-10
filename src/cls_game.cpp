@@ -65,6 +65,13 @@ void game::mainloop()
 	allDisplayObjects.push_back(Factory::create_object(Factory::QUESTION_TEXT));
 	allDisplayObjects.push_back(Factory::create_object(Factory::ANSWER_TEXT));
 
+	showText(TEXT_QUESTION, REPLACE, "This is some Test Question Text. I can be this long before running off the end of the pane.");
+	showText(TEXT_QUESTION, APPEND, "This is a second line of text for the pane to handle");
+	showText(TEXT_INFO, REPLACE, "This is some Test Info Text. I can be this long before running off the end of the pane.");
+	showText(TEXT_INFO, APPEND, "This is a second line of text for the pane to handle");
+	showText(TEXT_ANSWER, REPLACE, "This is some Test Answer Text. I can be this long before running off the end of the pane.");
+	showText(TEXT_ANSWER, APPEND, "This is a second line of text for the pane to handle");
+
 	while (true)
 	{
 	
@@ -84,7 +91,7 @@ void game::mainloop()
 		static text_object* Score = (text_object*)Factory::create_object(Factory::ANSWER_TEXT);
 
 
-
+		
 
 		static std::chrono::steady_clock::time_point lasttime = std::chrono::steady_clock::now();
 		std::chrono::steady_clock::time_point thistime = std::chrono::steady_clock::now();
@@ -434,4 +441,51 @@ void game::addScore(int score)
 		game::score = 0;
 	else
 		game::score += score;
+}
+
+void game::showText(text_location loc, text_mod_type type, std::string text)
+{
+	//One time run Create the objects, 
+	static text_object* answer_Pane = nullptr;
+	static text_object* info_Pane = nullptr;
+	static text_object* question_Pane = nullptr;
+
+	text_object* current_ptr = nullptr;
+
+	if (!answer_Pane)
+	{
+		answer_Pane = dynamic_cast<text_object*>(Factory::create_object(Factory::ANSWER_TEXT));
+		info_Pane = dynamic_cast<text_object*>(Factory::create_object(Factory::INFO_TEXT));
+		question_Pane = dynamic_cast<text_object*>(Factory::create_object(Factory::QUESTION_TEXT));
+		allDisplayObjects.push_back(answer_Pane);
+		allDisplayObjects.push_back(info_Pane);
+		allDisplayObjects.push_back(question_Pane);
+	}
+
+	switch (loc)
+	{
+	case game::TEXT_QUESTION:
+		current_ptr = question_Pane;
+		break;
+	case game::TEXT_INFO:
+		current_ptr = info_Pane;
+		break;
+	case game::TEXT_ANSWER:
+		current_ptr = answer_Pane;
+		break;
+	default:
+		break;
+	}
+	switch (type)
+	{
+	case game::APPEND:
+		current_ptr->addText(text);
+		break;
+	case game::REPLACE:
+		current_ptr->clearText();
+		current_ptr->addText(text);
+		break;
+	default:
+		break;
+	}
 }

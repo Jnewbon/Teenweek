@@ -10,6 +10,17 @@
 class game
 {
 public:
+	enum text_location {
+		TEXT_QUESTION,
+		TEXT_INFO,
+		TEXT_ANSWER,
+		No_Text_Objects
+	};
+	enum text_mod_type {
+		APPEND,
+		REPLACE
+	};
+
 	game(int argc, char** argv);
 
 	void set_screensize(int size_x, int size_y, bool fullscreen);
@@ -22,15 +33,6 @@ public:
 	static bool isColliding(Dynamic_image_obj* first, Dynamic_image_obj* second);
 
 
-	//callbacks
-
-	static void display();
-	static void event_mouseMove(int x,int y);
-	static void event_mouseClick(int button, int state, int x, int y);
-	static void event_keyPress(unsigned char key, int x, int y);
-	static void event_keyPressUP(unsigned char key, int x, int y);
-	static void event_specialkey(int key, int x, int y);
-	static void event_specialkeyUP(int key, int x, int y);
 
 
 	static GLuint				default_shader;
@@ -45,6 +47,10 @@ private:
 	void init_glew();
 
 	static void	addScore(int score);
+
+
+	static void showText(text_location, text_mod_type, std::string);
+
 	
 //#####	Variables ######
 
@@ -55,15 +61,22 @@ private:
 
 	//Game Variables
 
-	//static clock_t							last;				// Contains the time of the last frames, used to calculate how log has passed sine last execute time
-	static std::list<display_object*>		allDisplayObjects;	//Contains all object to be displayed to the screen
-
-	static display_object*				player;
-
-	static unsigned	int					score;
+	static std::list<display_object*>		allDisplayObjects;				//Contains all object to be displayed to the screen
+	static display_object*					player;							// This will be the player
+	static unsigned	int						score;							//This will be the players score
+	//static text_object*						text_panels[No_Text_Objects];	//This will be the text panels displayed on the screen
 
 	//OpenGL Variables
 
 	static bool					fullscreen;			//is the game fullscreen (default false)
 
+	//callbacks
+	//These dont need to be made public as there address is passed out to glut
+	static void display();
+	static void event_mouseMove(int x,int y);
+	static void event_mouseClick(int button, int state, int x, int y);
+	static void event_keyPress(unsigned char key, int x, int y);
+	static void event_keyPressUP(unsigned char key, int x, int y);
+	static void event_specialkey(int key, int x, int y);
+	static void event_specialkeyUP(int key, int x, int y);
 };

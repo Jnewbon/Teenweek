@@ -10,7 +10,6 @@ public:
 	//####################
 	//		Setters
 	//####################	
-	void			setText(std::vector<std::string> text);
 	void			setColour(glm::vec3 colour);
 
 	//####################
@@ -20,7 +19,12 @@ public:
 	//####################
 	//		Modifiers
 	//####################
+	void			clearText();
+	void			addText(std::string text);
+
+
 	void			draw(glm::mat4 display_matrix);
+
 
 
 private:

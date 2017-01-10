@@ -392,12 +392,7 @@ display_object * Factory::create_object(Types obj_type)
 		new_Txt_obj->setLocation(glm::vec2(-0.93f, 0.0f));
 
 		new_Txt_obj->setColour(glm::vec3(1.0f,0.0f,0.0f ));
-
-		text.push_back("This is some INFO text to test the text output to screen");
-		text.push_back("This is the second line of the test text");
-
-		new_Txt_obj->setText(text);
-
+		
 		break;
 	case Factory::ANSWER_TEXT:
 		new_Txt_obj = new text_object();
@@ -405,12 +400,7 @@ display_object * Factory::create_object(Types obj_type)
 		new_Txt_obj->setLocation(vec2(0.72f, 0.8f));
 
 		new_Txt_obj->setColour(vec3(1.0f, 0.0f, 0.0f));
-
-		text.push_back("This is some ANSWER text to test the text output to screen");
-		text.push_back("This is the second line of the test text");
-
-		new_Txt_obj->setText(text);
-
+		
 		break;
 	case Factory::QUESTION_TEXT:
 		new_Txt_obj = new text_object();
@@ -418,11 +408,7 @@ display_object * Factory::create_object(Types obj_type)
 		new_Txt_obj->setLocation(vec2(-0.93f, 0.8f));
 
 		new_Txt_obj->setColour(vec3(1.0f, 0.0f, 0.0f));
-
-		text.push_back("This is some QUESTION text to test the text output to screen");
-		text.push_back("This is the second line of the test text");
-
-		new_Txt_obj->setText(text);
+		
 
 		break;
 	case Factory::BACKGROUND:
