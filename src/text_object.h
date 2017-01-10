@@ -28,5 +28,5 @@ private:
 	std::vector<std::string>			text;		//Text to display 
 	glm::vec3							colour;		//Colour of the text
 
-
+	int									NoCharToDisp;
 };

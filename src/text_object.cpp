@@ -8,6 +8,7 @@ text_object::text_object()
 {
 	this->type = TEXT_OBJECT;
 	this->renderLayer = UI_FOREGROUND;
+	NoCharToDisp = 0;
 }
 
 void text_object::setText(std::vector<std::string> text)
@@ -22,7 +23,6 @@ void text_object::setColour(glm::vec3 colour)
 
 void text_object::draw(glm::mat4 display_matrix)
 {
-	static int NoCharToDisp = 0;
 	glUseProgram(0); 
 	glDisable(GL_TEXTURE);
 	glDisable(GL_TEXTURE_2D);
