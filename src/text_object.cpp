@@ -2,7 +2,7 @@
 #include <string>
 #include "cls_game.h"
 
-#define TYPEWRITER_SPEED 10
+#define TYPEWRITER_SPEED 2
 
 text_object::text_object()
 {
@@ -11,14 +11,19 @@ text_object::text_object()
 	NoCharToDisp = 0;
 }
 
-void text_object::setText(std::vector<std::string> text)
+void text_object::addText(std::string text)
 {
-	this->text = text;
+	this->text.push_back(text);
 }
 
 void text_object::setColour(glm::vec3 colour)
 {
 	this->colour = colour;
+}
+
+void text_object::clearText()
+{
+	this->text.clear();
 }
 
 void text_object::draw(glm::mat4 display_matrix)
