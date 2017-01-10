@@ -72,8 +72,11 @@
     <ClCompile Include="src\dynamic_obj_action.cpp">
       <Filter>Source Files\System\dynamic_obj_actions</Filter>
     </ClCompile>
+    <ClCompile Include="src\explosion_object.cpp">
+      <Filter>Source Files\System</Filter>
+    </ClCompile>
     <ClCompile Include="src\action_shoot.cpp">
-      <Filter>Header Files\System\dynamic_obj_actions</Filter>
+      <Filter>Source Files\System\dynamic_obj_actions</Filter>
     </ClCompile>
     <ClCompile Include="src\level.cpp">
       <Filter>Source Files\System</Filter>
@@ -116,8 +119,11 @@
     <ClInclude Include="src\dynamic_obj_action.h">
       <Filter>Header Files\System\dynamic_obj_actions</Filter>
     </ClInclude>
+    <ClInclude Include="src\explosion_object.h">
+      <Filter>Header Files\System</Filter>
+    </ClInclude>
     <ClInclude Include="src\action_shoot.h">
-      <Filter>Source Files\System\dynamic_obj_actions</Filter>
+      <Filter>Header Files\System\dynamic_obj_actions</Filter>
     </ClInclude>
     <ClInclude Include="src\level.h">
       <Filter>Header Files\System</Filter>

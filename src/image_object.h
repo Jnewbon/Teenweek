@@ -30,6 +30,7 @@ public:
 	void			setShader(GLuint shader);
 
 protected:
+	GLuint					object_Texture;		// Texture of the object
 
 private:
 
@@ -37,7 +38,6 @@ private:
 	//		Variables
 	//####################
 
-	GLuint					object_Texture;		// Texture of the object
 	GLuint					object_Shader;		// The shader used by this object
 
 	//OpenGL specific variables

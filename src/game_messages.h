@@ -14,8 +14,14 @@ struct Create_object
 {
 	Factory::Types		newType;			//obj type to create
 	glm::vec2			spawnLocation;		//obj spawn location
+	glm::vec2			spawnScale;		//obj spawn location
 	create_obj_action	action;
 	glm::vec2			speed;
+
+	Create_object()
+	{
+		spawnScale = glm::vec2(1.0f);
+	}
 	
 };
 

@@ -203,6 +203,7 @@ copy "$(ProjectDir)dll\$(Configuration)\$(Platform)\glew32.dll" "$(OutDir)" /Y</
     <ClCompile Include="src\display_object.cpp" />
     <ClCompile Include="src\dynamic_image_obj.cpp" />
     <ClCompile Include="src\dynamic_obj_action.cpp" />
+    <ClCompile Include="src\explosion_object.cpp" />
     <ClCompile Include="src\factory.cpp" />
     <ClCompile Include="src\image_object.cpp" />
     <ClCompile Include="src\level.cpp" />
@@ -219,6 +220,7 @@ copy "$(ProjectDir)dll\$(Configuration)\$(Platform)\glew32.dll" "$(OutDir)" /Y</
     <ClInclude Include="src\display_object.h" />
     <ClInclude Include="src\dynamic_image_obj.h" />
     <ClInclude Include="src\dynamic_obj_action.h" />
+    <ClInclude Include="src\explosion_object.h" />
     <ClInclude Include="src\factory.h" />
     <ClInclude Include="src\game_messages.h" />
     <ClInclude Include="src\image_object.h" />
