@@ -75,6 +75,9 @@
     <ClCompile Include="src\action_shoot.cpp">
       <Filter>Header Files\System\dynamic_obj_actions</Filter>
     </ClCompile>
+    <ClCompile Include="src\level.cpp">
+      <Filter>Source Files\System</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\cls_game.h">
@@ -115,6 +118,9 @@
     </ClInclude>
     <ClInclude Include="src\action_shoot.h">
       <Filter>Source Files\System\dynamic_obj_actions</Filter>
+    </ClInclude>
+    <ClInclude Include="src\level.h">
+      <Filter>Header Files\System</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
