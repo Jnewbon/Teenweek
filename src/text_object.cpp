@@ -2,7 +2,7 @@
 #include <string>
 #include "cls_game.h"
 
-#define TYPEWRITER_SPEED 10
+#define TYPEWRITER_SPEED 0.1
 
 text_object::text_object()
 {
