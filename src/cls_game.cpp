@@ -392,16 +392,37 @@ void game::mainloop()
 					showText(TEXT_INFO, REPLACE, "Welcome programming cadet!");
 					showText(TEXT_INFO, APPEND, "You have been tasked with defending the Galaxy.");
 					showText(TEXT_INFO, APPEND, "");
-					showText(TEXT_INFO, APPEND, "Move the Ship using the LEFT and RIGHT arrow keys.");
-					showText(TEXT_INFO, APPEND, "Fire by pressing or holding the SPACE key.");
+					showText(TEXT_INFO, APPEND, "This screen is the INFORMATION SCREEN.");
 					showText(TEXT_INFO, APPEND, "");
-					showText(TEXT_INFO, APPEND, "Try moving the ship and firing!");
-					showText(TEXT_INFO, APPEND, "Press SPACE");
+					showText(TEXT_INFO, APPEND, "This will display helpful tips and programming");
+					showText(TEXT_INFO, APPEND, "advice to help you battle the upcoming enemies.");
+					showText(TEXT_INFO, APPEND, "");
+					showText(TEXT_INFO, APPEND, "Press SPACE to continue.");
 					displayed = true;
 				}
 				break;
 			case 2:
 
+				if (!displayed)
+				{
+					showText(TEXT_INFO, REPLACE, "Above here is the QUESTION SCREEN.");
+					showText(TEXT_INFO, APPEND, "When you fight against the Mothership you'll");
+					showText(TEXT_INFO, APPEND, "have to disable their shields in order to attack.");
+					showText(TEXT_INFO, APPEND, "");
+					showText(TEXT_INFO, APPEND, "To do this you'll need to answer programming");
+					showText(TEXT_INFO, APPEND, "and computer science related questions.");
+					showText(TEXT_INFO, APPEND, "");
+					showText(TEXT_INFO, APPEND, "To the right is your GENERATED ANSWERS.");
+					showText(TEXT_INFO, APPEND, "");
+					showText(TEXT_INFO, APPEND, "As you defeat enemy ships, you'll begin");
+					showText(TEXT_INFO, APPEND, "collecting important enemy intel for");
+					showText(TEXT_INFO, APPEND, "when you fight the Mothership.");
+					showText(TEXT_INFO, APPEND, "");
+					showText(TEXT_INFO, APPEND, "Press SPACE to continue.");
+					displayed = true;
+				}
+				break;
+			case 3:
 				if (!displayed)
 				{
 					showText(TEXT_INFO, REPLACE, "Ahead of you is the Evil Empire.");
@@ -414,41 +435,25 @@ void game::mainloop()
 					showText(TEXT_INFO, APPEND, "");
 					showText(TEXT_INFO, APPEND, "We'll give you more information here when you get");
 					showText(TEXT_INFO, APPEND, "there!");
-					showText(TEXT_INFO, APPEND, "Press SPACE");
+					showText(TEXT_INFO, APPEND, "");
+					showText(TEXT_INFO, APPEND, "Press SPACE to continue.");
 					displayed = true;
 				}
-				break;
-			case 3:
+			case 4:
 				if (!displayed)
 				{
-					showText(TEXT_INFO, REPLACE, "This screen is the INFORMATION SCREEN.");
+					showText(TEXT_INFO, REPLACE, "Press SPACE to begin fighting.");
 					showText(TEXT_INFO, APPEND, "");
-					showText(TEXT_INFO, APPEND, "This will display helpful tips and programming");
-					showText(TEXT_INFO, APPEND, "advice to help you battle the upcoming enemies.");
+					showText(TEXT_INFO, APPEND, "Remember: Use LEFT and RIGHT to move. ");
+					showText(TEXT_INFO, APPEND, "SPACE to fire.");
 					showText(TEXT_INFO, APPEND, "");
-					showText(TEXT_INFO, APPEND, "Above here is the QUESTION SCREEN.");
-					showText(TEXT_INFO, APPEND, "When you fight against the Mothership you'll");
-					showText(TEXT_INFO, APPEND, "have to disable their shields in order to attack.");
-					showText(TEXT_INFO, APPEND, "");
-					showText(TEXT_INFO, APPEND, "To do this you'll need to answer programming");
-					showText(TEXT_INFO, APPEND, "and computer science related questions.");
-					showText(TEXT_INFO, APPEND, "");
-					showText(TEXT_INFO, APPEND, "To the right is your GENERATED ANSWERS.");
-					showText(TEXT_INFO, APPEND, "");
-					showText(TEXT_INFO, APPEND, "As you defeat enemy ships, you'll begin");
-					showText(TEXT_INFO, APPEND, "collecting important enemy intel for");
-					showText(TEXT_INFO, APPEND, "when you fight the Mothership.");
-					showText(TEXT_INFO, APPEND, "Press SPACE");
+					showText(TEXT_INFO, APPEND, "Good luck!");
 					displayed = true;
 				}
 			default:
 				break;
 			}
-
-
-
 		}
-
 
 		Scoretxt->clearTextWOreset();
 		Scoretxt->addText(std::to_string(score));
@@ -673,7 +678,7 @@ void game::event_keyPress(unsigned char key, int x, int y)
 	{
 		if (key == ' ')
 		{
-			if (startscreen == 3)
+			if (startscreen == 4)
 				start = false;
 			else
 			{
@@ -897,14 +902,113 @@ void game::generateLevels(int levels[MAX_LEVELS][Factory::NUMBER_OF_ENEMIES])
 {
 	//All levels are initilized to 0, so only need to set the ones that have non 0 numbers
 	//  levels[MAX_LEVELS][Factory::<SHIPTYPE>]
-	levels[0][Factory::ENEMY_ONE] = 1;
-	levels[0][Factory::ENEMY_TWO] = 1;
+	levels[0][Factory::ENEMY_ONE] = 2;
 
+	levels[1][Factory::ENEMY_ONE] = 3;
 
-	levels[1][Factory::ENEMY_TWO] = 1;
-	levels[2][Factory::ENEMY_THREE] = 1;
+	levels[2][Factory::ENEMY_ONE] = 4;
+
+	levels[3][Factory::ENEMY_ONE] = 5;
+
+	levels[4][Factory::ENEMY_ONE] = 5;
+
+	levels[5][Factory::ENEMY_ONE] = 5;
+	levels[5][Factory::ENEMY_TWO] = 1;
+
+	levels[6][Factory::ENEMY_ONE] = 5;
+	levels[6][Factory::ENEMY_TWO] = 2;
+
+	levels[7][Factory::ENEMY_ONE] = 5;
+	levels[7][Factory::ENEMY_TWO] = 3;
+
+	levels[8][Factory::ENEMY_ONE] = 5;
+	levels[8][Factory::ENEMY_TWO] = 4;
+
+	levels[9][Factory::ENEMY_ONE] = 0;
+
+	levels[10][Factory::ENEMY_ONE] = 5;
+	levels[10][Factory::ENEMY_TWO] = 5;
+
+	levels[11][Factory::ENEMY_ONE] = 2;
+	levels[11][Factory::ENEMY_TWO] = 2;
+	levels[11][Factory::ENEMY_THREE] = 1;
+
+	levels[12][Factory::ENEMY_ONE] = 3;
+	levels[12][Factory::ENEMY_TWO] = 2;
+	levels[12][Factory::ENEMY_THREE] = 1;
+
+	levels[13][Factory::ENEMY_ONE] = 2;
+	levels[13][Factory::ENEMY_TWO] = 3;
+	levels[13][Factory::ENEMY_THREE] = 1;
+
+	levels[14][Factory::ENEMY_THREE] = 10;
+
+	levels[15][Factory::ENEMY_ONE] = 2;
+	levels[15][Factory::ENEMY_TWO] = 2;
+	levels[15][Factory::ENEMY_THREE] = 2;
+
+	levels[16][Factory::ENEMY_ONE] = 2;
+	levels[16][Factory::ENEMY_TWO] = 2;
+	levels[16][Factory::ENEMY_THREE] = 2;
+
+	levels[17][Factory::ENEMY_ONE] = 3;
+	levels[17][Factory::ENEMY_TWO] = 2;
+	levels[17][Factory::ENEMY_THREE] = 2;
+
+	levels[18][Factory::ENEMY_ONE] = 3;
+	levels[18][Factory::ENEMY_TWO] = 3;
+	levels[18][Factory::ENEMY_THREE] = 2;
+
+	levels[19][Factory::ENEMY_ONE] = 0;
+
+	levels[20][Factory::ENEMY_ONE] = 5;
+	levels[20][Factory::ENEMY_TWO] = 5;
+
+	levels[21][Factory::ENEMY_ONE] = 2;
+	levels[21][Factory::ENEMY_TWO] = 2;
+	levels[21][Factory::ENEMY_THREE] = 1;
+	levels[21][Factory::ENEMY_FOUR] = 1;
+
+	levels[22][Factory::ENEMY_ONE] = 5;
+	levels[22][Factory::ENEMY_TWO] = 2;
+	levels[22][Factory::ENEMY_THREE] = 1;
+	levels[22][Factory::ENEMY_FOUR] = 2;
+
+	levels[23][Factory::ENEMY_ONE] = 3;
+	levels[23][Factory::ENEMY_TWO] = 3;
+	levels[23][Factory::ENEMY_THREE] = 2;
+	levels[23][Factory::ENEMY_FOUR] = 3;
+
+	levels[24][Factory::ENEMY_THREE] = 5;
+	levels[24][Factory::ENEMY_FOUR] = 5;
+
+	levels[25][Factory::ENEMY_ONE] = 2;
+	levels[25][Factory::ENEMY_TWO] = 2;
+	levels[25][Factory::ENEMY_THREE] = 2;
+	levels[25][Factory::ENEMY_FOUR] = 2;
+
+	levels[26][Factory::ENEMY_ONE] = 2;
+	levels[26][Factory::ENEMY_TWO] = 2;
+	levels[26][Factory::ENEMY_THREE] = 2;
+	levels[26][Factory::ENEMY_FOUR] = 4;
+
+	levels[27][Factory::ENEMY_ONE] = 3;
+	levels[27][Factory::ENEMY_TWO] = 2;
+	levels[27][Factory::ENEMY_THREE] = 2;
+	levels[27][Factory::ENEMY_FOUR] = 4;
+
+	levels[28][Factory::ENEMY_ONE] = 3;
+	levels[28][Factory::ENEMY_TWO] = 3;
+	levels[28][Factory::ENEMY_THREE] = 2;
+	levels[28][Factory::ENEMY_FOUR] = 5;
+
+	levels[29][Factory::ENEMY_ONE] = 0;
+
+	levels[39][Factory::ENEMY_ONE] = 0;
+
+	/*levels[2][Factory::ENEMY_THREE] = 1;
 	levels[3][Factory::ENEMY_FOUR] = 1;
-	levels[4][Factory::ENEMY_FIVE] = 1;
+	levels[4][Factory::ENEMY_FIVE] = 1;*/
 	/*
 	levels[0][Factory::BOSS_ONE] = 1;
 	levels[0][Factory::BOSS_TWO] = 1;

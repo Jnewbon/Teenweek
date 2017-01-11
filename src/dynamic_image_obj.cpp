@@ -69,7 +69,7 @@ void Dynamic_image_obj::move(float elapsedtime)
 			this->setLocation(this->getLocation() + vec2(0.0f, 4.0f));
 	}
 
-	if (fireRate++ > 60 && this->action)
+	if (fireRate++ > ENEMY_MAX_FIRE_RATE && this->action)
 	{
 		this->action->do_action();
 		fireRate = 0;
