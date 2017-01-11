@@ -332,26 +332,60 @@ void game::mainloop()
 	while (!quit)
 	{
 	
-		//TODO Remove this and put it in a better location
 		if (!start)
 		{
+
+			if ((level + 1) % 10 == 0)
+			{
+				//Special cases for bosses
+				switch (level)
+				{
+				case 9:
+
+					break;
+				case 19:
+
+					break;
+				case 29:
+
+					break;
+				case 39:
+
+					break;
+				}
+
+			}
+
+			//Handeling for all waves
 			static int spawnrate = 0;
-			int count = 0;
+			int allcount = 0;
+			int alivecount = 0;
+			int shipcount = 0;
+
+
 			for (unsigned int j = 0; j < Factory::NUMBER_OF_ENEMIES; j++)
 			{
-				count += level_ships[level][j];
+				allcount += level_ships[level][j];
 			}
+			for (unsigned int j = Factory::ENEMY_ONE; j <= Factory::ENEMY_FIVE; j++)
+			{
+				shipcount += level_ships[level][j];
+			}
+
 			for (list<display_object*>::iterator i = allDisplayObjects.begin();
 				i != allDisplayObjects.end();
 				i++)
 			{
 				if (((Dynamic_image_obj*)(*i))->getObjectType() == Dynamic_image_obj::SHIP)
-					count++;
+					alivecount++;
 			}
 
 
-			if (count == 0)
+			if (allcount + alivecount == 0)
+			{
 				level++;
+				showText(TEXT_ANSWER, REPLACE, "Level: " + std::to_string(level+1));
+			}
 
 			if (level >= MAX_LEVELS)
 			{
@@ -359,18 +393,13 @@ void game::mainloop()
 				break;
 			}
 
-			count = 0;
-			for (unsigned int j = Factory::ENEMY_ONE; j <= Factory::ENEMY_FIVE; j++)
-			{
-				count += level_ships[level][j];
-			}
 
-			if (count > 0 && spawnrate++ > (ENEMY_SHIP_SPAWN_BASE - (ENEMY_SHIP_SPAWN_PER_LEVEL_FACTOR * level)) + (rand() % ENEMY_SHIP_SPAWN_RANDOMNESS))
+			if (shipcount > 0 && spawnrate++ > (ENEMY_SHIP_SPAWN_BASE - (ENEMY_SHIP_SPAWN_PER_LEVEL_FACTOR * level)) + (rand() % ENEMY_SHIP_SPAWN_RANDOMNESS))
 			{
 				spawnrate = 0;
-				unsigned int ChosenShip = rand() % Factory::ENEMY_FIVE + 1;
+				unsigned int ChosenShip = rand() % Factory::ENEMY_FIVE+1 ;
 				while (level_ships[level][ChosenShip] == 0) {
-					ChosenShip = rand() % (Factory::ENEMY_FIVE + 1);
+					ChosenShip = rand() % (Factory::ENEMY_FIVE+1);
 				}
 				level_ships[level][ChosenShip]--;
 
@@ -381,6 +410,21 @@ void game::mainloop()
 				allDisplayObjects.push_back(temp);
 
 			}
+			else if (shipcount == 0 && alivecount == 0 && allcount > 0 && spawnrate++ > 120)
+			{
+				unsigned int ChosenShip = (rand() % (Factory::NUMBER_OF_ENEMIES - Factory::ENEMY_FIVE )) + Factory::ENEMY_FIVE;
+				while (level_ships[level][ChosenShip] == 0) {
+					ChosenShip = (rand() % (Factory::NUMBER_OF_ENEMIES - Factory::ENEMY_FIVE)) + Factory::ENEMY_FIVE;
+				}
+				level_ships[level][ChosenShip]--;
+				Dynamic_image_obj* temp = (Dynamic_image_obj*)Factory::create_object((Factory::Types)ChosenShip);
+
+				temp->setLocation(glm::vec2(GAME_SPACE_LEFT + ((GAME_SPACE_RIGHT - GAME_SPACE_LEFT)/2) - (temp->getScale().x /2), GAME_SPACE_TOP));
+				temp->setSpeed(glm::vec2(0.0f, -(ENEMY_BASE_SHIP_SPEED )));
+				allDisplayObjects.push_back(temp);
+				spawnrate = 0;
+			}
+
 		}
 		else
 		{				
@@ -901,6 +945,7 @@ void game::showText(text_location loc, text_mod_type type, std::string text)
 void game::generateLevels(int levels[MAX_LEVELS][Factory::NUMBER_OF_ENEMIES])
 {
 	//All levels are initilized to 0, so only need to set the ones that have non 0 numbers
+
 	//  levels[MAX_LEVELS][Factory::<SHIPTYPE>]
 	levels[0][Factory::ENEMY_ONE] = 2;
 
@@ -924,7 +969,7 @@ void game::generateLevels(int levels[MAX_LEVELS][Factory::NUMBER_OF_ENEMIES])
 	levels[8][Factory::ENEMY_ONE] = 5;
 	levels[8][Factory::ENEMY_TWO] = 4;
 
-	levels[9][Factory::ENEMY_ONE] = 0;
+	levels[9][Factory::BOSS_ONE] = 1;
 
 	levels[10][Factory::ENEMY_ONE] = 5;
 	levels[10][Factory::ENEMY_TWO] = 5;
@@ -959,7 +1004,7 @@ void game::generateLevels(int levels[MAX_LEVELS][Factory::NUMBER_OF_ENEMIES])
 	levels[18][Factory::ENEMY_TWO] = 3;
 	levels[18][Factory::ENEMY_THREE] = 2;
 
-	levels[19][Factory::ENEMY_ONE] = 0;
+	levels[19][Factory::BOSS_TWO] = 1;
 
 	levels[20][Factory::ENEMY_ONE] = 5;
 	levels[20][Factory::ENEMY_TWO] = 5;
@@ -1002,17 +1047,7 @@ void game::generateLevels(int levels[MAX_LEVELS][Factory::NUMBER_OF_ENEMIES])
 	levels[28][Factory::ENEMY_THREE] = 2;
 	levels[28][Factory::ENEMY_FOUR] = 5;
 
-	levels[29][Factory::ENEMY_ONE] = 0;
+	levels[29][Factory::BOSS_THREE] = 1;
 
-	levels[39][Factory::ENEMY_ONE] = 0;
-
-	/*levels[2][Factory::ENEMY_THREE] = 1;
-	levels[3][Factory::ENEMY_FOUR] = 1;
-	levels[4][Factory::ENEMY_FIVE] = 1;*/
-	/*
-	levels[0][Factory::BOSS_ONE] = 1;
-	levels[0][Factory::BOSS_TWO] = 1;
-	levels[0][Factory::BOSS_THREE] = 1;
-	levels[0][Factory::BOSS_FOUR] = 1;
-	*/
+	levels[39][Factory::BOSS_FOUR] = 1;
 }
