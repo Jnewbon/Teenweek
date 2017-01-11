@@ -385,10 +385,12 @@ bool game::recive_message(game_msg newMsg)
 
 void game::init_glut()
 {
+#ifdef _DEBUG
 	//gets the Desktop resolution size for the current hardware
 	RECT desktop;
 	const HWND hDesktop = GetDesktopWindow();
 	GetWindowRect(hDesktop, &desktop);
+#endif
 
 	initCOM();
 	glutInit(&argc, argv);
@@ -397,9 +399,13 @@ void game::init_glut()
 	glutInitContextProfile(GLUT_COMPATIBILITY_PROFILE);
 	glutInitDisplayMode(GLUT_RGBA | GLUT_DEPTH | GLUT_DOUBLE);
 
-
 	glutInitWindowSize((int)screenSize.x, (int)screenSize.y);
+#ifdef _DEBUG
 	glutInitWindowPosition(desktop.right, 0);
+#else
+	glutInitWindowPosition(0, 0);
+#endif
+
 	glutCreateWindow("Teen Week Interactive Game");
 
 	if (fullscreen)
