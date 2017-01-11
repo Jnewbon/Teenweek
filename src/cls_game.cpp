@@ -64,13 +64,13 @@ void game::mainloop()
 	allDisplayObjects.push_back(Factory::create_object(Factory::QUESTION_TEXT));
 	allDisplayObjects.push_back(Factory::create_object(Factory::ANSWER_TEXT));
 
-	showText(TEXT_QUESTION, REPLACE, "This is some Test Question Text. I can be this long before running off the end of the pane.");
+	/*showText(TEXT_QUESTION, REPLACE, "This is some Test Question Text. I can be this long before running off the end of the pane.");
 	showText(TEXT_QUESTION, APPEND, "This is a second line of text for the pane to handle");
 	showText(TEXT_INFO, REPLACE, "This is some Test Info Text. I can be this long before running off the end of the pane.");
 	showText(TEXT_INFO, APPEND, "This is a second line of text for the pane to handle");
 	showText(TEXT_ANSWER, REPLACE, "This is some Test Answer Text. I can be this long before running off the end of the pane.");
 	showText(TEXT_ANSWER, APPEND, "This is a second line of text for the pane to handle");
-
+*/
 	static text_object* Scoretxt = (text_object*)Factory::create_object(Factory::SCORE_TEXT);
 	allDisplayObjects.push_back(Scoretxt);
 
@@ -571,13 +571,13 @@ void game::generateLevels(int levels[MAX_LEVELS][Factory::NUMBER_OF_ENEMIES])
 	//All levels are initilized to 0, so only need to set the ones that have non 0 numbers
 	//  levels[MAX_LEVELS][Factory::<SHIPTYPE>]
 	levels[0][Factory::ENEMY_ONE] = 1;
-	levels[0][Factory::ENEMY_TWO] = 1;
-	levels[0][Factory::ENEMY_THREE] = 1;
-	levels[0][Factory::ENEMY_FOUR] = 1;
-	levels[0][Factory::ENEMY_FIVE] = 1;
+	levels[1][Factory::ENEMY_TWO] = 1;
+	levels[2][Factory::ENEMY_THREE] = 1;
+	levels[3][Factory::ENEMY_FOUR] = 1;
+	levels[4][Factory::ENEMY_FIVE] = 1;/*
 	levels[0][Factory::BOSS_ONE] = 1;
 	levels[0][Factory::BOSS_TWO] = 1;
 	levels[0][Factory::BOSS_THREE] = 1;
 	levels[0][Factory::BOSS_FOUR] = 1;
-	levels[0][Factory::NUMBER_OF_ENEMIES] = 1;
+	levels[0][Factory::NUMBER_OF_ENEMIES] = 1;*/
 }

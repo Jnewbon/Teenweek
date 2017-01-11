@@ -2,6 +2,7 @@
 #include <glm\gtc\matrix_transform.hpp>
 #include "GL\glut.h"
 #include "dynamic_obj_action.h"
+#include "defines.h"
 
 using namespace glm;
 
@@ -69,7 +70,7 @@ void player_object::move(float elapsedtime)
 
 	static int fireRate = 0;
 
-	if (fireRate++ > 5 && keysdown[SPACE_KEY] && this->action)
+	if (fireRate++ > PLAYER_MAX_FIRE_RATE && keysdown[SPACE_KEY] && this->action)
 	{
 		this->action->do_action();
 		fireRate = 0;

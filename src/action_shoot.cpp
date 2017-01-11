@@ -30,7 +30,7 @@ void action_shoot::do_action()
 	}
 	else
 	{
-		newMsg.msg_contents.create_obj.speed = glm::vec2(0.0f, -0.5f);
+		newMsg.msg_contents.create_obj.speed = glm::vec2(0.0f, -ENEMY_SHIP_MISSILE_SPEED);
 		newMsg.msg_contents.create_obj.newType = Factory::MISSLE_ONE;
 		newMsg.msg_contents.create_obj.spawnLocation = this->parent->getLocation() + glm::vec2(0.045f, -0.01f);
 

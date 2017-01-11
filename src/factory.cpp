@@ -35,8 +35,8 @@ display_object * Factory::create_object(Types obj_type)
 		
 		//This is the scale of the object, minus numbers will flip the image on that axis 
 		new_Ply_obj->setScale(0.1f, 0.1f);
-		new_Ply_obj->setinertia(vec2(0.25f));
-		new_Ply_obj->setMaxSpeed(vec2(0.25f));
+		new_Ply_obj->setinertia(vec2(PLAYER_SHIP_ACCELARATION));
+		new_Ply_obj->setMaxSpeed(vec2(PLAYER_SHIP_MAX_SPEED));
 
 
 		//The texture that will be used by the object
@@ -100,7 +100,7 @@ display_object * Factory::create_object(Types obj_type)
 
 		new_Dyn_obj->setObjectType(Dynamic_image_obj::SHIP);
 
-		new_Dyn_obj->setAction(create_object(WPN_ENEMY_DIRECTED, new_Dyn_obj));
+		new_Dyn_obj->setAction(create_object(WPN_ENEMY_BASIC, new_Dyn_obj));
 
 		break;
 	case Factory::ENEMY_THREE:
@@ -123,6 +123,8 @@ display_object * Factory::create_object(Types obj_type)
 
 		new_Dyn_obj->setObjectType(Dynamic_image_obj::SHIP);
 
+		new_Dyn_obj->setAction(create_object(WPN_ENEMY_BASIC, new_Dyn_obj));
+
 		break;
 	case Factory::ENEMY_FOUR:
 		//Create the specific type required
@@ -144,6 +146,8 @@ display_object * Factory::create_object(Types obj_type)
 
 		new_Dyn_obj->setObjectType(Dynamic_image_obj::SHIP);
 
+		new_Dyn_obj->setAction(create_object(WPN_ENEMY_BASIC, new_Dyn_obj));
+
 		break;
 	case Factory::ENEMY_FIVE:
 		//Create the specific type required
@@ -164,6 +168,8 @@ display_object * Factory::create_object(Types obj_type)
 		new_Dyn_obj->setShader(game::default_shader);
 
 		new_Dyn_obj->setObjectType(Dynamic_image_obj::SHIP);
+
+		new_Dyn_obj->setAction(create_object(WPN_ENEMY_BASIC, new_Dyn_obj));
 
 		break;
 	case Factory::BOSS_ONE:
@@ -455,7 +461,7 @@ display_object * Factory::create_object(Types obj_type)
 		//This is the scale of the object, minus numbers will flip the image on that axis 
 		new_Dyn_obj->setScale(2.0f, 2.0f);
 
-		new_Dyn_obj->setSpeed(vec2(0.0f, -0.1f));
+		new_Dyn_obj->setSpeed(vec2(0.0f, SPACE_SPEED));
 
 		//The texture that will be used by the object
 		new_Dyn_obj->set_Texture(loadTexture(L"resources\\textures\\background\\bg_one.png"));
@@ -480,7 +486,7 @@ display_object * Factory::create_object(Types obj_type)
 		//This is the scale of the object, minus numbers will flip the image on that axis 
 		new_Dyn_obj->setScale(2.0f, 2.0f);
 
-		new_Dyn_obj->setSpeed(vec2(0.0f, -0.1f));
+		new_Dyn_obj->setSpeed(vec2(0.0f, SPACE_SPEED));
 
 		//The texture that will be used by the object
 		new_Dyn_obj->set_Texture(loadTexture(L"resources\\textures\\background\\bg_one.png"));
