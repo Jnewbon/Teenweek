@@ -439,16 +439,16 @@ display_object * Factory::create_object(Types obj_type)
 
 		new_Txt_obj->setLocation(vec2(-0.93f, 0.8f));
 
-		new_Txt_obj->setColour(vec3(1.0f, 0.0f, 0.0f));
+		new_Txt_obj->setColour(vec3(0.0f, 1.0f, 0.0f));
 
 
 		break;
 	case Factory::SCORE_TEXT:
 		new_Txt_obj = new text_object();
 
-		new_Txt_obj->setLocation(vec2(0.8f, -0.68f));
+		new_Txt_obj->setLocation(vec2(0.81f, -0.68f));
 
-		new_Txt_obj->setColour(vec3(1.0f, 0.0f, 0.0f));
+		new_Txt_obj->setColour(vec3(1.0f, 1.0f, 1.0f));
 
 
 		break;

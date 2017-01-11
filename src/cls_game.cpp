@@ -64,13 +64,292 @@ void game::mainloop()
 	allDisplayObjects.push_back(Factory::create_object(Factory::QUESTION_TEXT));
 	allDisplayObjects.push_back(Factory::create_object(Factory::ANSWER_TEXT));
 
-	/*showText(TEXT_QUESTION, REPLACE, "This is some Test Question Text. I can be this long before running off the end of the pane.");
-	showText(TEXT_QUESTION, APPEND, "This is a second line of text for the pane to handle");
-	showText(TEXT_INFO, REPLACE, "This is some Test Info Text. I can be this long before running off the end of the pane.");
-	showText(TEXT_INFO, APPEND, "This is a second line of text for the pane to handle");
-	showText(TEXT_ANSWER, REPLACE, "This is some Test Answer Text. I can be this long before running off the end of the pane.");
-	showText(TEXT_ANSWER, APPEND, "This is a second line of text for the pane to handle");
-*/
+	//display this after 20 seconds of finishing information 1
+	//boss 1
+		//question 1
+
+		showText(TEXT_QUESTION, REPLACE, "What are some examples of common VARIABLES?");
+		showText(TEXT_QUESTION, APPEND, "");
+		showText(TEXT_QUESTION, APPEND, "Remember to look at the INFORMATION SCREEN below");
+		showText(TEXT_QUESTION, APPEND, "and COLLECTED ANSWERS to the right!");
+
+		//question 2
+
+		showText(TEXT_QUESTION, REPLACE, "");
+		showText(TEXT_QUESTION, APPEND, "");
+
+		//question 3
+
+		showText(TEXT_QUESTION, REPLACE, "");
+		showText(TEXT_QUESTION, APPEND, "");
+
+		//question 4
+
+		showText(TEXT_QUESTION, REPLACE, "");
+		showText(TEXT_QUESTION, APPEND, "");
+
+	//boss 2
+		//question 1
+
+		showText(TEXT_QUESTION, REPLACE, "");
+		showText(TEXT_QUESTION, APPEND, "");
+		showText(TEXT_QUESTION, APPEND, "Remember to look at the INFORMATION SCREEN below");
+		showText(TEXT_QUESTION, APPEND, "and COLLECTED ANSWERS to the right!");
+
+		//question 2
+
+		showText(TEXT_QUESTION, REPLACE, "");
+		showText(TEXT_QUESTION, APPEND, "");
+
+		//question 3
+
+		showText(TEXT_QUESTION, REPLACE, "");
+		showText(TEXT_QUESTION, APPEND, "");
+
+		//question 4
+
+		showText(TEXT_QUESTION, REPLACE, "");
+		showText(TEXT_QUESTION, APPEND, "");
+
+	//boss 3
+		//question 1
+
+		showText(TEXT_QUESTION, REPLACE, "");
+		showText(TEXT_QUESTION, APPEND, "");
+		showText(TEXT_QUESTION, APPEND, "Remember to look at the INFORMATION SCREEN below");
+		showText(TEXT_QUESTION, APPEND, "and COLLECTED ANSWERS to the right!");
+
+		//question 2
+
+		showText(TEXT_QUESTION, REPLACE, "");
+		showText(TEXT_QUESTION, APPEND, "");
+
+		//question 3
+
+		showText(TEXT_QUESTION, REPLACE, "");
+		showText(TEXT_QUESTION, APPEND, "");
+
+		//question 4
+
+		showText(TEXT_QUESTION, REPLACE, "");
+		showText(TEXT_QUESTION, APPEND, "");
+
+	//boss 4
+		//question 1
+
+		showText(TEXT_QUESTION, REPLACE, "");
+		showText(TEXT_QUESTION, APPEND, "");
+		showText(TEXT_QUESTION, APPEND, "Remember to look at the INFORMATION SCREEN below");
+		showText(TEXT_QUESTION, APPEND, "and COLLECTED ANSWERS to the right!");
+
+		//question 2
+
+		showText(TEXT_QUESTION, REPLACE, "");
+		showText(TEXT_QUESTION, APPEND, "");
+
+		//question 3
+
+		showText(TEXT_QUESTION, REPLACE, "");
+		showText(TEXT_QUESTION, APPEND, "");
+
+		//question 4
+
+		showText(TEXT_QUESTION, REPLACE, "");
+		showText(TEXT_QUESTION, APPEND, "");
+
+	//game start (on key press)
+
+	showText(TEXT_INFO, REPLACE, "Welcome programming cadet!");
+	showText(TEXT_INFO, APPEND, "You have been tasked with defending the Galaxy.");
+	showText(TEXT_INFO, APPEND, "");
+	showText(TEXT_INFO, APPEND, "Move the Ship using the LEFT and RIGHT arrow keys.");
+	showText(TEXT_INFO, APPEND, "Fire by pressing or holding the SPACE key.");
+	showText(TEXT_INFO, APPEND, "");
+	showText(TEXT_INFO, APPEND, "Try moving the ship and firing!");
+	showText(TEXT_INFO, APPEND, "");
+	
+	//wait 20 seconds after input
+
+	showText(TEXT_INFO, REPLACE, "Ahead of you is the Evil Empire.");
+	showText(TEXT_INFO, APPEND, "They threaten all that is good in the world.");
+	showText(TEXT_INFO, APPEND, "");
+	showText(TEXT_INFO, APPEND, "Dodge them and their attacks!  We'll keep score");
+	showText(TEXT_INFO, APPEND, "of how many you destroy.");
+	showText(TEXT_INFO, APPEND, "");
+	showText(TEXT_INFO, APPEND, "After 9 waves you'll fight the Mothership.");
+	showText(TEXT_INFO, APPEND, "");
+	showText(TEXT_INFO, APPEND, "We'll give you more information here when you get");
+	showText(TEXT_INFO, APPEND, "there!");
+
+	//wait 20 seconds
+
+	showText(TEXT_INFO, REPLACE, "This screen is the INFORMATION SCREEN.");
+	showText(TEXT_INFO, APPEND, "");
+	showText(TEXT_INFO, APPEND, "This will display helpful tips and programming");
+	showText(TEXT_INFO, APPEND, "advice to help you battle the upcoming enemies.");
+	showText(TEXT_INFO, APPEND, "");
+	showText(TEXT_INFO, APPEND, "Above here is the QUESTION SCREEN.");
+	showText(TEXT_INFO, APPEND, "When you fight against the Mothership you'll");
+	showText(TEXT_INFO, APPEND, "have to disable their shields in order to attack.");
+	showText(TEXT_INFO, APPEND, "");
+	showText(TEXT_INFO, APPEND, "To do this you'll need to answer programming");
+	showText(TEXT_INFO, APPEND, "and computer science related questions.");
+	showText(TEXT_INFO, APPEND, "");
+	showText(TEXT_INFO, APPEND, "To the right is your GENERATED ANSWERS.");
+	showText(TEXT_INFO, APPEND, "");
+	showText(TEXT_INFO, APPEND, "As you defeat enemy ships, you'll begin");
+	showText(TEXT_INFO, APPEND, "collecting important enemy intel for");
+	showText(TEXT_INFO, APPEND, "when you fight the Mothership.");
+
+	//wait 20 seconds
+
+	showText(TEXT_INFO, REPLACE, "When you're ready, press S to start the game!");
+
+	//boss 1
+		//information 1
+
+		showText(TEXT_INFO, REPLACE, "The Mothership approaches!");
+		showText(TEXT_INFO, APPEND, "");
+		showText(TEXT_INFO, APPEND, "To destroy the Mothership, we'll need to disable");
+		showText(TEXT_INFO, APPEND, "its defences.");
+		showText(TEXT_INFO, APPEND, "");
+		showText(TEXT_INFO, APPEND, "To do this, you'll need to select the correct ANSWER");
+		showText(TEXT_INFO, APPEND, "to the QUESTION displayed above.");
+		showText(TEXT_INFO, APPEND, "");
+		showText(TEXT_INFO, APPEND, "Shoot at either the LEFT or RIGHT side of the Mothership");
+		showText(TEXT_INFO, APPEND, "to answer the question.");
+		showText(TEXT_INFO, APPEND, "");
+		showText(TEXT_INFO, APPEND, "Here comes the first question now, look up!");
+
+		//wait 10 seconds
+
+		showText(TEXT_INFO, REPLACE, "");
+		showText(TEXT_INFO, APPEND, "");
+
+		//information 2
+
+		showText(TEXT_INFO, REPLACE, "");
+		showText(TEXT_INFO, APPEND, "");
+
+		//information 3
+
+		showText(TEXT_INFO, REPLACE, "");
+		showText(TEXT_INFO, APPEND, "");
+
+		//information 4
+
+		showText(TEXT_INFO, REPLACE, "");
+		showText(TEXT_INFO, APPEND, "");
+
+	//boss 2
+		//information 1
+
+		showText(TEXT_INFO, REPLACE, "");
+		showText(TEXT_INFO, APPEND, "");
+		showText(TEXT_INFO, APPEND, "Remember to look at the INFORMATION SCREEN below");
+		showText(TEXT_INFO, APPEND, "and COLLECTED ANSWERS to the right!");
+
+		//information 2
+
+		showText(TEXT_INFO, REPLACE, "");
+		showText(TEXT_INFO, APPEND, "");
+
+		//information 3
+
+		showText(TEXT_INFO, REPLACE, "");
+		showText(TEXT_INFO, APPEND, "");
+
+		//information 4
+
+		showText(TEXT_INFO, REPLACE, "");
+		showText(TEXT_INFO, APPEND, "");
+
+		//boss 3
+			//information 1
+
+			showText(TEXT_INFO, REPLACE, "");
+			showText(TEXT_INFO, APPEND, "");
+			showText(TEXT_INFO, APPEND, "Remember to look at the INFORMATION SCREEN below");
+			showText(TEXT_INFO, APPEND, "and COLLECTED ANSWERS to the right!");
+
+			//information 2
+
+			showText(TEXT_INFO, REPLACE, "");
+			showText(TEXT_INFO, APPEND, "");
+
+			//information 3
+
+			showText(TEXT_INFO, REPLACE, "");
+			showText(TEXT_INFO, APPEND, "");
+
+			//information 4
+
+			showText(TEXT_INFO, REPLACE, "");
+			showText(TEXT_INFO, APPEND, "");
+
+		//boss 4
+			//information 1
+
+			showText(TEXT_INFO, REPLACE, "");
+			showText(TEXT_INFO, APPEND, "");
+			showText(TEXT_INFO, APPEND, "Remember to look at the INFORMATION SCREEN below");
+			showText(TEXT_INFO, APPEND, "and COLLECTED ANSWERS to the right!");
+
+			//information 2
+
+			showText(TEXT_INFO, REPLACE, "");
+			showText(TEXT_INFO, APPEND, "");
+
+			//information 3
+
+			showText(TEXT_INFO, REPLACE, "");
+			showText(TEXT_INFO, APPEND, "");
+
+			//information 4
+
+			showText(TEXT_INFO, REPLACE, "");
+			showText(TEXT_INFO, APPEND, "");
+
+	//possible answers
+
+	//boss 1
+		//possible answers
+
+		showText(TEXT_ANSWER, REPLACE, "int");
+		showText(TEXT_ANSWER, APPEND, "string");
+		showText(TEXT_ANSWER, APPEND, "char");
+		showText(TEXT_ANSWER, APPEND, "double");
+
+	//boss 2
+		//possible answers
+
+		showText(TEXT_ANSWER, REPLACE, "");
+		showText(TEXT_ANSWER, APPEND, "");
+		showText(TEXT_ANSWER, APPEND, "");
+		showText(TEXT_ANSWER, APPEND, "");
+		showText(TEXT_ANSWER, APPEND, "");
+
+	//boss 3
+		//possible answers
+
+		showText(TEXT_ANSWER, REPLACE, "");
+		showText(TEXT_ANSWER, APPEND, "");
+		showText(TEXT_ANSWER, APPEND, "");
+		showText(TEXT_ANSWER, APPEND, "");
+		showText(TEXT_ANSWER, APPEND, "");
+		showText(TEXT_ANSWER, APPEND, "");
+
+	//boss 4
+		//possible answers
+
+		showText(TEXT_ANSWER, REPLACE, "");
+		showText(TEXT_ANSWER, APPEND, "");
+		showText(TEXT_ANSWER, APPEND, "");
+		showText(TEXT_ANSWER, APPEND, "");
+		showText(TEXT_ANSWER, APPEND, "");
+		showText(TEXT_ANSWER, APPEND, "");
+		showText(TEXT_ANSWER, APPEND, "");
+
 	static text_object* Scoretxt = (text_object*)Factory::create_object(Factory::SCORE_TEXT);
 	allDisplayObjects.push_back(Scoretxt);
 
