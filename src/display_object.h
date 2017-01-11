@@ -8,7 +8,8 @@ public:
 	enum display_obj_type { GUI_OBJECT,
 							GAME_OBJECT,
 							TEXT_OBJECT,
-							PLAYER_OBJECT};
+							PLAYER_OBJECT,
+							BOSS_OBJECT};
 	enum renderLayers { BACKGROUND,
 						GAME_SPACE,
 						UI_BACKGROUND,

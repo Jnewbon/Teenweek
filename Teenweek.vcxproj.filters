@@ -81,6 +81,9 @@
     <ClCompile Include="src\level.cpp">
       <Filter>Source Files\System</Filter>
     </ClCompile>
+    <ClCompile Include="src\boss_object.cpp">
+      <Filter>Source Files\System</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\cls_game.h">
@@ -126,6 +129,9 @@
       <Filter>Header Files\System\dynamic_obj_actions</Filter>
     </ClInclude>
     <ClInclude Include="src\level.h">
+      <Filter>Header Files\System</Filter>
+    </ClInclude>
+    <ClInclude Include="src\boss_object.h">
       <Filter>Header Files\System</Filter>
     </ClInclude>
   </ItemGroup>

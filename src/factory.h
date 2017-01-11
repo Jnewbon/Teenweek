@@ -26,10 +26,12 @@ public:
 		MISSLE_ONE,
 		MISSLE_TWO,
 		EXPLOSION,
+
 		//UI Objects
 		GAME_UI,
 		BACKGROUND,
 		BACKGROUND2,
+
 		//Text Objects
 		INFO_TEXT,
 		ANSWER_TEXT,

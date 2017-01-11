@@ -6,6 +6,7 @@
 #include "dynamic_obj_action.h"
 #include "action_shoot.h"
 #include "explosion_object.h"
+#include "boss_object.h"
 
 using namespace std;
 using namespace glm;
@@ -15,6 +16,7 @@ display_object * Factory::create_object(Types obj_type)
 	display_object* new_obj = nullptr;			//The parent node used for passing the object back to the caller
 	image_object* new_Img_obj = nullptr;		//Contains all static image objects, The GUI and similer
 	Dynamic_image_obj* new_Dyn_obj = nullptr;	//Contains all dynamic image objects, Ships and games specific onjects
+	boss_object* new_Bos_obj = nullptr;	//Contains all dynamic image objects, Ships and games specific onjects
 	text_object* new_Txt_obj = nullptr;			//Contains all the textual content on the screen
 	player_object* new_Ply_obj = nullptr;		//Contains all the textual content on the screen
 	explosion_object* new_exp_obj = nullptr;
@@ -174,86 +176,87 @@ display_object * Factory::create_object(Types obj_type)
 		break;
 	case Factory::BOSS_ONE:
 		//Create the specific type required
-		new_Dyn_obj = new Dynamic_image_obj();
+		new_Bos_obj = new boss_object();
 
 		//Location, Just set it to 0
-		new_Dyn_obj->setLocation(0.0f, 0.0f);
+		new_Bos_obj->setLocation(0.0f, 0.0f);
 		//This is the scale of the object, minus numbers will flip the image on that axis 
-		new_Dyn_obj->setScale(0.2f, 0.65f);
+		new_Bos_obj->setScale(0.2f, 0.65f);
 
 		//The texture that will be used by the object
-		new_Dyn_obj->set_Texture(loadTexture(L"resources\\textures\\enemies\\boss_one.png"));
+		new_Bos_obj->set_Texture(loadTexture(L"resources\\textures\\enemies\\boss_one.png"));
 
 		//Texture is a square so tell the object that.
-		new_Dyn_obj->set_VAO(image_object::SquareVAO);
+		new_Bos_obj->set_VAO(image_object::SquareVAO);
 
 		//The deafult Shader, This will be the same for most objects
-		new_Dyn_obj->setShader(game::default_shader);
+		new_Bos_obj->setShader(game::default_shader);
 
-		new_Dyn_obj->setObjectType(Dynamic_image_obj::SHIP);
+		new_Bos_obj->setObjectType(Dynamic_image_obj::SHIP);
+		//new_Bos_obj->setAction(create_object(WPN_ENEMY_DIRECTED, new_Dyn_obj));
 
 		break;
 	case Factory::BOSS_TWO:
 		//Create the specific type required
-		new_Dyn_obj = new Dynamic_image_obj();
+		new_Bos_obj = new boss_object();
 
 		//Location, Just set it to 0
-		new_Dyn_obj->setLocation(0.0f, 0.0f);
+		new_Bos_obj->setLocation(0.0f, 0.0f);
 		//This is the scale of the object, minus numbers will flip the image on that axis 
-		new_Dyn_obj->setScale(0.4f, 0.35f);
+		new_Bos_obj->setScale(0.4f, 0.35f);
 
 		//The texture that will be used by the object
-		new_Dyn_obj->set_Texture(loadTexture(L"resources\\textures\\enemies\\boss_two.png"));
+		new_Bos_obj->set_Texture(loadTexture(L"resources\\textures\\enemies\\boss_two.png"));
 
 		//Texture is a square so tell the object that.
-		new_Dyn_obj->set_VAO(image_object::SquareVAO);
+		new_Bos_obj->set_VAO(image_object::SquareVAO);
 
 		//The deafult Shader, This will be the same for most objects
-		new_Dyn_obj->setShader(game::default_shader);
+		new_Bos_obj->setShader(game::default_shader);
 
-		new_Dyn_obj->setObjectType(Dynamic_image_obj::SHIP);
+		new_Bos_obj->setObjectType(Dynamic_image_obj::SHIP);
 
 		break;
 	case Factory::BOSS_THREE:
 		//Create the specific type required
-		new_Dyn_obj = new Dynamic_image_obj();
+		new_Bos_obj = new boss_object();
 
 		//Location, Just set it to 0
-		new_Dyn_obj->setLocation(0.0f, 0.0f);
+		new_Bos_obj->setLocation(0.0f, 0.0f);
 		//This is the scale of the object, minus numbers will flip the image on that axis 
-		new_Dyn_obj->setScale(0.5f, 0.8f);
+		new_Bos_obj->setScale(0.5f, 0.8f);
 
 		//The texture that will be used by the object
-		new_Dyn_obj->set_Texture(loadTexture(L"resources\\textures\\enemies\\boss_three.png"));
+		new_Bos_obj->set_Texture(loadTexture(L"resources\\textures\\enemies\\boss_three.png"));
 
 		//Texture is a square so tell the object that.
-		new_Dyn_obj->set_VAO(image_object::SquareVAO);
+		new_Bos_obj->set_VAO(image_object::SquareVAO);
 
 		//The deafult Shader, This will be the same for most objects
-		new_Dyn_obj->setShader(game::default_shader);
+		new_Bos_obj->setShader(game::default_shader);
 
-		new_Dyn_obj->setObjectType(Dynamic_image_obj::SHIP);
+		new_Bos_obj->setObjectType(Dynamic_image_obj::SHIP);
 
 		break;
 	case Factory::BOSS_FOUR:
 		//Create the specific type required
-		new_Dyn_obj = new Dynamic_image_obj();
+		new_Bos_obj = new boss_object();
 
 		//Location, Just set it to 0
-		new_Dyn_obj->setLocation(0.0f, 0.0f);
+		new_Bos_obj->setLocation(0.0f, 0.0f);
 		//This is the scale of the object, minus numbers will flip the image on that axis 
-		new_Dyn_obj->setScale(0.35f, 0.75f);
+		new_Bos_obj->setScale(0.35f, 0.75f);
 
 		//The texture that will be used by the object
-		new_Dyn_obj->set_Texture(loadTexture(L"resources\\textures\\enemies\\boss_four.png"));
+		new_Bos_obj->set_Texture(loadTexture(L"resources\\textures\\enemies\\boss_four.png"));
 
 		//Texture is a square so tell the object that.
-		new_Dyn_obj->set_VAO(image_object::SquareVAO);
+		new_Bos_obj->set_VAO(image_object::SquareVAO);
 
 		//The deafult Shader, This will be the same for most objects
-		new_Dyn_obj->setShader(game::default_shader);
+		new_Bos_obj->setShader(game::default_shader);
 
-		new_Dyn_obj->setObjectType(Dynamic_image_obj::SHIP);
+		new_Bos_obj->setObjectType(Dynamic_image_obj::SHIP);
 
 		break;
 	case Factory::BULLET_ONE:
@@ -528,6 +531,8 @@ display_object * Factory::create_object(Types obj_type)
 		new_obj = new_Ply_obj;
 	else if (new_exp_obj)
 		new_obj = new_exp_obj;
+	else if (new_Bos_obj)
+		new_obj = new_Bos_obj;
 
 
 	return new_obj;
