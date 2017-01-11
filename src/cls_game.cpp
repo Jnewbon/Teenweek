@@ -20,6 +20,7 @@ glm::vec2					game::screenSize;			//Contains the Size of the screen
 bool						game::fullscreen;			//is the game fullscreen (default false)
 display_object*				game::player = nullptr;
 int							game::score = 0;
+bool						game::start = true;
 
 game::game(int argc, char ** argv)
 {
@@ -96,56 +97,57 @@ void game::mainloop()
 	{
 	
 		//TODO Remove this and put it in a better location
-
-		static int spawnrate = 0;
-		int count = 0;
-		for (unsigned int j = 0; j < Factory::NUMBER_OF_ENEMIES; j++)
+		if (!start)
 		{
-			count += level_ships[level][j];
-		}
-		for (list<display_object*>::iterator i = allDisplayObjects.begin();
-			i != allDisplayObjects.end();
-			i++)
-		{
-			if (((Dynamic_image_obj*)(*i))->getObjectType() == Dynamic_image_obj::SHIP)
-				count++;
-		}
-
-
-		if (count == 0)
-			level++;
-
-		if (level >= MAX_LEVELS)
-		{
-			quit = true;
-			break;
-		}
-
-		count = 0;
-		for (unsigned int j = Factory::ENEMY_ONE; j <= Factory::ENEMY_FIVE; j++)
-		{
-			count += level_ships[level][j];
-		}
-
-		if (count > 0 && spawnrate++ > (ENEMY_SHIP_SPAWN_BASE - (ENEMY_SHIP_SPAWN_PER_LEVEL_FACTOR * level)) + (rand() % ENEMY_SHIP_SPAWN_RANDOMNESS))
-		{
-			spawnrate = 0;
-			unsigned int ChosenShip = rand() % Factory::ENEMY_FIVE + 1;
-			while (level_ships[level][ChosenShip] == 0) {
-				ChosenShip = rand() % (Factory::ENEMY_FIVE + 1);
+			static int spawnrate = 0;
+			int count = 0;
+			for (unsigned int j = 0; j < Factory::NUMBER_OF_ENEMIES; j++)
+			{
+				count += level_ships[level][j];
 			}
-			level_ships[level][ChosenShip]--;
+			for (list<display_object*>::iterator i = allDisplayObjects.begin();
+				i != allDisplayObjects.end();
+				i++)
+			{
+				if (((Dynamic_image_obj*)(*i))->getObjectType() == Dynamic_image_obj::SHIP)
+					count++;
+			}
 
-			Dynamic_image_obj* temp = (Dynamic_image_obj*)Factory::create_object((Factory::Types)ChosenShip);
 
-			temp->setLocation(glm::vec2(GAME_SPACE_LEFT + static_cast <float> (rand()) / (static_cast <float> (RAND_MAX / (GAME_SPACE_RIGHT - GAME_SPACE_LEFT))), GAME_SPACE_TOP));
-			temp->setSpeed(glm::vec2(0.0f, -(ENEMY_BASE_SHIP_SPEED +  (ENEMY_SHIP_SPEED_LEVEL_FACTOR * float(level)))));
-			allDisplayObjects.push_back(temp);
-			
+			if (count == 0)
+				level++;
+
+			if (level >= MAX_LEVELS)
+			{
+				quit = true;
+				break;
+			}
+
+			count = 0;
+			for (unsigned int j = Factory::ENEMY_ONE; j <= Factory::ENEMY_FIVE; j++)
+			{
+				count += level_ships[level][j];
+			}
+
+			if (count > 0 && spawnrate++ > (ENEMY_SHIP_SPAWN_BASE - (ENEMY_SHIP_SPAWN_PER_LEVEL_FACTOR * level)) + (rand() % ENEMY_SHIP_SPAWN_RANDOMNESS))
+			{
+				spawnrate = 0;
+				unsigned int ChosenShip = rand() % Factory::ENEMY_FIVE + 1;
+				while (level_ships[level][ChosenShip] == 0) {
+					ChosenShip = rand() % (Factory::ENEMY_FIVE + 1);
+				}
+				level_ships[level][ChosenShip]--;
+
+				Dynamic_image_obj* temp = (Dynamic_image_obj*)Factory::create_object((Factory::Types)ChosenShip);
+
+				temp->setLocation(glm::vec2(GAME_SPACE_LEFT + static_cast <float> (rand()) / (static_cast <float> (RAND_MAX / (GAME_SPACE_RIGHT - GAME_SPACE_LEFT))), GAME_SPACE_TOP));
+				temp->setSpeed(glm::vec2(0.0f, -(ENEMY_BASE_SHIP_SPEED + (ENEMY_SHIP_SPEED_LEVEL_FACTOR * float(level)))));
+				allDisplayObjects.push_back(temp);
+
+			}
+
 		}
-
-
-
+	
 
 
 
@@ -368,6 +370,11 @@ void game::event_mouseClick(int button, int state, int x, int y)
 
 void game::event_keyPress(unsigned char key, int x, int y)
 {
+	if (start)
+	{
+		if (key == 's')
+			start = false;
+	}
 	((player_object*)player)->event_keyPress(key, true);
 #ifdef DEBUG_KEY_PRESS
 	printf("KeyPress: '%c' Loc {%4i,%4i}\t {%7.4f,%7.4f}\n", key, x, y, ((2.0f / screenSize.x) * x) - 1.0f, -(((2.0f / screenSize.y) * y) - 1.0f));
@@ -376,7 +383,10 @@ void game::event_keyPress(unsigned char key, int x, int y)
 
 void game::event_keyPressUP(unsigned char key, int x, int y)
 {
-	((player_object*)player)->event_keyPress(key, false);
+	if (!start)
+	{
+		((player_object*)player)->event_keyPress(key, false);
+	}
 #ifdef DEBUG_KEY_PRESS
 		printf("KeyPress: '%c' Loc {%4i,%4i}\t {%7.4f,%7.4f}\n", key, x, y, ((2.0f / screenSize.x) * x) - 1.0f, -(((2.0f / screenSize.y) * y) - 1.0f));
 #endif
@@ -384,7 +394,10 @@ void game::event_keyPressUP(unsigned char key, int x, int y)
 
 void game::event_specialkey(int key, int x, int y)
 {
-	((player_object*)player)->event_SpeckeyPress(key, true);
+	if (!start)
+	{
+		((player_object*)player)->event_SpeckeyPress(key, true);
+	}
 #ifdef DEBUG_KEY_PRESS
 	printf("SpecKeyDN: '%i' Loc {%4i,%4i}\t {%7.4f,%7.4f}\n", key, x, y, ((2.0f / screenSize.x) * x) - 1.0f, -(((2.0f / screenSize.y) * y) - 1.0f));
 #endif
@@ -392,7 +405,10 @@ void game::event_specialkey(int key, int x, int y)
 
 void game::event_specialkeyUP(int key, int x, int y)
 {
-	((player_object*)player)->event_SpeckeyPress(key, false);
+	if (!start)
+	{
+		((player_object*)player)->event_SpeckeyPress(key, false);
+	}
 #ifdef DEBUG_KEY_PRESS
 	printf("SpecKeyUP: '%i' Loc {%4i,%4i}\t {%7.4f,%7.4f}\n", key, x, y, ((2.0f / screenSize.x) * x) - 1.0f, -(((2.0f / screenSize.y) * y) - 1.0f));
 #endif

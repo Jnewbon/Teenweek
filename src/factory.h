@@ -35,6 +35,7 @@ public:
 		ANSWER_TEXT,
 		QUESTION_TEXT,
 		SCORE_TEXT,
+		START_TEXT,
 
 		//Special Case
 		PLAYER_SHIP

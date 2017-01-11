@@ -452,6 +452,15 @@ display_object * Factory::create_object(Types obj_type)
 
 
 		break;
+	case Factory::START_TEXT:
+		new_Txt_obj = new text_object();
+
+		new_Txt_obj->setLocation(vec2(0.8f, 0.0f));
+
+		new_Txt_obj->setColour(vec3(1.0f, 0.0f, 0.0f));
+
+
+		break;
 	case Factory::BACKGROUND:
 		//Create the specific type required
 		new_Dyn_obj = new Dynamic_image_obj();

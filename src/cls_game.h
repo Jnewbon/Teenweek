@@ -69,6 +69,7 @@ private:
 	char**				argv;
 
 
+	static bool			start;
 	//Game Variables
 
 	static std::list<display_object*>		allDisplayObjects;				//Contains all object to be displayed to the screen
