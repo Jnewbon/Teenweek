@@ -1,7 +1,21 @@
 #pragma once
 
 //Target frame rate, The max FPS the game will run
-#define MAX_FRAME_RATE 30
+#define MAX_FRAME_RATE	30
+#define MAX_LEVELS		1	
+
+//Enemy ships stats 
+#define ENEMY_BASE_SHIP_SPEED				0.1f
+#define ENEMY_SHIP_SPEED_LEVEL_FACTOR		0.05f
+
+#define ENEMY_SHIP_SPAWN_BASE				200
+#define ENEMY_SHIP_SPAWN_PER_LEVEL_FACTOR	20
+#define ENEMY_SHIP_SPAWN_RANDOMNESS			50
+
+#define GAME_SPACE_LEFT						-0.25f
+#define GAME_SPACE_RIGHT					0.653f
+#define GAME_SPACE_TOP						0.85f
+#define GAME_SPACE_BOTTOM					-0.75f
 
 
 //will output the mouse location to console

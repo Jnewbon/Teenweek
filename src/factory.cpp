@@ -58,7 +58,7 @@ display_object * Factory::create_object(Types obj_type)
 		new_Dyn_obj = new Dynamic_image_obj();
 
 		//Location, Just set it to 0
-		new_Dyn_obj->setLocation(0.1638f, 1.2f);
+		new_Dyn_obj->setLocation(0.1638f, 0.85f);
 		
 		//This is the scale of the object, minus numbers will flip the image on that axis 
 		new_Dyn_obj->setScale(0.1f, 0.2f);
@@ -72,9 +72,11 @@ display_object * Factory::create_object(Types obj_type)
 		//The deafult Shader, This will be the same for most objects
 		new_Dyn_obj->setShader(game::default_shader);
 
-		new_Dyn_obj->setSpeed(vec2(0.0f, -0.4f));
+		new_Dyn_obj->setSpeed(vec2(0.0f, -0.3f));
 
 		new_Dyn_obj->setObjectType(Dynamic_image_obj::SHIP);
+
+		new_Dyn_obj->setAction(create_object(WPN_ENEMY_BASIC, new_Dyn_obj));
 
 		break;
 	case Factory::ENEMY_TWO:
@@ -82,7 +84,7 @@ display_object * Factory::create_object(Types obj_type)
 		new_Dyn_obj = new Dynamic_image_obj();
 
 		//Location, Just set it to 0
-		new_Dyn_obj->setLocation(0.0f, 0.0f);
+		new_Dyn_obj->setLocation(0.0f, 1.0f);
 		//This is the scale of the object, minus numbers will flip the image on that axis 
 		new_Dyn_obj->setScale(0.1f, 0.2f);
 
@@ -94,8 +96,11 @@ display_object * Factory::create_object(Types obj_type)
 
 		//The deafult Shader, This will be the same for most objects
 		new_Dyn_obj->setShader(game::default_shader);
+		new_Dyn_obj->setSpeed(vec2(0.0f, -0.35f));
 
 		new_Dyn_obj->setObjectType(Dynamic_image_obj::SHIP);
+
+		new_Dyn_obj->setAction(create_object(WPN_ENEMY_DIRECTED, new_Dyn_obj));
 
 		break;
 	case Factory::ENEMY_THREE:
@@ -353,7 +358,7 @@ display_object * Factory::create_object(Types obj_type)
 		//Location, Just set it to 0
 		new_Dyn_obj->setLocation(0.0f, 0.0f);
 		//This is the scale of the object, minus numbers will flip the image on that axis 
-		new_Dyn_obj->setScale(0.05f, 0.1f);
+		new_Dyn_obj->setScale(0.025f, 0.05f);
 
 		//The texture that will be used by the object
 		new_Dyn_obj->set_Texture(loadTexture(L"resources\\textures\\misc\\missle_one.png"));
@@ -429,7 +434,16 @@ display_object * Factory::create_object(Types obj_type)
 		new_Txt_obj->setLocation(vec2(-0.93f, 0.8f));
 
 		new_Txt_obj->setColour(vec3(1.0f, 0.0f, 0.0f));
-		
+
+
+		break;
+	case Factory::SCORE_TEXT:
+		new_Txt_obj = new text_object();
+
+		new_Txt_obj->setLocation(vec2(0.8f, -0.68f));
+
+		new_Txt_obj->setColour(vec3(1.0f, 0.0f, 0.0f));
+
 
 		break;
 	case Factory::BACKGROUND:
@@ -513,8 +527,13 @@ dynamic_obj_action * Factory::create_object(action_type obj_type, Dynamic_image_
 	switch (obj_type)
 	{
 	case WPN_PLAYER_BASIC:
-		newActShoot = new action_shoot(parent);
+	case WPN_ENEMY_BASIC:
+		newActShoot = new action_shoot(parent, action_shoot::BASIC);
+		break;
 
+	case WPN_ENEMY_DIRECTED:
+		newActShoot = new action_shoot(parent, action_shoot::SMART);
+		break;
 	default:
 		break;
 	}

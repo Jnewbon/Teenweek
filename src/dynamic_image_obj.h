@@ -53,6 +53,7 @@ protected:
 	bool				isDestroyed;
 
 private:
+	int fireRate;
 	//TODO: Health
 
 	//TODO: movment behaviour

@@ -8,7 +8,6 @@ class Factory
 public:
 	enum Types {
 		//Game Objects
-		PLAYER_SHIP,
 		ENEMY_ONE,
 		ENEMY_TWO,
 		ENEMY_THREE,
@@ -18,6 +17,8 @@ public:
 		BOSS_TWO,
 		BOSS_THREE,
 		BOSS_FOUR,
+		NUMBER_OF_ENEMIES,
+
 		BULLET_ONE,
 		BULLET_TWO,
 		BULLET_THREE,
@@ -32,11 +33,17 @@ public:
 		//Text Objects
 		INFO_TEXT,
 		ANSWER_TEXT,
-		QUESTION_TEXT
+		QUESTION_TEXT,
+		SCORE_TEXT,
+
+		//Special Case
+		PLAYER_SHIP
 	};
 
 	enum action_type {
-		WPN_PLAYER_BASIC
+		WPN_PLAYER_BASIC,
+		WPN_ENEMY_BASIC,
+		WPN_ENEMY_DIRECTED
 	};
 
 	static display_object*		create_object(Types obj_type);

@@ -19,7 +19,7 @@ std::list<display_object*>	game::allDisplayObjects;	//Contains all object to be 
 glm::vec2					game::screenSize;			//Contains the Size of the screen
 bool						game::fullscreen;			//is the game fullscreen (default false)
 display_object*				game::player = nullptr;
-unsigned int				game::score = 0;
+int							game::score = 0;
 
 game::game(int argc, char ** argv)
 {
@@ -59,12 +59,10 @@ void game::mainloop()
 	player = Factory::create_object(Factory::PLAYER_SHIP);
 
 	allDisplayObjects.push_back(player);
-	allDisplayObjects.push_back(Factory::create_object(Factory::ENEMY_ONE));
 	allDisplayObjects.push_back(Factory::create_object(Factory::GAME_UI));
 	allDisplayObjects.push_back(Factory::create_object(Factory::INFO_TEXT));
 	allDisplayObjects.push_back(Factory::create_object(Factory::QUESTION_TEXT));
 	allDisplayObjects.push_back(Factory::create_object(Factory::ANSWER_TEXT));
-	allDisplayObjects.push_back(Factory::create_object(Factory::EXPLOSION));
 
 	showText(TEXT_QUESTION, REPLACE, "This is some Test Question Text. I can be this long before running off the end of the pane.");
 	showText(TEXT_QUESTION, APPEND, "This is a second line of text for the pane to handle");
@@ -73,25 +71,86 @@ void game::mainloop()
 	showText(TEXT_ANSWER, REPLACE, "This is some Test Answer Text. I can be this long before running off the end of the pane.");
 	showText(TEXT_ANSWER, APPEND, "This is a second line of text for the pane to handle");
 
-	while (true)
+	static text_object* Scoretxt = (text_object*)Factory::create_object(Factory::SCORE_TEXT);
+	allDisplayObjects.push_back(Scoretxt);
+
+	static int level = 0;
+
+	static int level_ships[MAX_LEVELS][Factory::NUMBER_OF_ENEMIES];
+
+	for (unsigned int i = 0; i < MAX_LEVELS; i++)
+	{
+		for (unsigned int j = 0; j < Factory::NUMBER_OF_ENEMIES; j++)
+		{
+			level_ships[i][j] = 0;
+		}
+	}
+
+	srand(0);
+
+ 	generateLevels(level_ships);
+
+	bool quit = false;
+
+	while (!quit)
 	{
 	
 		//TODO Remove this and put it in a better location
 
 		static int spawnrate = 0;
-
-		if (spawnrate++ > 150)
+		int count = 0;
+		for (unsigned int j = 0; j < Factory::NUMBER_OF_ENEMIES; j++)
 		{
-			allDisplayObjects.push_back(Factory::create_object(Factory::ENEMY_ONE));
+			count += level_ships[level][j];
+		}
+		for (list<display_object*>::iterator i = allDisplayObjects.begin();
+			i != allDisplayObjects.end();
+			i++)
+		{
+			if (((Dynamic_image_obj*)(*i))->getObjectType() == Dynamic_image_obj::SHIP)
+				count++;
+		}
+
+
+		if (count == 0)
+			level++;
+
+		if (level >= MAX_LEVELS)
+		{
+			quit = true;
+			break;
+		}
+
+		count = 0;
+		for (unsigned int j = Factory::ENEMY_ONE; j <= Factory::ENEMY_FIVE; j++)
+		{
+			count += level_ships[level][j];
+		}
+
+		if (count > 0 && spawnrate++ > (ENEMY_SHIP_SPAWN_BASE - (ENEMY_SHIP_SPAWN_PER_LEVEL_FACTOR * level)) + (rand() % ENEMY_SHIP_SPAWN_RANDOMNESS))
+		{
 			spawnrate = 0;
+			unsigned int ChosenShip = rand() % Factory::ENEMY_FIVE + 1;
+			while (level_ships[level][ChosenShip] == 0) {
+				ChosenShip = rand() % (Factory::ENEMY_FIVE + 1);
+			}
+			level_ships[level][ChosenShip]--;
+
+			Dynamic_image_obj* temp = (Dynamic_image_obj*)Factory::create_object((Factory::Types)ChosenShip);
+
+			temp->setLocation(glm::vec2(GAME_SPACE_LEFT + static_cast <float> (rand()) / (static_cast <float> (RAND_MAX / (GAME_SPACE_RIGHT - GAME_SPACE_LEFT))), GAME_SPACE_TOP));
+			temp->setSpeed(glm::vec2(0.0f, -(ENEMY_BASE_SHIP_SPEED +  (ENEMY_SHIP_SPEED_LEVEL_FACTOR * float(level)))));
+			allDisplayObjects.push_back(temp);
+			
 		}
 
 
 
 
-		static text_object* Score = (text_object*)Factory::create_object(Factory::ANSWER_TEXT);
 
 
+		Scoretxt->clearText();
+		Scoretxt->addText(std::to_string(score));
 		
 
 		static std::chrono::steady_clock::time_point lasttime = std::chrono::steady_clock::now();
@@ -129,8 +188,12 @@ void game::mainloop()
 		collision();
 
 	}
+	std::printf("Congratulations your score is %i \nPlease call the Attendant to record your score...", game::score);
 
+	std::system("PAUSE");
 	shutdownCOM();
+
+	
 
 }
 
@@ -194,7 +257,7 @@ void game::collision()
 						//just make sure its not the players bullet
 						if (bullet->getObjectType() != Dynamic_image_obj::PLAYER_WPN)
 						{
-							printf("oooo player done bad\n");
+							std::printf("oooo player done bad\n");
 							bullet->setDestroyed();
 							addScore(-100);
 
@@ -205,7 +268,7 @@ void game::collision()
 				{
  					if (isColliding(player, ship))
 					{
-						printf("oooo player done bad\n");
+						std::printf("oooo player done bad\n");
 						ship->setDestroyed();
 						addScore(-100);
 					}
@@ -217,7 +280,7 @@ void game::collision()
 						//just make sure its not the ships bullet
 						if (bullet->getObjectType() != Dynamic_image_obj::ENEMY_WPN)
 						{
-							printf("Player gets points yey\n");
+							std::printf("Player gets points yey\n");
 							bullet->setDestroyed();
 							ship->setDestroyed();
 							addScore(100);
@@ -233,10 +296,10 @@ void game::collision()
 		i++)
 	{
 		if (((Dynamic_image_obj*)(*i))->getType() == display_object::GAME_OBJECT &&
-			((*i)->getLocation().x < -1.5f ||
-			(*i)->getLocation().x >  1.5f ||
-			(*i)->getLocation().y < -1.5f ||
-			(*i)->getLocation().y >  1.5f || 
+			((*i)->getLocation().x < GAME_SPACE_LEFT ||
+			(*i)->getLocation().x + ((Dynamic_image_obj*)(*i))->getScale().x >  GAME_SPACE_RIGHT ||
+			(*i)->getLocation().y + ((Dynamic_image_obj*)(*i))->getScale().y < GAME_SPACE_BOTTOM ||
+			(*i)->getLocation().y >  GAME_SPACE_TOP + 0.5f ||
 			((Dynamic_image_obj*)(*i))->getDestroyed()))
 		{
 			allDisplayObjects.erase(i);
@@ -351,6 +414,12 @@ bool game::recive_message(game_msg newMsg)
 	case CREATE_OBJECT:
 		cre_msg = &newMsg.msg_contents.create_obj;
 		new_obj = Factory::create_object(cre_msg->newType);
+		((Dynamic_image_obj*)new_obj)->setSpeed(cre_msg->speed*(cre_msg->spawnScale.x * 5));
+		if (cre_msg->newType == Factory::EXPLOSION)
+		{
+			((Dynamic_image_obj*)new_obj)->setScale(cre_msg->spawnScale);
+		}
+
 		switch (cre_msg->action)
 		{
 		case NO_ACTION:
@@ -363,7 +432,7 @@ bool game::recive_message(game_msg newMsg)
 		case TARGET_PLAYER:
 			((Dynamic_image_obj*)new_obj)->setLocation(cre_msg->spawnLocation);
 			//Target Players Current Location
-			targetDirection = cre_msg->spawnLocation - (player->getLocation() + (player->getScale() / 2.0f));
+			targetDirection = cre_msg->spawnLocation - (player->getLocation() + glm::vec2((player->getScale().x / 2.0f),0.0f));
 			((Dynamic_image_obj*)new_obj)->setSpeed(glm::normalize(targetDirection)* cre_msg->speed.y) ;
 			break;
 		default:
@@ -489,4 +558,20 @@ void game::showText(text_location loc, text_mod_type type, std::string text)
 	default:
 		break;
 	}
+}
+
+void game::generateLevels(int levels[MAX_LEVELS][Factory::NUMBER_OF_ENEMIES])
+{
+	//All levels are initilized to 0, so only need to set the ones that have non 0 numbers
+	//  levels[MAX_LEVELS][Factory::<SHIPTYPE>]
+	levels[0][Factory::ENEMY_ONE] = 1;
+	levels[0][Factory::ENEMY_TWO] = 1;
+	levels[0][Factory::ENEMY_THREE] = 1;
+	levels[0][Factory::ENEMY_FOUR] = 1;
+	levels[0][Factory::ENEMY_FIVE] = 1;
+	levels[0][Factory::BOSS_ONE] = 1;
+	levels[0][Factory::BOSS_TWO] = 1;
+	levels[0][Factory::BOSS_THREE] = 1;
+	levels[0][Factory::BOSS_FOUR] = 1;
+	levels[0][Factory::NUMBER_OF_ENEMIES] = 1;
 }

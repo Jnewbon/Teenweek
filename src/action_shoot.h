@@ -5,15 +5,16 @@ class action_shoot: public dynamic_obj_action
 {
 public:
 	enum weapons_types {
-		BASIC
+		BASIC,
+		SMART
 	};
-	action_shoot(Dynamic_image_obj* parent);
+	action_shoot(Dynamic_image_obj* parent, weapons_types type);
 
 
 	void do_action();
 
+	weapons_types weapon;
 private:
 
-	weapons_types weapon;
 
 };
