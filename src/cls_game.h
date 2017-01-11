@@ -70,12 +70,14 @@ private:
 
 
 	static bool			start;
+	static int			startscreen;
 	//Game Variables
 
 	static std::list<display_object*>		allDisplayObjects;				//Contains all object to be displayed to the screen
 	static display_object*					player;							// This will be the player
 	static 	int								score;							//This will be the players score
-	//static text_object*						text_panels[No_Text_Objects];	//This will be the text panels displayed on the screen
+	static 	bool							displayed;							//This will be the players score
+																			//static text_object*						text_panels[No_Text_Objects];	//This will be the text panels displayed on the screen
 
 	//OpenGL Variables
 

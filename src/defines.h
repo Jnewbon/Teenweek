@@ -2,7 +2,7 @@
 
 //Target frame rate, The max FPS the game will run
 #define MAX_FRAME_RATE	30
-#define MAX_LEVELS		5	
+#define MAX_LEVELS		40	
 
 #define SPACE_SPEED							-0.05f
 

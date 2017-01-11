@@ -20,6 +20,7 @@ public:
 	//		Modifiers
 	//####################
 	void			clearText();
+	void			clearTextWOreset();
 	void			addText(std::string text);
 
 

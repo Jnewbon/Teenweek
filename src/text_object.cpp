@@ -24,6 +24,11 @@ void text_object::setColour(glm::vec3 colour)
 void text_object::clearText()
 {
 	this->text.clear();
+	this->NoCharToDisp = 0;
+}
+void text_object::clearTextWOreset()
+{
+	this->text.clear();
 }
 
 void text_object::draw(glm::mat4 display_matrix)
