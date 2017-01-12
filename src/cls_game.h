@@ -68,7 +68,7 @@ private:
 	int					argc;
 	char**				argv;
 
-
+	static bool qButton;
 	static bool			start;
 	static int			startscreen;
 	//Game Variables

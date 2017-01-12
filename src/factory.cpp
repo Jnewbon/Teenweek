@@ -126,7 +126,7 @@ display_object * Factory::create_object(Types obj_type)
 
 		new_Dyn_obj->setObjectType(Dynamic_image_obj::SHIP);
 
-		new_Dyn_obj->setAction(create_object(WPN_ENEMY_BASIC, new_Dyn_obj));
+		new_Dyn_obj->setAction(create_object(WPN_ENEMY_DIRECTED, new_Dyn_obj));
 
 		break;
 	case Factory::ENEMY_FOUR:
@@ -172,7 +172,7 @@ display_object * Factory::create_object(Types obj_type)
 
 		new_Dyn_obj->setObjectType(Dynamic_image_obj::SHIP);
 
-		new_Dyn_obj->setAction(create_object(WPN_ENEMY_BASIC, new_Dyn_obj));
+		new_Dyn_obj->setAction(create_object(WPN_ENEMY_DIRECTED, new_Dyn_obj));
 
 		break;
 	case Factory::BOSS_ONE:

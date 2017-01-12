@@ -93,6 +93,7 @@ void image_object::draw(mat4 display_matrix)
 {
 	mat4 temp = display_matrix * glm::translate(mat4(1.0f), vec3(this->getLocation(), 0.0f)) * glm::scale(mat4(1.0f), vec3(this->getScale(), 1.0f));
 
+
 	glEnable(GL_TEXTURE_2D);
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);

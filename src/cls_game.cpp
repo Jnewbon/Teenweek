@@ -15,6 +15,7 @@ using namespace std;
 
 GLuint game::default_shader = 0;
 
+bool game::qButton = false;
 //clock_t						game::last = 0;
 std::list<display_object*>	game::allDisplayObjects;	//Contains all object to be displayed to the screen
 glm::vec2					game::screenSize;			//Contains the Size of the screen
@@ -88,12 +89,13 @@ void game::mainloop()
 
  	generateLevels(level_ships);
 
+
 	bool quit = false;
 
-	while (!quit)
+	while (!qButton || !quit)
 	{
-	
-		if (!start)
+		qButton = false;
+		if (!start && level < MAX_LEVELS)
 		{
 
 			if ((level + 1) % 10 == 0)
@@ -158,7 +160,7 @@ void game::mainloop()
 			if (level >= MAX_LEVELS)
 			{
 				quit = true;
-				break;
+				displayed = false;
 			}
 
 
@@ -188,14 +190,26 @@ void game::mainloop()
 				Dynamic_image_obj* temp = (Dynamic_image_obj*)Factory::create_object((Factory::Types)ChosenShip);
 
 				temp->setLocation(glm::vec2(GAME_SPACE_LEFT + ((GAME_SPACE_RIGHT - GAME_SPACE_LEFT)/2) - (temp->getScale().x /2), GAME_SPACE_TOP));
-				temp->setSpeed(glm::vec2(0.0f, -(ENEMY_BASE_SHIP_SPEED )));
+				temp->setSpeed(glm::vec2(0.0f, -(ENEMY_BASE_SHIP_SPEED/2.0f)));
 				allDisplayObjects.push_back(temp);
 				spawnrate = 0;
 			}
 
 		}
 		else
-		{				
+		{			
+			if (level == 40)
+			{
+				if (!displayed)
+				{
+					showText(TEXT_INFO, REPLACE, "Congratulations!  You've defeated the Evil Empire.");
+					showText(TEXT_INFO, APPEND, "Please report your score to a HPE supervisor now.");
+					showText(TEXT_INFO, APPEND, "We hope you had fun and learned some cool stuff!");
+					showText(TEXT_QUESTION, REPLACE, "");
+					displayed = true;
+				}
+
+			}	
 			switch (startscreen)
 			{
 			case 1:
@@ -224,7 +238,7 @@ void game::mainloop()
 					showText(TEXT_INFO, APPEND, "To do this you'll need to answer programming");
 					showText(TEXT_INFO, APPEND, "and computer science related questions.");
 					showText(TEXT_INFO, APPEND, "");
-					showText(TEXT_INFO, APPEND, "To the right is your GENERATED ANSWERS.");
+					showText(TEXT_INFO, APPEND, "To the right is your current level.");
 					showText(TEXT_INFO, APPEND, "");
 					showText(TEXT_INFO, APPEND, "As you defeat enemy ships, you'll begin");
 					showText(TEXT_INFO, APPEND, "collecting important enemy intel for");
@@ -277,13 +291,18 @@ void game::mainloop()
 					showText(TEXT_INFO, APPEND, "Mothership to answer the question.");
 					showText(TEXT_INFO, APPEND, "");
 					showText(TEXT_INFO, APPEND, "Here comes the first question now, look up!");
-					showText(TEXT_INFO, APPEND, "Press SPACE");
+					showText(TEXT_INFO, APPEND, "");
+					showText(TEXT_INFO, APPEND, "Press SPACE to continue.");
 					displayed = true;
 				}
 				break;
 			default:
 				break;
 			}
+
+		
+
+
 		}
 
 		Scoretxt->clearTextWOreset();
@@ -329,7 +348,6 @@ void game::mainloop()
 	}
 	std::printf("Congratulations your score is %i \nPlease call the Attendant to record your score...", game::score);
 
-	std::system("PAUSE");
 	shutdownCOM();
 	 
 	
@@ -428,7 +446,7 @@ void game::collision()
 							if (ship->getType() == Dynamic_image_obj::BOSS_OBJECT)
 							{
 								if (!((boss_object*)ship)->bossHit(bullet->getLocation()))
-									addScore(-100);
+									addScore(-500);
 								
 							}
 							else
@@ -521,6 +539,11 @@ void game::event_mouseClick(int button, int state, int x, int y)
 
 void game::event_keyPress(unsigned char key, int x, int y)
 {
+	if (key == 'q')
+	{
+		qButton = true;
+	}
+
 	if (start)
 	{
 		if (key == ' ')
