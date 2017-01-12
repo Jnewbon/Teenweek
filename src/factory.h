@@ -38,6 +38,9 @@ public:
 		QUESTION_TEXT,
 		SCORE_TEXT,
 		START_TEXT,
+		LEFT_BOSS,
+		RIGHT_BOSS,
+		SCORE_BOSS,
 
 		//Special Case
 		PLAYER_SHIP

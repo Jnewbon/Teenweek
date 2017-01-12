@@ -25,9 +25,9 @@ public:
 	//####################
 	//		Modifiers
 	//####################
-	void			draw(glm::mat4 display_matrix);
+	virtual void			draw(glm::mat4 display_matrix);
 
-	void			setShader(GLuint shader);
+	void					setShader(GLuint shader);
 
 protected:
 	GLuint					object_Texture;		// Texture of the object

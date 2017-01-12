@@ -40,16 +40,16 @@ public:
 	static glm::vec2			screenSize;			//Contains the Size of the screen
 
 	static bool	recive_message(game_msg newMsg);
+	static void showText(text_location, text_mod_type, std::string);
 
+	static void	addScore(int score);
 private:
 //#####	Functions ######
 
 	void init_glut();
 	void init_glew();
 
-	static void	addScore(int score);
-	static void showText(text_location, text_mod_type, std::string);
-
+	
 	static void generateLevels(int levels[MAX_LEVELS][Factory::NUMBER_OF_ENEMIES]);
 
 	//callbacks

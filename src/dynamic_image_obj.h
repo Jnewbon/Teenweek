@@ -20,7 +20,7 @@ public:
 	void	setSpeed(glm::vec2 newSpeed);
 	void	setAction(dynamic_obj_action* newAction);
 	void	setObjectType(objectType gameObjectType);
-	void	setDestroyed();
+	virtual void	setDestroyed();
 	//####################
 	//		Getters
 	//####################

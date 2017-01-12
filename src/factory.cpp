@@ -22,6 +22,7 @@ display_object * Factory::create_object(Types obj_type)
 	explosion_object* new_exp_obj = nullptr;
 
 
+	question newQuestion;
 
 	//Used for Text objects
 	vector<std::string> text;
@@ -194,6 +195,26 @@ display_object * Factory::create_object(Types obj_type)
 
 		new_Bos_obj->setObjectType(Dynamic_image_obj::SHIP);
 		//new_Bos_obj->setAction(create_object(WPN_ENEMY_DIRECTED, new_Dyn_obj));
+
+
+		newQuestion.Question.push_back("What is an example of a common VARIABLE?");
+		newQuestion.CorrectAnswer = "int";
+		newQuestion.WrongAnswers.push_back("string");
+		newQuestion.WrongAnswers.push_back("char");
+		newQuestion.WrongAnswers.push_back("double");
+
+		new_Bos_obj->addQuestion(newQuestion);
+
+		newQuestion = question();
+
+		newQuestion.Question.push_back("What is an example of a common sdfsdfds?");
+		newQuestion.CorrectAnswer = "dfsf";
+		newQuestion.WrongAnswers.push_back("sdffs");
+		newQuestion.WrongAnswers.push_back("char");
+		newQuestion.WrongAnswers.push_back("double");
+
+		new_Bos_obj->addQuestion(newQuestion);
+
 
 		break;
 	case Factory::BOSS_TWO:
@@ -461,6 +482,27 @@ display_object * Factory::create_object(Types obj_type)
 		new_Txt_obj->setLocation(vec2(0.8f, 0.0f));
 
 		new_Txt_obj->setColour(vec3(1.0f, 0.0f, 0.0f));
+		break;
+	case Factory::LEFT_BOSS:
+		new_Txt_obj = new text_object();
+
+		new_Txt_obj->setLocation(vec2(0.8f, 0.0f));
+
+		new_Txt_obj->setColour(vec3(1.0f, 0.0f, 0.0f));
+		break;
+	case Factory::RIGHT_BOSS:
+		new_Txt_obj = new text_object();
+
+		new_Txt_obj->setLocation(vec2(0.8f, 0.0f));
+
+		new_Txt_obj->setColour(vec3(1.0f, 0.0f, 0.0f));
+		break;
+	case Factory::SCORE_BOSS:
+		new_Txt_obj = new text_object();
+
+		new_Txt_obj->setLocation(vec2(0.8f, 0.0f));
+
+		new_Txt_obj->setColour(vec3(0.0f, 1.0f, 0.0f));
 
 
 		break;

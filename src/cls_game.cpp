@@ -9,6 +9,7 @@
 #include "factory.h"
 #include "player_object.h"
 #include <chrono>
+#include "boss_object.h"
 
 using namespace std;
 
@@ -67,246 +68,7 @@ void game::mainloop()
 	allDisplayObjects.push_back(Factory::create_object(Factory::QUESTION_TEXT));
 	allDisplayObjects.push_back(Factory::create_object(Factory::ANSWER_TEXT));
 
-	//display this after 20 seconds of finishing information 1
-	//boss 1
-		//question 1
 
-		showText(TEXT_QUESTION, REPLACE, "What are some examples of common VARIABLES?");
-		showText(TEXT_QUESTION, APPEND, "");
-		showText(TEXT_QUESTION, APPEND, "Remember to look at the INFORMATION SCREEN below");
-		showText(TEXT_QUESTION, APPEND, "and COLLECTED ANSWERS to the right!");
-
-		//question 2
-
-		showText(TEXT_QUESTION, REPLACE, "");
-		showText(TEXT_QUESTION, APPEND, "");
-
-		//question 3
-
-		showText(TEXT_QUESTION, REPLACE, "");
-		showText(TEXT_QUESTION, APPEND, "");
-
-		//question 4
-
-		showText(TEXT_QUESTION, REPLACE, "");
-		showText(TEXT_QUESTION, APPEND, "");
-
-	//boss 2
-		//question 1
-
-		showText(TEXT_QUESTION, REPLACE, "");
-		showText(TEXT_QUESTION, APPEND, "");
-		showText(TEXT_QUESTION, APPEND, "Remember to look at the INFORMATION SCREEN below");
-		showText(TEXT_QUESTION, APPEND, "and COLLECTED ANSWERS to the right!");
-
-		//question 2
-
-		showText(TEXT_QUESTION, REPLACE, "");
-		showText(TEXT_QUESTION, APPEND, "");
-
-		//question 3
-
-		showText(TEXT_QUESTION, REPLACE, "");
-		showText(TEXT_QUESTION, APPEND, "");
-
-		//question 4
-
-		showText(TEXT_QUESTION, REPLACE, "");
-		showText(TEXT_QUESTION, APPEND, "");
-
-	//boss 3
-		//question 1
-
-		showText(TEXT_QUESTION, REPLACE, "");
-		showText(TEXT_QUESTION, APPEND, "");
-		showText(TEXT_QUESTION, APPEND, "Remember to look at the INFORMATION SCREEN below");
-		showText(TEXT_QUESTION, APPEND, "and COLLECTED ANSWERS to the right!");
-
-		//question 2
-
-		showText(TEXT_QUESTION, REPLACE, "");
-		showText(TEXT_QUESTION, APPEND, "");
-
-		//question 3
-
-		showText(TEXT_QUESTION, REPLACE, "");
-		showText(TEXT_QUESTION, APPEND, "");
-
-		//question 4
-
-		showText(TEXT_QUESTION, REPLACE, "");
-		showText(TEXT_QUESTION, APPEND, "");
-
-	//boss 4
-		//question 1
-
-		showText(TEXT_QUESTION, REPLACE, "");
-		showText(TEXT_QUESTION, APPEND, "");
-		showText(TEXT_QUESTION, APPEND, "Remember to look at the INFORMATION SCREEN below");
-		showText(TEXT_QUESTION, APPEND, "and COLLECTED ANSWERS to the right!");
-
-		//question 2
-
-		showText(TEXT_QUESTION, REPLACE, "");
-		showText(TEXT_QUESTION, APPEND, "");
-
-		//question 3
-
-		showText(TEXT_QUESTION, REPLACE, "");
-		showText(TEXT_QUESTION, APPEND, "");
-
-		//question 4
-
-		showText(TEXT_QUESTION, REPLACE, "");
-		showText(TEXT_QUESTION, APPEND, "");
-
-
-	showText(TEXT_INFO, REPLACE, "When you're ready, press SPACE to start the game!");
-
-	//boss 1
-		//information 1
-
-		showText(TEXT_INFO, REPLACE, "The Mothership approaches!");
-		showText(TEXT_INFO, APPEND, "");
-		showText(TEXT_INFO, APPEND, "To destroy the Mothership, we'll need to disable");
-		showText(TEXT_INFO, APPEND, "its defences.");
-		showText(TEXT_INFO, APPEND, "");
-		showText(TEXT_INFO, APPEND, "To do this, you'll need to select the correct ANSWER");
-		showText(TEXT_INFO, APPEND, "to the QUESTION displayed above.");
-		showText(TEXT_INFO, APPEND, "");
-		showText(TEXT_INFO, APPEND, "Shoot at either the LEFT or RIGHT side of the Mothership");
-		showText(TEXT_INFO, APPEND, "to answer the question.");
-		showText(TEXT_INFO, APPEND, "");
-		showText(TEXT_INFO, APPEND, "Here comes the first question now, look up!");
-
-		//wait 10 seconds
-
-		showText(TEXT_INFO, REPLACE, "");
-		showText(TEXT_INFO, APPEND, "");
-
-		//information 2
-
-		showText(TEXT_INFO, REPLACE, "");
-		showText(TEXT_INFO, APPEND, "");
-
-		//information 3
-
-		showText(TEXT_INFO, REPLACE, "");
-		showText(TEXT_INFO, APPEND, "");
-
-		//information 4
-
-		showText(TEXT_INFO, REPLACE, "");
-		showText(TEXT_INFO, APPEND, "");
-
-	//boss 2
-		//information 1
-
-		showText(TEXT_INFO, REPLACE, "");
-		showText(TEXT_INFO, APPEND, "");
-		showText(TEXT_INFO, APPEND, "Remember to look at the INFORMATION SCREEN below");
-		showText(TEXT_INFO, APPEND, "and COLLECTED ANSWERS to the right!");
-
-		//information 2
-
-		showText(TEXT_INFO, REPLACE, "");
-		showText(TEXT_INFO, APPEND, "");
-
-		//information 3
-
-		showText(TEXT_INFO, REPLACE, "");
-		showText(TEXT_INFO, APPEND, "");
-
-		//information 4
-
-		showText(TEXT_INFO, REPLACE, "");
-		showText(TEXT_INFO, APPEND, "");
-
-		//boss 3
-			//information 1
-
-			showText(TEXT_INFO, REPLACE, "");
-			showText(TEXT_INFO, APPEND, "");
-			showText(TEXT_INFO, APPEND, "Remember to look at the INFORMATION SCREEN below");
-			showText(TEXT_INFO, APPEND, "and COLLECTED ANSWERS to the right!");
-
-			//information 2
-
-			showText(TEXT_INFO, REPLACE, "");
-			showText(TEXT_INFO, APPEND, "");
-
-			//information 3
-
-			showText(TEXT_INFO, REPLACE, "");
-			showText(TEXT_INFO, APPEND, "");
-
-			//information 4
-
-			showText(TEXT_INFO, REPLACE, "");
-			showText(TEXT_INFO, APPEND, "");
-
-		//boss 4
-			//information 1
-
-			showText(TEXT_INFO, REPLACE, "");
-			showText(TEXT_INFO, APPEND, "");
-			showText(TEXT_INFO, APPEND, "Remember to look at the INFORMATION SCREEN below");
-			showText(TEXT_INFO, APPEND, "and COLLECTED ANSWERS to the right!");
-
-			//information 2
-
-			showText(TEXT_INFO, REPLACE, "");
-			showText(TEXT_INFO, APPEND, "");
-
-			//information 3
-
-			showText(TEXT_INFO, REPLACE, "");
-			showText(TEXT_INFO, APPEND, "");
-
-			//information 4
-
-			showText(TEXT_INFO, REPLACE, "");
-			showText(TEXT_INFO, APPEND, "");
-
-	//possible answers
-
-	//boss 1
-		//possible answers
-
-		showText(TEXT_ANSWER, REPLACE, "int");
-		showText(TEXT_ANSWER, APPEND, "string");
-		showText(TEXT_ANSWER, APPEND, "char");
-		showText(TEXT_ANSWER, APPEND, "double");
-
-	//boss 2
-		//possible answers
-
-		showText(TEXT_ANSWER, REPLACE, "");
-		showText(TEXT_ANSWER, APPEND, "");
-		showText(TEXT_ANSWER, APPEND, "");
-		showText(TEXT_ANSWER, APPEND, "");
-		showText(TEXT_ANSWER, APPEND, "");
-
-	//boss 3
-		//possible answers
-
-		showText(TEXT_ANSWER, REPLACE, "");
-		showText(TEXT_ANSWER, APPEND, "");
-		showText(TEXT_ANSWER, APPEND, "");
-		showText(TEXT_ANSWER, APPEND, "");
-		showText(TEXT_ANSWER, APPEND, "");
-		showText(TEXT_ANSWER, APPEND, "");
-
-	//boss 4
-		//possible answers
-
-		showText(TEXT_ANSWER, REPLACE, "");
-		showText(TEXT_ANSWER, APPEND, "");
-		showText(TEXT_ANSWER, APPEND, "");
-		showText(TEXT_ANSWER, APPEND, "");
-		showText(TEXT_ANSWER, APPEND, "");
-		showText(TEXT_ANSWER, APPEND, "");
-		showText(TEXT_ANSWER, APPEND, "");
 
 	static text_object* Scoretxt = (text_object*)Factory::create_object(Factory::SCORE_TEXT);
 	allDisplayObjects.push_back(Scoretxt);
@@ -384,6 +146,13 @@ void game::mainloop()
 			if (allcount + alivecount == 0)
 			{
 				level++;
+				if (level == 9)
+				{
+					startscreen = level;
+					displayed = false;
+					start = true;
+				}
+
 				showText(TEXT_ANSWER, REPLACE, "Level: " + std::to_string(level+1));
 			}
 
@@ -494,6 +263,25 @@ void game::mainloop()
 					showText(TEXT_INFO, APPEND, "Good luck!");
 					displayed = true;
 				}
+			case 9:
+				if (!displayed)
+				{
+					showText(TEXT_INFO, REPLACE, "The Mothership approaches!");
+					showText(TEXT_INFO, APPEND, "");
+					showText(TEXT_INFO, APPEND, "To destroy the Mothership, we'll need to disable");
+					showText(TEXT_INFO, APPEND, "its defences.");
+					showText(TEXT_INFO, APPEND, "");
+					showText(TEXT_INFO, APPEND, "To do this, you'll need to select the correct ANSWER");
+					showText(TEXT_INFO, APPEND, "to the QUESTION displayed above.");
+					showText(TEXT_INFO, APPEND, "");
+					showText(TEXT_INFO, APPEND, "Shoot at either the LEFT or RIGHT side of the Mothership");
+					showText(TEXT_INFO, APPEND, "to answer the question.");
+					showText(TEXT_INFO, APPEND, "");
+					showText(TEXT_INFO, APPEND, "Here comes the first question now, look up!");
+					showText(TEXT_INFO, APPEND, "Press SPACE");
+					displayed = true;
+				}
+		 
 			default:
 				break;
 			}
@@ -522,13 +310,15 @@ void game::mainloop()
 		glutPostRedisplay();
 		glutMainLoopEvent();
 
+		//printf("Array Objs: %i\n", allDisplayObjects.size());
 
 		for (list<display_object*>::iterator i = allDisplayObjects.begin();
 			i != allDisplayObjects.end();
 			i++)
 		{
 			if ((*i)->getType() == display_object::GAME_OBJECT ||
-				(*i)->getType() == display_object::PLAYER_OBJECT || 
+				(*i)->getType() == display_object::PLAYER_OBJECT ||
+				(*i)->getType() == display_object::BOSS_OBJECT ||
 				(*i)->getRenderLayer() == display_object::BACKGROUND)
 			{
 				((Dynamic_image_obj*)(*i))->move((float)elapsedTime/1000000);
@@ -559,11 +349,15 @@ void game::collision()
 			j++)
 		{
 			if (((*i)->getType() == display_object::PLAYER_OBJECT && 
-				(*j)->getType() == display_object::GAME_OBJECT) ||
-				((*j)->getType() == display_object::PLAYER_OBJECT &&
-				(*i)->getType() == display_object::GAME_OBJECT) ||
-				((*j)->getType() == display_object::GAME_OBJECT &&
-				(*i)->getType() == display_object::GAME_OBJECT))
+				 (*j)->getType() == display_object::GAME_OBJECT) ||
+				 ((*j)->getType() == display_object::PLAYER_OBJECT &&
+				 (*i)->getType() == display_object::GAME_OBJECT) ||
+				 ((*j)->getType() == display_object::GAME_OBJECT &&
+				 (*i)->getType() == display_object::GAME_OBJECT) ||
+				 ((*j)->getType() == display_object::BOSS_OBJECT &&
+				 (*i)->getType() == display_object::GAME_OBJECT) ||
+				 ((*j)->getType() == display_object::GAME_OBJECT &&
+				 (*i)->getType() == display_object::BOSS_OBJECT))
 			{
 				
 				Dynamic_image_obj* bullet = nullptr;
@@ -632,8 +426,17 @@ void game::collision()
 						{
 							std::printf("Player gets points yey\n");
 							bullet->setDestroyed();
-							ship->setDestroyed();
-							addScore(100);
+							if (ship->getType() == Dynamic_image_obj::BOSS_OBJECT)
+							{
+								if (!((boss_object*)ship)->bossHit(bullet->getLocation()))
+									addScore(-100);
+								
+							}
+							else
+							{
+								ship->setDestroyed();
+								addScore(100);
+							}
 						}
 					}	
 				}
@@ -645,7 +448,8 @@ void game::collision()
 		i != allDisplayObjects.end();
 		i++)
 	{
-		if (((Dynamic_image_obj*)(*i))->getType() == display_object::GAME_OBJECT &&
+		if ((((Dynamic_image_obj*)(*i))->getType() == display_object::GAME_OBJECT || 
+			((Dynamic_image_obj*)(*i))->getType() == display_object::BOSS_OBJECT) &&
 			((*i)->getLocation().x < GAME_SPACE_LEFT ||
 			(*i)->getLocation().x + ((Dynamic_image_obj*)(*i))->getScale().x >  GAME_SPACE_RIGHT ||
 			(*i)->getLocation().y + ((Dynamic_image_obj*)(*i))->getScale().y < GAME_SPACE_BOTTOM ||
@@ -722,7 +526,7 @@ void game::event_keyPress(unsigned char key, int x, int y)
 	{
 		if (key == ' ')
 		{
-			if (startscreen == 4)
+			if (startscreen == 4 || startscreen == 9)
 				start = false;
 			else
 			{
@@ -889,6 +693,7 @@ void game::init_glew()
 
 void game::addScore(int score)
 {
+	printf("Score Change %i\n", score);
 	if (game::score + score < 0)
 		game::score = 0;
 	else
@@ -947,7 +752,7 @@ void game::generateLevels(int levels[MAX_LEVELS][Factory::NUMBER_OF_ENEMIES])
 	//All levels are initilized to 0, so only need to set the ones that have non 0 numbers
 
 	//  levels[MAX_LEVELS][Factory::<SHIPTYPE>]
-	levels[0][Factory::ENEMY_ONE] = 2;
+	/*levels[0][Factory::ENEMY_ONE] = 2;
 
 	levels[1][Factory::ENEMY_ONE] = 3;
 
@@ -967,7 +772,7 @@ void game::generateLevels(int levels[MAX_LEVELS][Factory::NUMBER_OF_ENEMIES])
 	levels[7][Factory::ENEMY_TWO] = 3;
 
 	levels[8][Factory::ENEMY_ONE] = 5;
-	levels[8][Factory::ENEMY_TWO] = 4;
+	levels[8][Factory::ENEMY_TWO] = 4;*/
 
 	levels[9][Factory::BOSS_ONE] = 1;
 
