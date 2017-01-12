@@ -6,6 +6,7 @@
 #include "game_messages.h"
 #include "cls_game.h"
 #include "factory.h"
+#include "time.h"
 
 using namespace glm;
 
@@ -29,6 +30,7 @@ boss_object::boss_object()
 	isImmune = true;
 	thisScore = 5000;
 
+	srand(time(NULL));
 }
 
 void boss_object::addQuestion(question newQuestion)
@@ -73,7 +75,8 @@ bool boss_object::bossHit(vec2 hitLocation)
 			return false;
 		}
 	}
-	CurrentWrongAnswer = ((int)rand() % 2);
+	CurrentWrongAnswer = (int)(rand() % 2);
+	CorrectIsLeft = (bool)((int)rand() % 2);
 	sendQuestion(CurrentQuestion);
 	QuestionSent = true;
 	Right_text->clearText();
@@ -92,6 +95,8 @@ bool boss_object::bossHit(vec2 hitLocation)
 
 void boss_object::draw(glm::mat4 display_matrix)
 {
+	Dynamic_image_obj::draw(display_matrix);
+
 	if (!isImmune)
 	{
 		Left_text->setLocation(vec2((this->getLocation().x - 0.05f), this->getScale().y / 2.0f));
@@ -103,7 +108,6 @@ void boss_object::draw(glm::mat4 display_matrix)
 	}
 
 
-	Dynamic_image_obj::draw(display_matrix);
 }
 
 void boss_object::move(float elapsedtime)
@@ -184,5 +188,16 @@ void boss_object::sendQuestion(int)
 		{
 			game::showText(game::TEXT_QUESTION, game::APPEND, Questions[CurrentQuestion].Question[i]);
 		}
+	if (Questions[CurrentQuestion].Info.size() > 0)
+	{
+		game::showText(game::TEXT_INFO, game::REPLACE, Questions[CurrentQuestion].Info[0]);
+		if (Questions[CurrentQuestion].Question.size() > 1)
+		{
+			for (int i = 1; i < Questions[CurrentQuestion].Info.size(); i++)
+			{
+				game::showText(game::TEXT_INFO, game::APPEND, Questions[CurrentQuestion].Info[i]);
+			}
+		}
+	}
 
 }

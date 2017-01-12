@@ -68,215 +68,6 @@ void game::mainloop()
 	allDisplayObjects.push_back(Factory::create_object(Factory::QUESTION_TEXT));
 	allDisplayObjects.push_back(Factory::create_object(Factory::ANSWER_TEXT));
 
-	//display this after 20 seconds of finishing information 1
-	//boss 1
-		//question 1
-
-		showText(TEXT_QUESTION, REPLACE, "What is an example of a common VARIABLE?");
-		showText(TEXT_QUESTION, APPEND, "");
-		showText(TEXT_QUESTION, APPEND, "Remember to look at the INFORMATION SCREEN below");
-		showText(TEXT_QUESTION, APPEND, "and ANSWERS to the right!");
-
-	//boss 2
-		//question 1
-
-		showText(TEXT_QUESTION, REPLACE, "What is the process of repeating sections of a");
-		showText(TEXT_QUESTION, APPEND, "program to achieve a particular target or goal?");
-		showText(TEXT_QUESTION, APPEND, "");
-		showText(TEXT_QUESTION, APPEND, "Remember to look at the INFORMATION SCREEN below");
-		showText(TEXT_QUESTION, APPEND, "and ANSWERS to the right!");
-
-		//question 2
-
-		showText(TEXT_QUESTION, REPLACE, "What is an algorithm?");
-
-	//boss 3
-		//question 1
-
-		showText(TEXT_QUESTION, REPLACE, "What is a set of rules about how to use a particular");
-		showText(TEXT_QUESTION, APPEND, "language?");
-		showText(TEXT_QUESTION, APPEND, "");
-		showText(TEXT_QUESTION, APPEND, "Remember to look at the INFORMATION SCREEN below");
-		showText(TEXT_QUESTION, APPEND, "and ANSWERS to the right!");
-
-		//question 2
-
-		showText(TEXT_QUESTION, REPLACE, "What is a single action in a computer program?");
-
-		//question 3
-
-		showText(TEXT_QUESTION, REPLACE, "What is a value called when used within a Statement?");
-
-	//boss 4
-		//question 1
-
-		showText(TEXT_QUESTION, REPLACE, "What is one of the most important processes when");
-		showText(TEXT_QUESTION, APPEND, "creating new software?");
-		showText(TEXT_QUESTION, APPEND, "");
-		showText(TEXT_QUESTION, APPEND, "Remember to look at the INFORMATION SCREEN below");
-		showText(TEXT_QUESTION, APPEND, "and ANSWERS to the right!");
-
-		//question 2
-
-		showText(TEXT_QUESTION, REPLACE, "What is used to explain the function of different sections of code?");
-
-		//question 3
-
-		showText(TEXT_QUESTION, REPLACE, "What system is used to track changes in the development");
-		showText(TEXT_QUESTION, APPEND, "of your software?");
-
-		//question 4
-
-		showText(TEXT_QUESTION, REPLACE, "What is the process of working through the program");
-		showText(TEXT_QUESTION, APPEND, "in a systematic way to eliminate any flaws or glitches?");
-
-	//boss 1
-		//information 1
-
-		showText(TEXT_INFO, REPLACE, "The Mothership approaches!");
-		showText(TEXT_INFO, APPEND, "");
-		showText(TEXT_INFO, APPEND, "To destroy the Mothership, we'll need to disable");
-		showText(TEXT_INFO, APPEND, "its defences.");
-		showText(TEXT_INFO, APPEND, "");
-		showText(TEXT_INFO, APPEND, "To do this, you'll need to select the correct ANSWER");
-		showText(TEXT_INFO, APPEND, "to the QUESTION displayed above.");
-		showText(TEXT_INFO, APPEND, "");
-		showText(TEXT_INFO, APPEND, "Shoot at either the LEFT or RIGHT side of the Mothership");
-		showText(TEXT_INFO, APPEND, "to answer the question.");
-		showText(TEXT_INFO, APPEND, "");
-		showText(TEXT_INFO, APPEND, "Here comes the first question now, look up!");
-		showText(TEXT_INFO, APPEND, "");
-		showText(TEXT_INFO, APPEND, "Press SPACE to continue.");
-
-		showText(TEXT_INFO, REPLACE, "VARIABLES could be used to store the score in a game,");
-		showText(TEXT_INFO, APPEND, "the number of cars in a car park or the cost of items");
-		showText(TEXT_INFO, APPEND, "on a till.");
-		showText(TEXT_INFO, APPEND, "");
-		showText(TEXT_INFO, APPEND, "They work in a similar way to algebra, where a letter");
-		showText(TEXT_INFO, APPEND, "in your code can stand for a number.");
-		showText(TEXT_INFO, APPEND, "");
-		showText(TEXT_INFO, APPEND, "Check the ANSWER screen to the right for examples of");
-		showText(TEXT_INFO, APPEND, "common VARIABLES!");
-
-	//boss 2
-		//information 1
-
-		showText(TEXT_INFO, REPLACE, "Computer programs can use different types of loops.");
-		showText(TEXT_INFO, APPEND, "");
-		showText(TEXT_INFO, APPEND, "Infinite - ITERATES forever");
-		showText(TEXT_INFO, APPEND, "Count-controlled - ITERATES a set amount of times");
-		showText(TEXT_INFO, APPEND, "Condition-controlled - ITERATES until something happens");
-
-		//information 2
-
-		showText(TEXT_INFO, REPLACE, "Algorithms are sets of step - by - step instructions");
-		showText(TEXT_INFO, APPEND, "for the computer to follow. They are at the heart of all");
-		showText(TEXT_INFO, APPEND, "computer programs.");
-
-		//boss 3
-			//information 1
-
-			showText(TEXT_INFO, REPLACE, "In the same way that English has rules, so do");
-			showText(TEXT_INFO, APPEND, "programming languages.");
-			showText(TEXT_INFO, APPEND, "For example, the SYNTAX for Python 'print' is always");
-			showText(TEXT_INFO, APPEND, "typed in lower case and then followed by an argument.");
-
-			//information 2
-
-			showText(TEXT_INFO, REPLACE, "In a recipe for making a sandwich, a STATEMENT could be");
-			showText(TEXT_INFO, APPEND, "written as 'place bread down' or 'spread butter'.");
-			showText(TEXT_INFO, APPEND, "A simple statement in a computer program could be this one,");
-			showText(TEXT_INFO, APPEND, "written in Python :");
-			showText(TEXT_INFO, APPEND, "");
-			showText(TEXT_INFO, APPEND, "print(\"Hello World\")");
-
-			//information 3
-
-			showText(TEXT_INFO, REPLACE, "EXPRESSIONS are used within statements when working with");
-			showText(TEXT_INFO, APPEND, "values.");
-			showText(TEXT_INFO, APPEND, "");
-			showText(TEXT_INFO, APPEND, "For example, 2 + 2 is an expression that returns the value of 4.");
-			showText(TEXT_INFO, APPEND, "In a computer program, an expression to work out your age might");
-			showText(TEXT_INFO, APPEND, "look like this:");
-			showText(TEXT_INFO, APPEND, "");
-			showText(TEXT_INFO, APPEND, "AgeNextYear = CurrentAge + 1");
-
-		//boss 4
-			//information 1
-
-			showText(TEXT_INFO, REPLACE, "Without TESTING a new system thoroughly it can fail, resulting");
-			showText(TEXT_INFO, APPEND, "in serious consequences for the developers and end users.");
-			showText(TEXT_INFO, APPEND, "");
-			showText(TEXT_INFO, APPEND, "It can be difficult to test every possible outcome and");
-			showText(TEXT_INFO, APPEND, "even the most rigorous of testing may not catch every error");
-			showText(TEXT_INFO, APPEND, "in the program.");
-			 
-			//information 2
-
-			showText(TEXT_INFO, REPLACE, "If programmers leave helpful COMMENTS in the code, it makes");
-			showText(TEXT_INFO, APPEND, "it easier for others to understand what purpose each section");
-			showText(TEXT_INFO, APPEND, "of code performs.");
-
-			//information 3
-
-			showText(TEXT_INFO, REPLACE, "It is really important to keep detailed records of all the");
-			showText(TEXT_INFO, APPEND, "tests that have been carried out as well as any changes that");
-			showText(TEXT_INFO, APPEND, "have been carried out as well as any changes that have been made");
-			showText(TEXT_INFO, APPEND, "after the tests.");
-			showText(TEXT_INFO, APPEND, "");
-			showText(TEXT_INFO, APPEND, "Sometimes errors can be found in the software later on.");
-			showText(TEXT_INFO, APPEND, "The tracking that VERSION CONTROL provides enables developers");
-			showText(TEXT_INFO, APPEND, "to go back and see what changes were made.");
-
-			//information 4
-
-			showText(TEXT_INFO, REPLACE, "When a computer program does not do what you expect, it is likely");
-			showText(TEXT_INFO, APPEND, "that the algorithm that you designed is flawed.Go back to your");
-			showText(TEXT_INFO, APPEND, "algorithm and separate it into parts and see how this relates to");
-			showText(TEXT_INFO, APPEND, "the program that you have created.");
-			showText(TEXT_INFO, APPEND, "");
-			showText(TEXT_INFO, APPEND, "Being able to see what is happening inside a program is very useful");
-			showText(TEXT_INFO, APPEND, "when DEBUGGING.");				
-
-	//possible answers
-
-	//boss 1
-		//possible answers
-
-		showText(TEXT_ANSWER, REPLACE, "int");
-		showText(TEXT_ANSWER, APPEND, "string");
-		showText(TEXT_ANSWER, APPEND, "char");
-		showText(TEXT_ANSWER, APPEND, "double");
-
-	//boss 2
-		//possible answers
-
-		showText(TEXT_ANSWER, REPLACE, "Cycles");
-		showText(TEXT_ANSWER, APPEND, "Turns");
-		showText(TEXT_ANSWER, APPEND, "Iterates");
-		showText(TEXT_ANSWER, APPEND, "Instructions");
-		showText(TEXT_ANSWER, APPEND, "Devices");
-
-	//boss 3
-		//possible answers
-
-		showText(TEXT_ANSWER, REPLACE, "Syntax");
-		showText(TEXT_ANSWER, APPEND, "Statements");
-		showText(TEXT_ANSWER, APPEND, "Expressions");
-		showText(TEXT_ANSWER, APPEND, "Diversions");
-		showText(TEXT_ANSWER, APPEND, "Semaphores");
-		showText(TEXT_ANSWER, APPEND, "Types");
-
-	//boss 4
-		//possible answers
-
-		showText(TEXT_ANSWER, REPLACE, "Zipped");
-		showText(TEXT_ANSWER, APPEND, "Version Control");
-		showText(TEXT_ANSWER, APPEND, "Mathmatics");
-		showText(TEXT_ANSWER, APPEND, "Comments");
-		showText(TEXT_ANSWER, APPEND, "Debugging");
-		showText(TEXT_ANSWER, APPEND, "Development");
-		showText(TEXT_ANSWER, APPEND, "Testing");
 
 	static text_object* Scoretxt = (text_object*)Factory::create_object(Factory::SCORE_TEXT);
 	allDisplayObjects.push_back(Scoretxt);
@@ -479,17 +270,17 @@ void game::mainloop()
 					showText(TEXT_INFO, APPEND, "To destroy the Mothership, we'll need to disable");
 					showText(TEXT_INFO, APPEND, "its defences.");
 					showText(TEXT_INFO, APPEND, "");
-					showText(TEXT_INFO, APPEND, "To do this, you'll need to select the correct ANSWER");
-					showText(TEXT_INFO, APPEND, "to the QUESTION displayed above.");
+					showText(TEXT_INFO, APPEND, "To do this, you'll need to select the correct ");
+					showText(TEXT_INFO, APPEND, "ANSWER to the QUESTION displayed above.");
 					showText(TEXT_INFO, APPEND, "");
-					showText(TEXT_INFO, APPEND, "Shoot at either the LEFT or RIGHT side of the Mothership");
-					showText(TEXT_INFO, APPEND, "to answer the question.");
+					showText(TEXT_INFO, APPEND, "Shoot at either the LEFT or RIGHT side of the ");
+					showText(TEXT_INFO, APPEND, "Mothership to answer the question.");
 					showText(TEXT_INFO, APPEND, "");
 					showText(TEXT_INFO, APPEND, "Here comes the first question now, look up!");
 					showText(TEXT_INFO, APPEND, "Press SPACE");
 					displayed = true;
 				}
-		 
+				break;
 			default:
 				break;
 			}
@@ -960,7 +751,8 @@ void game::generateLevels(int levels[MAX_LEVELS][Factory::NUMBER_OF_ENEMIES])
 	//All levels are initilized to 0, so only need to set the ones that have non 0 numbers
 
 	//  levels[MAX_LEVELS][Factory::<SHIPTYPE>]
-	/*levels[0][Factory::ENEMY_ONE] = 2;
+
+	levels[0][Factory::ENEMY_ONE] = 2;
 
 	levels[1][Factory::ENEMY_ONE] = 3;
 
@@ -980,7 +772,7 @@ void game::generateLevels(int levels[MAX_LEVELS][Factory::NUMBER_OF_ENEMIES])
 	levels[7][Factory::ENEMY_TWO] = 3;
 
 	levels[8][Factory::ENEMY_ONE] = 5;
-	levels[8][Factory::ENEMY_TWO] = 4;*/
+	levels[8][Factory::ENEMY_TWO] = 4;
 
 	levels[9][Factory::BOSS_ONE] = 1;
 

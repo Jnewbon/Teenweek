@@ -198,23 +198,29 @@ display_object * Factory::create_object(Types obj_type)
 
 
 		newQuestion.Question.push_back("What is an example of a common VARIABLE?");
+		newQuestion.Question.push_back("");
+		newQuestion.Question.push_back("Remember to look at the INFORMATION SCREEN below");
+		newQuestion.Question.push_back("and ANSWERS to the right!");
+
 		newQuestion.CorrectAnswer = "int";
-		newQuestion.WrongAnswers.push_back("string");
-		newQuestion.WrongAnswers.push_back("char");
-		newQuestion.WrongAnswers.push_back("double");
+
+		newQuestion.WrongAnswers.push_back("vec2");
+		newQuestion.WrongAnswers.push_back("matrix");
+		newQuestion.WrongAnswers.push_back("chrono");
+
+
+		newQuestion.Info.push_back("VARIABLES could be used to store the score in ");
+		newQuestion.Info.push_back("a game, the number of cars in a car park or the ");
+		newQuestion.Info.push_back("cost of items on a till.");
+		newQuestion.Info.push_back("");
+		newQuestion.Info.push_back("They work in a similar way to algebra, where a ");
+		newQuestion.Info.push_back("letter in your code can stand for a number.");
+		newQuestion.Info.push_back("");
+		newQuestion.Info.push_back("Check the ANSWER screen to the right for examples ");
+		newQuestion.Info.push_back("of common VARIABLES!");
 
 		new_Bos_obj->addQuestion(newQuestion);
-
-		newQuestion = question();
-
-		newQuestion.Question.push_back("What is an example of a common sdfsdfds?");
-		newQuestion.CorrectAnswer = "dfsf";
-		newQuestion.WrongAnswers.push_back("sdffs");
-		newQuestion.WrongAnswers.push_back("char");
-		newQuestion.WrongAnswers.push_back("double");
-
-		new_Bos_obj->addQuestion(newQuestion);
-
+		
 
 		break;
 	case Factory::BOSS_TWO:
@@ -236,6 +242,49 @@ display_object * Factory::create_object(Types obj_type)
 		new_Bos_obj->setShader(game::default_shader);
 
 		new_Bos_obj->setObjectType(Dynamic_image_obj::SHIP);
+		
+		newQuestion = question();
+
+		newQuestion.Question.push_back("What is the process of repeating sections of a");
+		newQuestion.Question.push_back("program to achieve a particular target or goal?");
+		newQuestion.Question.push_back("");
+		newQuestion.Question.push_back("Remember to look at the INFORMATION SCREEN below");
+		newQuestion.Question.push_back("and ANSWERS to the right!");
+
+		newQuestion.CorrectAnswer = "Iterates";
+		newQuestion.WrongAnswers.push_back("Cycles");
+		newQuestion.WrongAnswers.push_back("Turns");
+		newQuestion.WrongAnswers.push_back("Instructions");
+		newQuestion.WrongAnswers.push_back("Devices");
+
+		
+
+		newQuestion.Info.push_back("Computer programs can use different types of loops.");
+		newQuestion.Info.push_back("");
+		newQuestion.Info.push_back("Infinite - ITERATES forever");
+		newQuestion.Info.push_back("Count-controlled - ITERATES a set amount of times");
+		newQuestion.Info.push_back("Condition-controlled - ITERATES until something");
+		newQuestion.Info.push_back("happens");
+
+
+		new_Bos_obj->addQuestion(newQuestion);
+
+		newQuestion = question();
+
+		newQuestion.Question.push_back("What is an algorithm?");
+
+		newQuestion.CorrectAnswer = "Instructions";
+		newQuestion.WrongAnswers.push_back("Iterates");
+		newQuestion.WrongAnswers.push_back("Cycles");
+		newQuestion.WrongAnswers.push_back("Turns");;
+		newQuestion.WrongAnswers.push_back("Devices");
+
+		newQuestion.Info.push_back("Algorithms are sets of step - by - step ");
+		newQuestion.Info.push_back("instructions for the computer to follow. ");
+		newQuestion.Info.push_back("They are at the heart of allcomputer programs.");
+
+		new_Bos_obj->addQuestion(newQuestion);
+
 
 		break;
 	case Factory::BOSS_THREE:
@@ -257,6 +306,70 @@ display_object * Factory::create_object(Types obj_type)
 		new_Bos_obj->setShader(game::default_shader);
 
 		new_Bos_obj->setObjectType(Dynamic_image_obj::SHIP);
+		newQuestion = question();
+
+		newQuestion.Question.push_back("What is a set of rules about how to use a particular");
+		newQuestion.Question.push_back("language?");
+		newQuestion.Question.push_back("");
+		newQuestion.Question.push_back("Remember to look at the INFORMATION SCREEN below");
+		newQuestion.Question.push_back("and ANSWERS to the right!");
+
+		newQuestion.CorrectAnswer = "Syntax";
+		newQuestion.WrongAnswers.push_back("Statement");
+		newQuestion.WrongAnswers.push_back("Expression");
+		newQuestion.WrongAnswers.push_back("Diversion");
+		newQuestion.WrongAnswers.push_back("Semaphore");
+		newQuestion.WrongAnswers.push_back("Type");
+
+		newQuestion.Info.push_back("In the same way that English has rules, so do");
+		newQuestion.Info.push_back("programming languages.");
+		newQuestion.Info.push_back("For example, the SYNTAX for Python 'print' is ");
+		newQuestion.Info.push_back("always typed in lower case and then followed by");
+		newQuestion.Info.push_back("an argument.");
+
+		new_Bos_obj->addQuestion(newQuestion);
+		newQuestion = question();
+
+		newQuestion.Question.push_back("What is a single action in a computer program?");
+		newQuestion.Question.push_back("");
+
+		newQuestion.CorrectAnswer = "Statements";
+		newQuestion.WrongAnswers.push_back("Expression");
+		newQuestion.WrongAnswers.push_back("Diversion");
+		newQuestion.WrongAnswers.push_back("Semaphore");
+		newQuestion.WrongAnswers.push_back("Type");
+		newQuestion.WrongAnswers.push_back("Syntax");
+
+		newQuestion.Info.push_back("In a recipe for making a sandwich, a STATEMENT ");
+		newQuestion.Info.push_back("could be written as 'place bread down' or");
+		newQuestion.Info.push_back(" 'spread butter'. A simple statement in a computer ");
+		newQuestion.Info.push_back("program could be this one, written in Python :");
+		newQuestion.Info.push_back("");
+		newQuestion.Info.push_back("print(\"Hello World\")"); 
+		new_Bos_obj->addQuestion(newQuestion);
+		newQuestion = question();
+
+		newQuestion.Question.push_back("What is a value called when used within a Statement?");
+		newQuestion.Question.push_back("");
+
+		newQuestion.CorrectAnswer = "Expression";
+		newQuestion.WrongAnswers.push_back("Statement");
+		newQuestion.WrongAnswers.push_back("Expression");
+		newQuestion.WrongAnswers.push_back("Diversion");
+		newQuestion.WrongAnswers.push_back("Semaphore");
+		newQuestion.WrongAnswers.push_back("Type");
+		newQuestion.WrongAnswers.push_back("Syntax");
+
+		newQuestion.Info.push_back("EXPRESSIONS are used within statements when working ");
+		newQuestion.Info.push_back("with values.");
+		newQuestion.Info.push_back("");
+		newQuestion.Info.push_back("For example, 2 + 2 is an expression that returns ");
+		newQuestion.Info.push_back("the value of 4. In a computer program, an ");
+		newQuestion.Info.push_back("expression to work out your age mightlook like ");
+		newQuestion.Info.push_back("this:");
+		newQuestion.Info.push_back("AgeNextYear = CurrentAge + 1");
+
+		new_Bos_obj->addQuestion(newQuestion);
 
 		break;
 	case Factory::BOSS_FOUR:
@@ -278,6 +391,103 @@ display_object * Factory::create_object(Types obj_type)
 		new_Bos_obj->setShader(game::default_shader);
 
 		new_Bos_obj->setObjectType(Dynamic_image_obj::SHIP);
+		newQuestion = question();
+
+		newQuestion.Question.push_back("What is one of the most important processes when");
+		newQuestion.Question.push_back("creating new software?");
+		newQuestion.Question.push_back("");
+		newQuestion.Question.push_back("Remember to look at the INFORMATION SCREEN below");
+		newQuestion.Question.push_back("and ANSWERS to the right!");
+
+		newQuestion.CorrectAnswer = "Testing";
+
+		newQuestion.WrongAnswers.push_back("Zipped");
+		newQuestion.WrongAnswers.push_back("Version Control");
+		newQuestion.WrongAnswers.push_back("Mathmatics");
+		newQuestion.WrongAnswers.push_back("Comments");
+		newQuestion.WrongAnswers.push_back("Debugging");
+		newQuestion.WrongAnswers.push_back("Development");
+
+		newQuestion.Info.push_back("Without TESTING a new system thoroughly it can ");
+		newQuestion.Info.push_back("fail, resulting in serious consequences for the ");
+		newQuestion.Info.push_back("developers and end users.");
+		newQuestion.Info.push_back("");
+		newQuestion.Info.push_back("It can be difficult to test every possible outcome ");
+		newQuestion.Info.push_back("and even the most rigorous of testing may not ");
+		newQuestion.Info.push_back("catch every error in the program.");
+
+		new_Bos_obj->addQuestion(newQuestion);
+		newQuestion = question();
+
+		newQuestion.Question.push_back("What is used to explain the function of different");
+		newQuestion.Question.push_back("sections of code?");
+
+
+		newQuestion.CorrectAnswer = "Comments";
+
+		newQuestion.WrongAnswers.push_back("Zipped");
+		newQuestion.WrongAnswers.push_back("Version Control");
+		newQuestion.WrongAnswers.push_back("Mathmatics");
+		newQuestion.WrongAnswers.push_back("Debugging");
+		newQuestion.WrongAnswers.push_back("Development");
+		newQuestion.WrongAnswers.push_back("Testing");
+
+		newQuestion.Info.push_back("If programmers leave helpful COMMENTS in the code,");
+		newQuestion.Info.push_back("it makes it easier for others to understand what ");
+		newQuestion.Info.push_back("purpose each section of code performs.");
+
+		new_Bos_obj->addQuestion(newQuestion);
+		newQuestion = question();
+
+		newQuestion.Question.push_back("What system is used to track changes in the ");
+		newQuestion.Question.push_back("development of your software?");
+
+		newQuestion.CorrectAnswer = "Version Control";
+
+		newQuestion.WrongAnswers.push_back("Zipped");
+		newQuestion.WrongAnswers.push_back("Mathmatics");
+		newQuestion.WrongAnswers.push_back("Comments");
+		newQuestion.WrongAnswers.push_back("Debugging");
+		newQuestion.WrongAnswers.push_back("Development");
+		newQuestion.WrongAnswers.push_back("Testing");
+
+		newQuestion.Info.push_back("It is really important to keep detailed records");
+		newQuestion.Info.push_back(" of all the tests that have been carried out as ");
+		newQuestion.Info.push_back("well as any changes that have been carried out ");
+		newQuestion.Info.push_back("as well as any changes that have been made after ");
+		newQuestion.Info.push_back("the tests.");
+		newQuestion.Info.push_back("");
+		newQuestion.Info.push_back("Sometimes errors can be found in the software ");
+		newQuestion.Info.push_back("later on. The tracking that VERSION CONTROL ");
+		newQuestion.Info.push_back("provides enables developers to go back and see");
+		newQuestion.Info.push_back("what changes were made.");
+
+		new_Bos_obj->addQuestion(newQuestion);
+		newQuestion = question();
+
+		newQuestion.Question.push_back("What is the process of working through the program");
+		newQuestion.Question.push_back("in a systematic way to eliminate any flaws or");
+		newQuestion.Question.push_back("glitches?");
+
+		newQuestion.CorrectAnswer = "Debugging";
+
+		newQuestion.WrongAnswers.push_back("Zipped");
+		newQuestion.WrongAnswers.push_back("Version Control");
+		newQuestion.WrongAnswers.push_back("Mathmatics");
+		newQuestion.WrongAnswers.push_back("Comments");
+		newQuestion.WrongAnswers.push_back("Development");
+		newQuestion.WrongAnswers.push_back("Testing");
+
+		newQuestion.Info.push_back("When a computer program does not do what you");
+		newQuestion.Info.push_back("expect, it is likely that the algorithm that ");
+		newQuestion.Info.push_back("you designed is flawed. Go back to your algorithm ");
+		newQuestion.Info.push_back("and separate it into parts and see how this relates ");
+		newQuestion.Info.push_back("to the program that you have created.");
+		newQuestion.Info.push_back("");
+		newQuestion.Info.push_back("Being able to see what is happening inside a ");
+		newQuestion.Info.push_back("program is very useful when DEBUGGING.");
+
+		new_Bos_obj->addQuestion(newQuestion);
 
 		break;
 	case Factory::BULLET_ONE:

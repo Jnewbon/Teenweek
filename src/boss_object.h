@@ -9,6 +9,7 @@ struct question
 	std::vector<std::string> Question;
 	std::vector<std::string> WrongAnswers;
 	std::string CorrectAnswer;
+	std::vector<std::string> Info;
 
 };
 
